@@ -4,4 +4,3 @@ set Path=D:\IDE\PortableGit\cmd
 cd D:
 cd D:\GithubPages
 git add * && git commit -am "双击一键同步至Github" && git push -qv origin master
-pause
