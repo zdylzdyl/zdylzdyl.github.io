@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Idea帮助指南 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+        <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">Idea帮助指南</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-02-24 19:28:58">2020-02-24 / 11 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><h1 id="java-tool">Java Tool</h1>
+<p>Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial</p>
+<p>[Toc]</p>
+<h2 id="1-intellij-idea">1. <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></h2>
+<figure data-type="image" tabindex="1"><img src="http://www.debug8.com/statics/uploads/2019/12/31/1577782816222512.png" alt="img" loading="lazy"></figure>
+<h3 id="1启动优化">1.启动优化</h3>
+<p>64位机器修改idea64.exe.vmoptions，32位机器修改类似vmoptions文件即可，内存4GB机器无须修改，如下为16GB机器内存方案</p>
+<pre><code class="language-vmoptions"># 程序启动时占用内存大小。jvm初始化大小为1G
+-Xms1g
+# 程序运行期间最大可占用的内存大小。jvm最大大小为2G
+-Xmx2054m
+# 用于设置Code Cache大小，JIT编译的代码都放在Code Cache中，若Code Cache空间不足则JIT无法继续编译，并且会去优化，比如编译执行改为解释执行，由此，性能会降
+-XX:ReservedCodeCacheSize=512m
+# 添加作者信息
+-Duser.name=zdylzdyl
+</code></pre>
+<h3 id="2新项目默认设置">2.新项目默认设置</h3>
+<p>idea的Setting是关于当前项目的设置，新项目（所有项目的设置）及新项目结构设置是不受Setting设置影响的，为了避免每次新建项目重新进行相同的项目设置，需要调整好idea的默认设置。</p>
+<h4 id="21-structure-for-new-projects">2.1 Structure For New Projects</h4>
+<p>操作：File-&gt;Other Settings-&gt;Structure For New Projects</p>
+<p>新建项目的默认结构设置，选择好默认JDK为JDK1.8，选择项目语言级别为8.其他无须设置。</p>
+<h4 id="22-settings-for-new-projects">2.2 Settings For New Projects</h4>
+<p>操作：File-&gt;Other Settings-&gt;Settings For New Projects</p>
+<p>新建项目的默认设置</p>
+<h5 id="221-常用编码设置">2.2.1 常用编码设置</h5>
+<p>Editor-&gt;File Encodings-&gt;全部选择UTF-8即可</p>
+<figure data-type="image" tabindex="2"><img src="https://ae01.alicdn.com/kf/H7c69286536c54c80926022cabebf0555O.png" alt="img" loading="lazy"></figure>
+<p>PS:对于 Properties 文件，勾选重要属性 Transparent native-to-ascii conversion 主要用于转换 ascii，一般都要勾选，不然 Properties 文件中的注释显示的都不会是中文。</p>
+<p>默认情况下 IntelliJ IDEA 使用的编译器是 <code>javac</code>，而此编译只能编译 <code>无BOM</code> 的文件</p>
+<h5 id="222-编码模板">2.2.2 编码模板</h5>
+<p>Editor-&gt;File and Code Templates</p>
+<p>选择Files标签下，分别修改Class/Interface/Enum/AnnotationType.添加默认作者和文件时间</p>
+<p>class:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public class ${NAME} {
+}
+</code></pre>
+<p>Interface:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public interface ${NAME} {
+}
+</code></pre>
+<p>Enum:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public enum ${NAME} {
+}
+</code></pre>
+<p>AnnotationType:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public @interface ${NAME} {
+}
+</code></pre>
+<h5 id="223-postfix-completion-的使用">2.2.3 Postfix Completion 的使用</h5>
+<p>File-&gt;Setting-&gt;Editor-&gt;General-&gt;Postfix Completion-&gt;enable post completion(默认开启的)</p>
+<p>具体的使用方法见模板,输入相应代码按Tab键</p>
+<h5 id="224-设置maven仓库">2.2.4 设置Maven仓库</h5>
+<p>Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
+<ul>
+<li>Maven home directory:本地Maven程序目录</li>
+<li>User setting file:本地Maven程序目录使用的配置文件地址</li>
+<li>Local repository:本地Maven仓库</li>
+</ul>
+<p>设置好Maven仓库，否则有关maven的项目，总会在用户目录创建多余的.m2文件夹并且开始直接自己同步。</p>
+<h5 id="225-自动导包与自动移除依赖">2.2.5 自动导包与自动移除依赖</h5>
+<p>Other Settings-&gt;Auto Import-&gt; Add unambiguous imports on the fly ✔勾选</p>
+<p>Other Settings-&gt;Auto Import-&gt; Optimize imports on the fly(for current project) ✔勾选</p>
+<h3 id="3项目设置">3.项目设置</h3>
+<h4 id="31-方法横线分割">3.1 方法横线分割</h4>
+<p>File-&gt;Settings-&gt;Editor-&gt;General-&gt;Appearance-&gt;Show method separators ✔勾选</p>
+<h4 id="32-字体与大小">3.2 字体与大小</h4>
+<p>File-&gt;Settings-&gt;Editor-&gt;Font-&gt;16，可以同时设置字体</p>
+<p>编程字体推荐: JetBrainsMono .ttf</p>
+<p>下载地址:http://pan.baidu.com/s/1kVoF32R</p>
+<ul>
+<li>Microsoft YaHei Consolas</li>
+<li>Microsoft YaHei Mono</li>
+</ul>
+<h4 id="33-项目默认打开地址">3.3 项目默认打开地址</h4>
+<p>File-&gt;Settings-&gt;Appearance&amp;Behavior-&gt;System Settings-&gt;Project Opening-&gt;Default directory</p>
+<h4 id="34-护眼背景色">3.4 护眼背景色</h4>
+<p>使用过HBuilder之后，被护眼色蛊惑[<a href="https://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/35112">说明链接</a>]，修改Idea的背景色为FAF6E6。</p>
+<p>File-&gt;Settings-&gt;Editor-&gt;Color Scheme-&gt;General-&gt;Text-&gt;Default text-&gt;Background-&gt;🖊FAF6E6</p>
+<figure data-type="image" tabindex="3"><img src="http://upload.ouliu.net/i/20200110152041ve7hg.png" alt="img" loading="lazy"></figure>
+<h4 id="34-关于主题色">3.4 关于主题色</h4>
+<table>
+<thead>
+<tr>
+<th>推荐的主题网站</th>
+<th>推荐的主题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://color-themes.com/?view=index</td>
+<td>hbuilder</td>
+</tr>
+<tr>
+<td>http://www.easycolor.cc/intelliJidea/list.html</td>
+<td>Modulor Light</td>
+</tr>
+<tr>
+<td>http://www.themesmap.com/</td>
+<td>moon</td>
+</tr>
+<tr>
+<td>http://www.riaway.com/</td>
+<td>Solfin</td>
+</tr>
+<tr>
+<td></td>
+<td>green_theme</td>
+</tr>
+<tr>
+<td></td>
+<td>Solarized Light (Alternate)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="35-修改注释空行">3.5 修改注释空行</h4>
+<p>依次选择Setting-&gt;Editor-&gt;Code Style-&gt;Java,选择Code Generation，取消Line comment at first column和Block comment at first column的选中即可。</p>
+<h4 id="36-路径变量设置">3.6 路径变量设置</h4>
+<p>KOTLIN_BUNDLED</p>
+<p>MAVEN_REPOSITORY</p>
+<h3 id="4-idea程序缓存及设置文件路径修改">4. IDEA程序缓存及设置文件路径修改</h3>
+<p>修改Idea的一般文件设置路径，防止重装系统需要重新配置，新配置路径为程序同级目录的上层目录<code>.IntelliJIdea</code>中。</p>
+<pre><code class="language-properties"># Use ${idea.home.path} macro to specify location relative to IDE installation home.
+# Use ${xxx} where xxx is any Java property (including defined in previous lines of this file) to refer to its value.
+# Note for Windows users: please make sure you're using forward slashes (e.g. c:/idea/system).
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE config folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.config.path=${user.home}/.IntelliJIdea/config
+idea.config.path=${idea.home.path}/../.IntelliJIdea/config
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE system folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.system.path=${user.home}/.IntelliJIdea/system
+idea.system.path=${idea.home.path}/../.IntelliJIdea/system
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to user installed plugins folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.plugins.path=${idea.config.path}/plugins
+idea.plugins.path=${idea.config.path}/plugins
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE logs folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.log.path=${idea.system.path}/log
+idea.log.path=${idea.system.path}/log
+</code></pre>
+<h3 id="5快捷键">5.快捷键</h3>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+回车</td>
+<td>导入包,自动修正</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td>查找类</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+N</td>
+<td>查找文件</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+O</td>
+<td>优化导入的类和包</td>
+</tr>
+<tr>
+<td>Alt+Insert</td>
+<td>生成代码(如get,set方法,构造函数等)</td>
+</tr>
+<tr>
+<td>Ctrl+E或者Alt+Shift+C</td>
+<td>最近更改的代码</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td>替换文本</td>
+</tr>
+<tr>
+<td>Ctrl+F</td>
+<td>查找文本</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Space</td>
+<td>自动补全代码</td>
+</tr>
+<tr>
+<td>Ctrl+空格</td>
+<td>代码提示</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Space</td>
+<td>类名或接口名提示</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>方法参数提示</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Alt+N</td>
+<td>查找类中的方法或变量</td>
+</tr>
+<tr>
+<td>Alt+Shift+C</td>
+<td>对比最近修改的代码</td>
+</tr>
+<tr>
+<td>Shift+F6</td>
+<td>重构-重命名</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>删除行</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>复制行</td>
+</tr>
+<tr>
+<td>Ctrl+/ 或 Ctrl+Shift+/</td>
+<td>注释（// 或者/<em>...</em>/ ）</td>
+</tr>
+<tr>
+<td>Ctrl+J</td>
+<td>自动代码</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>最近打开的文件</td>
+</tr>
+<tr>
+<td>Ctrl+H</td>
+<td>显示类结构图</td>
+</tr>
+<tr>
+<td>Ctrl+Q</td>
+<td>显示注释文档</td>
+</tr>
+<tr>
+<td>Alt+F1</td>
+<td>查找代码所在位置</td>
+</tr>
+<tr>
+<td>Alt+1</td>
+<td>快速打开或隐藏工程面板</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+ left/right</td>
+<td>返回至上次浏览的位置</td>
+</tr>
+<tr>
+<td>Alt+ left/right</td>
+<td>切换代码视图</td>
+</tr>
+<tr>
+<td>Alt+ Up/Down</td>
+<td>在方法间快速移动定位</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Up/Down</td>
+<td>代码向上/下移动</td>
+</tr>
+<tr>
+<td>F2 或Shift+F2</td>
+<td>高亮错误或警告快速定位</td>
+</tr>
+</tbody>
+</table>
+<p>常用快捷键</p>
+<p>1 执行(run) alt+r</p>
+<p>2 提示补全 (Class Name Completion) alt+/</p>
+<p>3 单行注释 ctrl + /</p>
+<p>4 多行注释 ctrl + shift + /</p>
+<p>5 向下复制一行 (Duplicate Lines) ctrl+alt+down</p>
+<p>6 删除一行或选中行 (delete line) ctrl+d</p>
+<p>7 向下移动行(move statement down) alt+down</p>
+<p>8 向上移动行(move statement up) alt+up</p>
+<p>9 向下开始新的一行(start new line) shift+enter</p>
+<p>10 向上开始新的一行 (Start New Line before current) ctrl+shift+enter</p>
+<p>11 如何查看源码 (class) ctrl + 选中指定的结构 或 ctrl + shift + t</p>
+<p>12 万能解错/生成返回值变量 alt + enter</p>
+<p>13 退回到前一个编辑的页面 (back) alt + left</p>
+<p>14 进入到下一个编辑的页面(针对于上条) (forward) alt + right</p>
+<p>15 查看继承关系(type hierarchy) F4</p>
+<p>16 格式化代码(reformat code) ctrl+shift+F</p>
+<p>17 提示方法参数类型(Parameter Info) ctrl+alt+/</p>
+<p>18 复制代码 ctrl + c</p>
+<p>19 撤销 ctrl + z</p>
+<p>20 反撤销 ctrl + y</p>
+<p>21 剪切 ctrl + x</p>
+<p>22 粘贴 ctrl + v</p>
+<p>23 保存 ctrl + s</p>
+<p>24 全选 ctrl + a</p>
+<p>25 选中数行，整体往后移动 tab</p>
+<p>26 选中数行，整体往前移动 shift + tab</p>
+<p>27 查看类的结构：类似于 eclipse 的 outline ctrl+o</p>
+<p>28 重构：修改变量名与方法名(rename) alt+shift+r</p>
+<p>29 大写转小写/小写转大写(toggle case) ctrl+shift+y</p>
+<p>30 生成构造器/get/set/toString alt +shift + s  alt+insert</p>
+<p>31 查看文档说明(quick documentation) F2</p>
+<p>32 收起所有的方法(collapse all) alt + shift + c</p>
+<p>33 打开所有方法(expand all) alt+shift+x</p>
+<p>34 打开代码所在硬盘文件夹(show in explorer) ctrl+shift+x</p>
+<p>35 生成 try-catch 等(surround with) alt+shift+z</p>
+<p>36 局部变量抽取为成员变量(introduce field) alt+shift+f</p>
+<p>37 查找/替换(当前) ctrl+f</p>
+<p>38 查找(全局) ctrl+h</p>
+<p>39 查找文件 double Shift</p>
+<p>40 查看类的继承结构图(Show UML Diagram) ctrl + shift + u</p>
+<p>41 查看方法的多层重写结构(method hierarchy) ctrl+alt+h</p>
+<p>42 添加到收藏(add to favorites) ctrl+alt+f</p>
+<p>43 抽取方法(Extract Method) alt+shift+m</p>
+<p>44 打开最近修改的文件(Recently Files) ctrl+E</p>
+<p>45 关闭当前打开的代码栏(close) ctrl + w</p>
+<p>46 关闭打开的所有代码栏(close all) ctrl + shift + w</p>
+<p>47 快速搜索类中的错误(next highlighted error) ctrl + shift + q</p>
+<p>48 选择要粘贴的内容(Show in Explorer) ctrl+shift+v</p>
+<p>49 查找方法在哪里被调用(Call Hierarchy) ctrl+shift+h</p>
+<h3 id="6常用插件">6.常用插件</h3>
+<table>
+<thead>
+<tr>
+<th>插件名称</th>
+<th>插件介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key promoter</td>
+<td>快捷键提示</td>
+</tr>
+<tr>
+<td>CamelCase</td>
+<td>驼峰式命名和下划线命名交替变化</td>
+</tr>
+<tr>
+<td>CheckStyle-IDEA</td>
+<td>代码样式检查</td>
+</tr>
+<tr>
+<td>FindBugs-IDEA</td>
+<td>代码 Bug 检查</td>
+</tr>
+<tr>
+<td>Statistic</td>
+<td>代码统计</td>
+</tr>
+<tr>
+<td>JRebel Plugin</td>
+<td>热部署</td>
+</tr>
+<tr>
+<td>CodeGlance</td>
+<td>在编辑代码最右侧，显示一块代码小地图</td>
+</tr>
+<tr>
+<td>GsonFormat</td>
+<td>把 JSON 字符串直接实例化成类</td>
+</tr>
+<tr>
+<td>Alibaba Java Coding Guidelines</td>
+<td>阿里巴巴java代码规约</td>
+</tr>
+<tr>
+<td>Free Mybatis plugin</td>
+<td>Mybatis插件</td>
+</tr>
+<tr>
+<td>Maven Helper</td>
+<td>Maven插件</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>参考链接：https://www.jianshu.com/p/320d82d405ad</p>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/LazyLove/">The Lazy Way to Stay in Love (2010)</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/20-ge-gong-shi-xue-hui-you-mo-zhi-dao/">20个公式学会幽默之道</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="800" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+</footer>
+    </body>
+</html>

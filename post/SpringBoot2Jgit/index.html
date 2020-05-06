@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>SpringBoot+Jgit实现目录对拷github备份 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+        <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">SpringBoot+Jgit实现目录对拷github备份</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-04-23 10:42:11">2020-04-23 / 9 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><blockquote>
+<p>事发原因：git仓库很臃肿了，以前提交了不少大文件，导致历史记录文件很大，也有不少敏感信息，干脆直接新建一个新仓库了。</p>
+</blockquote>
+<p>​    新仓库直接上传文件的时候崩溃了。我使用git上传都1.xGB了，然后崩溃了说每次提交只能有100MB，我不想去旧仓库删除提交记录再去新仓库克隆，干脆分批次提交文件好了。然而手动提交仓库是不可能提交仓库的，文件太小提交频繁也不好，大概文件超过50MB不到100MB就去git提交一次，而且考虑到每次提交任务git都会直接占一般CPU，多任务提交的时候网速也不会更快，就单线程了，那么写代码吧。</p>
+<p>准备：</p>
+<ol>
+<li>springboot开发环境</li>
+<li>Jgit操作Git</li>
+</ol>
+<p>相关依赖(Springboot相关依赖省略)</p>
+<pre><code class="language-xml">    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;!-- jgit版本 --&gt;
+        &lt;jgit.version&gt;5.7.0.202003110725-r&lt;/jgit.version&gt;
+    &lt;/properties&gt;		
+		&lt;!-- 文件工具 --&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.directory.studio&lt;/groupId&gt;
+            &lt;artifactId&gt;org.apache.commons.io&lt;/artifactId&gt;
+            &lt;version&gt;2.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- java操作git--&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.jgit&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.jgit&lt;/artifactId&gt;
+            &lt;version&gt;${jgit.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.jgit&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.jgit.archive&lt;/artifactId&gt;
+            &lt;version&gt;${jgit.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.jcraft&lt;/groupId&gt;
+            &lt;artifactId&gt;jsch&lt;/artifactId&gt;
+            &lt;version&gt;0.1.55&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>相关的配置需要：</p>
+<ul>
+<li>待复制进入仓库的文件夹</li>
+<li>git仓库地址</li>
+<li>git-ssh 密钥路径，安全要求不使用账户名密码进行操作</li>
+<li>git-ssh 记录的host文件</li>
+<li>git仓库地址</li>
+<li>本Java程序提交commit时添加的注释</li>
+<li>文件添加的过滤规则 .是使用.gitignore文件 使用* 则是忽略.gitignore</li>
+</ul>
+<p>于是写成yml配置文件：</p>
+<pre><code class="language-yaml"># 基本的自定义配置
+candy-git:
+  # 待复制进入仓库的文件夹
+  fileInputPath: E:\\copy
+  # git仓库地址
+  fileGithubPath: E:\\github-cloud
+  # git-ssh 密钥路径
+  identity: C:\\Users\\Administrator\\.ssh\\id_rsa
+  # git-ssh 记录的host文件
+  knownHosts: C:\\Users\\Administrator\\.ssh\\known_hosts
+  # git仓库地址 
+  gitUrl: git@github.com:你的仓库地址.git
+  # 本java程序提交commit时添加的注释
+  commitMessage: &quot;this commit from java application.&quot;
+  # 文件添加的过滤规则 .是使用.gitignore文件 使用* 则是忽略.gitignore
+  addFilePattern:  &quot;.&quot;
+</code></pre>
+<p>使用springboot自动读取配置文件</p>
+<pre><code class="language-java">@Component
+@ConfigurationProperties(prefix = &quot;candy-git&quot;)
+public class CandyGitConfig {
+    /**
+     * 入库文件的目录地址
+     */
+    private String fileInputPath;
+    /**
+     * 进行同步仓库的目录地址
+     */
+    private String fileGithubPath;
+    /**
+     * 提交时的messages信息
+     */
+    private String commitMessage = &quot;this commit from java application.&quot;;
+    /**
+     * 添加文件的过滤规则 不能使用* 使用*时 .gitignore不起作用
+     */
+    private String addFilePattern = &quot;.&quot;;
+    /**
+     * git ssh 配置 密钥地址
+     */
+    private String identity = &quot;C:\\Users\\Administrator\\.ssh\\id_rsa.pub&quot;;
+    /**
+     * git ssh 配置 hosts
+     */
+    private String knownHosts = &quot;C:\\Users\\Administrator\\.ssh\\known_hosts&quot;;
+    /**
+     * git ssh 配置 url
+     */
+    private String gitUrl = &quot;git@github.com:你的仓库地址.git&quot;;
+ 	//…………get/set省略  记得生成一下toString方法 
+}
+
+</code></pre>
+<p>文件的拷贝使用org.apache.commons.io.FileUtils即可，写一个file的工具类吧</p>
+<pre><code class="language-java">/**
+     * 遍历目录，将任务添加至workHashMap
+     *
+     * @param file 文件
+     */
+    public static void scanAllFile(File file, HashMap&lt;String, Long&gt; workHashMap, HashMap&lt;String, Long&gt; excludeWorkHashMap) {
+        //文件不存在
+        if (!file.exists()) {
+            return;
+        }
+        //如果是文件 获取文件的KB大小 使用MB会直接导致 不足1MB为0MB文件的存在
+        if (file.isFile()) {
+            if (CandyCopyFileUtils.getFileKbSize(file) &gt; 100 * 1024) {
+                //超过100MB的文件存放在排除目录 不予执行
+                excludeWorkHashMap.put(file.getAbsolutePath(), CandyCopyFileUtils.getFileKbSize(file));
+            }
+            workHashMap.put(file.getAbsolutePath(), CandyCopyFileUtils.getFileKbSize(file));
+        }
+        //如果是文件夹 且不是空文件夹
+        if (file.isDirectory() &amp;&amp; file.listFiles() != null &amp;&amp; Objects.requireNonNull(file.listFiles()).length &gt; 0) {
+            for (File f : Objects.requireNonNull(file.listFiles())) {
+                scanAllFile(f, workHashMap, excludeWorkHashMap);
+            }
+        }
+    }
+    
+    /**
+     * 复制文件 文件对拷 父目录不一致 子目录路径一致
+     *
+     * @param filePath       元文件/待拷贝文件目录
+     * @param candyGitConfig 配置文件
+     * @return 拷贝成功true 拷贝失败false
+     */
+    public static boolean copyFile(String filePath, CandyGitConfig candyGitConfig) {
+        //待拷贝文件目录
+        String fileAbsolutePath = new File(filePath).getAbsolutePath();
+        //拷贝至github目录的目标位置
+        String gitPath = new File(candyGitConfig.getFileGithubPath()).getAbsolutePath()
+                .concat(fileAbsolutePath.substring(candyGitConfig.getFileInputPath().length() - 1));
+        //System.out.println(gitPath);
+        logger.debug(gitPath);
+        //对拷方式 覆盖
+        try {
+            FileUtils.copyFile(new File(filePath), new File(gitPath));
+            return true;
+        } catch (IOException e) {
+            logger.error(&quot;copy file error:{}&quot;, e.getMessage());
+        }
+        return false;
+    }
+
+</code></pre>
+<p>当然jGit工具类也得有</p>
+<pre><code class="language-java">/**
+     * 进行git添加和本地提交
+     *
+     * @param candyGitConfig 配置文件
+     */
+    public void gitAddAndCommit(CandyGitConfig candyGitConfig) {
+        Git git;
+        try {
+            git = Git.open(new File(candyGitConfig.getFileGithubPath()));
+            //添加所有文件
+            DirCache cache = git.add().addFilepattern(candyGitConfig.getAddFilePattern()).call();
+            //logger.info(cache.toString());
+            //提交文件
+            RevCommit commit = git.commit().setMessage(candyGitConfig.getCommitMessage()).call();
+            logger.info(&quot;commit success:{}&quot;, commit.getFullMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+    }
+    
+    /**
+     * git推送
+     *
+     * @param candyGitConfig 配置文件
+     */
+    public void gitPush(CandyGitConfig candyGitConfig) {
+        //设置ssh密钥
+        SshSessionFactory sshSessionFactory = new JschConfigSessionFactory() {
+            @Override
+            protected void configure(OpenSshConfig.Host host, Session session) {
+                //不作域名检查  解除HostKey检查
+                session.setConfig(&quot;StrictHostKeyChecking&quot;, &quot;no&quot;);
+            }
+            
+            @Override
+            protected JSch createDefaultJSch(FS fs) throws JSchException {
+                JSch jSch = super.createDefaultJSch(fs);
+                jSch.addIdentity(candyGitConfig.getIdentity());
+                jSch.setKnownHosts(candyGitConfig.getKnownHosts());
+                return jSch;
+            }
+        };
+        
+        TransportConfigCallback configCallback = transport -&gt; {
+            SshTransport sshTransport = (SshTransport) transport;
+            sshTransport.setSshSessionFactory(sshSessionFactory);
+        };
+        
+        try {
+            Git git = Git.open(new File(candyGitConfig.getFileGithubPath()));
+            // add remote repo:
+            RemoteAddCommand remoteAddCommand = git.remoteAdd();
+            remoteAddCommand.setName(&quot;origin&quot;);
+            remoteAddCommand.setUri(new URIish(candyGitConfig.getGitUrl()));
+            // you can add more settings here if needed
+            remoteAddCommand.call();
+            // push to remote:
+            PushCommand pushCommand = git.push();
+            //设置ssh密码
+            pushCommand.setTransportConfigCallback(configCallback);
+            // you can add more settings here if needed
+            pushCommand.call();
+            logger.info(&quot;git push success.&quot;);
+        } catch (IOException | URISyntaxException | GitAPIException e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+</code></pre>
+<p>由于程序只要运行就好了，于是放到系统任务中运行了</p>
+<pre><code class="language-java">/**
+     * 检查一下candyGitConfig配置
+     *
+     * @param args 参数
+     * @throws Exception 异常
+     */
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        //启动时检查下配置
+        logger.debug(&quot;candyGitConfig 参数检查:{}&quot;, candyGitConfig.toString());
+        //将待同步目录放置于队列中
+        //workList.add(candyGitConfig.getFileInputPath());
+        CandyCopyFileUtils.scanAllFile(new File(candyGitConfig.getFileInputPath()), workHashMap, excludeWorkHashMap);
+        //记录工作目录扫描结果
+        logger.debug(workHashMap.toString());
+    
+        //循环工作所有任务文件
+        while (!workHashMap.isEmpty()) {
+            HashMap&lt;String,Long&gt; cloneWorkHashMap =(HashMap&lt;String,Long&gt; ) workHashMap.clone();
+            for (Map.Entry&lt;String, Long&gt; entry : cloneWorkHashMap.entrySet()) {
+                //文件大小 加上文件累计大小大于50MB
+                if (entry.getValue() + allFileSize &lt; 50 * 1024) {
+                    
+                    //执行一次拷贝 文件总大小计数增加
+                    logger.info(&quot;copying:{}--------{}&quot;, entry.getKey(), entry.getValue());
+                    boolean copyFileResult = CandyCopyFileUtils.copyFile(entry.getKey(), candyGitConfig);
+                    //如果发生拷贝异常
+                    if (!copyFileResult) {
+                        if (excludeWorkHashMap.containsKey(entry.getKey())) {
+                            //仅重试一次 后移除
+                            workHashMap.remove(entry.getKey());
+                        }
+                        //放置于排除目录
+                        excludeWorkHashMap.put(entry.getKey(), entry.getValue());
+                        logger.warn(&quot;file:[{}],size:[{}],put into excludeWorkHashMap.&quot;, entry.getKey(), entry.getValue());
+                    } else {
+                        allFileSize += entry.getValue();
+                        workHashMap.remove(entry.getKey());
+                        logger.info(&quot;file:[{}],size:[{}],copy ok.&quot;, entry.getKey(), entry.getValue());
+                    }
+                    //文件大小不能再增加了 直接执行git同步 推送
+                } else {
+                    //同步次数
+                    int pushCount = 1;
+                    //仅尝试三次
+                    while (pushCount &lt; 3) {
+                        pushCount++;
+                        //不执行拷贝 仅进行文件git 文件提交操作
+                        boolean commitAndPushOK = tryCommitAndPush();
+                        //如果文件同步成功，待同步文件中大小归0
+                        if (commitAndPushOK) {
+                            allFileSize = 0L;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        //查看最终工作队列
+        logger.info(workHashMap.toString());
+        //如果有异常文件 记录超过100MB的文件
+        if (!excludeWorkHashMap.keySet().isEmpty()) {
+            logger.error(excludeWorkHashMap.toString());
+        }
+    }
+    
+    
+    /**
+     * 进行一次推送操作
+     *
+     * @return 成功返回true 失败返回false
+     */
+    private boolean tryCommitAndPush() {
+        try {
+            CandyGitUtils candyGitUtils = new CandyGitUtils();
+            //提交操作
+            candyGitUtils.gitAddAndCommit(candyGitConfig);
+            //推送操作
+            candyGitUtils.gitPush(candyGitConfig);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+</code></pre>
+<p>PS:SSH验证不通过是RSA验证文件文件头的锅。检查一下Jgit不支持SSH KEY开头。</p>
+<p>于是运行即可愉快的同步啦。</p>
+<figure data-type="image" tabindex="1"><img src="https://ae01.alicdn.com/kf/U5ee371f196b94b038fd7f207ed3cb35dJ.jpg" alt="同步情况" loading="lazy"></figure>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/java-shell/">Java操作windows的shell</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/spring_boot_with_vue/">Spring Boot+Vue全栈开发实战 学习笔记</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="800" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+</footer>
+    </body>
+</html>

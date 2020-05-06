@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zdylzdyl.github.io</id>
+    <title>zdylzdyl</title>
+    <updated>2020-05-06T15:38:09.691Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zdylzdyl.github.io"/>
+    <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
+    <icon>https://zdylzdyl.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[Ubuntu16的快捷方式记录]]></title>
+        <id>https://zdylzdyl.github.io/post/ocO-U-Lk9/</id>
+        <link href="https://zdylzdyl.github.io/post/ocO-U-Lk9/">
+        </link>
+        <updated>2020-04-27T06:46:42.000Z</updated>
+        <content type="html"><![CDATA[<p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
+对于一些自带的软件就不需要自己编辑了。<br>
+备份一些软件的快捷方式：</p>
+<pre><code class="language-shell">
+[Desktop Entry]
+Encoding=UTF-8
+Name=LXTerminal
+Name[zh_CN]=LX 终端
+GenericName=Terminal
+GenericName[zh_CN]=终端
+Comment=Use the command line
+Comment[zh_CN]=使用命令行
+Comment[zh_TW]=使用命令列
+TryExec=lxterminal
+Exec=lxterminal
+Icon=lxterminal
+Type=Application
+Categories=GTK;System;TerminalEmulator;
+Keywords=console;command line;execute;
+
+[Desktop Entry]
+Keywords=editor
+Name=Leafpad
+Comment=Simple text editor
+Comment[zh_CN]=简易文字编辑器
+Exec=leafpad %f
+Icon=leafpad
+Terminal=false
+Type=Application
+MimeType=text/plain
+Categories=GTK;Utility;TextEditor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux系统的一些图标记录]]></title>
+        <id>https://zdylzdyl.github.io/post/ubuntu-Desktop/</id>
+        <link href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">
+        </link>
+        <updated>2020-04-27T06:46:42.000Z</updated>
+        <content type="html"><![CDATA[<p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
+对于一些自带的软件就不需要自己编辑了。<br>
+备份一些软件的快捷方式：</p>
+<pre><code class="language-shell">
+[Desktop Entry]
+Encoding=UTF-8
+Name=LXTerminal
+Name[zh_CN]=LX 终端
+GenericName=Terminal
+GenericName[zh_CN]=终端
+Comment=Use the command line
+Comment[zh_CN]=使用命令行
+Comment[zh_TW]=使用命令列
+TryExec=lxterminal
+Exec=lxterminal
+Icon=lxterminal
+Type=Application
+Categories=GTK;System;TerminalEmulator;
+Keywords=console;command line;execute;
+
+[Desktop Entry]
+Keywords=editor
+Name=Leafpad
+Comment=Simple text editor
+Comment[zh_CN]=简易文字编辑器
+Exec=leafpad %f
+Icon=leafpad
+Terminal=false
+Type=Application
+MimeType=text/plain
+Categories=GTK;Utility;TextEditor;
+
+[Desktop Entry]
+Name=gridea
+GenericName=gridea
+Exec=gridea
+Terminal=false
+Type=Application
+Icon=/opt/Gridea/resources/app/img/logo.118b2eb7.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+Name[zh_CN]=gridea
+Path=/home/buxi/GrideaSpace
+
+[Desktop Entry]
+Name=Idea
+GenericName=Idea
+Exec=/opt/idea/bin/idea.sh
+Terminal=false
+Type=Application
+Icon=/opt/idea/bin/idea.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+
+[Desktop Entry]
+Name=Typora
+GenericName=Typora
+Exec=/opt/typora/Typora
+Terminal=false
+Type=Application
+Icon=/opt/typora/resources/app/asserts/icon/icon_256x256@2x.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+
+[Desktop Entry]
+Name=Google Chrome
+GenericName=Chrome
+Exec=/opt/google/chrome/chrome
+Terminal=false
+Type=Application
+Icon=/opt/google/chrome/product_logo_256.png
+Categories=GNOME;GTK;Network;WebBrowser;
+Encoding=UTF-8
+Name[zh_CN]=Chrome
+
+
+
+
+
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Git推送使用SSH秘钥还有的安全问题]]></title>
+        <id>https://zdylzdyl.github.io/post/git-key-push/</id>
+        <link href="https://zdylzdyl.github.io/post/git-key-push/">
+        </link>
+        <updated>2020-04-27T03:15:06.000Z</updated>
+        <content type="html"><![CDATA[<p>git推送的问题</p>
+<p>如下所示：</p>
+<pre><code class="language-bash">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0777 for '/home/buxi/.ssh/id_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key &quot;/home/buxi/.ssh/id_rsa&quot;: bad permissions
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+</code></pre>
+<p>这时候只是需要将秘钥权限修改一下即可：</p>
+<pre><code class="language-bash">chmod 700 ～/.ssh/id_rsa
+# 以防万一，顺便都改下
+chmod 700 ~/.ssh/id_rsa.pub
+# 检查下
+ls -al ~/.ssh
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[原来JDK线程池令人困惑是因为这个！]]></title>
+        <id>https://zdylzdyl.github.io/post/S21q2yrAO/</id>
+        <link href="https://zdylzdyl.github.io/post/S21q2yrAO/">
+        </link>
+        <updated>2020-04-26T08:26:49.000Z</updated>
+        <content type="html"><![CDATA[<p>使用JAVA的JDK有一个令我困惑不解的地方，比如新建一个线程池：</p>
+<pre><code class="language-java">new ThreadPoolExecutor(16,80,60,TimeUnit.SECONDS,new LinkedBlockingQueue&lt;&gt;(1000),new NamedThreadFactory(&quot;线程池测试&quot;));
+</code></pre>
+<p>如果接收100个任务，它只会开16个线程，而其余的都丢在队列中，想要令80个线程全都开启，必须队列先塞满才能继续创建线程。</p>
+<p>而tomcat和Dubbo的线程池创建都不是这样的，他们都是最大线程池满了才放进队列中等待执行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[图床？使用本地发布地址]]></title>
+        <id>https://zdylzdyl.github.io/post/raiden-mei/</id>
+        <link href="https://zdylzdyl.github.io/post/raiden-mei/">
+        </link>
+        <updated>2020-04-25T02:53:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>一直使用typora，使用外链图传，都忘了，github自己什么都有。<br>
+都忘了其实是自带图床的，用github自己的就好了，用不着外链了。<br>
+发点牙医的图。图片名就是Pivix的图片编号。总觉得我去<a href="https://danbooru.donmai.us/">Danbooru</a>找图片总是哪里有问题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>一直使用typora，使用外链图传，都忘了，github自己什么都有。<br>
+都忘了其实是自带图床的，用github自己的就好了，用不着外链了。<br>
+发点牙医的图。图片名就是Pivix的图片编号。总觉得我去<a href="https://danbooru.donmai.us/">Danbooru</a>找图片总是哪里有问题。</p>
+<!-- more -->
+<p><img src="/images/raiden-mei/48688942.png" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/60181665.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/70347016.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/70477591.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/71319398.png" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/73826908.png" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/76496233.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/77013534.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/80075990.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/80331501.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/80597963.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/80599141.jpg" alt="img" loading="lazy"><br>
+<img src="/images/raiden-mei/80792640.jpg" alt="img" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[给Gridea博客增加Live2D老婆]]></title>
+        <id>https://zdylzdyl.github.io/post/blog-live2d/</id>
+        <link href="https://zdylzdyl.github.io/post/blog-live2d/">
+        </link>
+        <updated>2020-04-24T09:01:49.000Z</updated>
+        <content type="html"><![CDATA[<p>参考地址：https://docs.paul.ren/pio/</p>
+<p>模型资源：https://mx.paul.ren/page/3/</p>
+<p>由于是独立使用</p>
+<ol>
+<li>
+<p>引用 CSS 资源</p>
+<p>在你网站的 <code>head</code> 标签内引用本项目的 CSS 样式表文件：</p>
+<pre><code class="language-css">&lt;!-- 引用看板娘交互所需的样式表 --&gt;
+&lt;link href='你的站点路径/static/pio.css' rel='stylesheet' type='text/css'/&gt;
+</code></pre>
+</li>
+<li>
+<p>引用 JS 资源</p>
+<pre><code class="language-js">&lt;!-- 引用 Live2D 核心组件 --&gt;
+&lt;script src='你的站点路径/static/l2d.js'&gt;&lt;/script&gt;
+&lt;!-- 引用看板娘交互组件 --&gt;
+&lt;script src='你的站点路径/static/pio.js'&gt;&lt;/script&gt;
+</code></pre>
+</li>
+<li>
+<p>插入 DOM 内容</p>
+<pre><code class="language-html">&lt;div class=&quot;pio-container {自定位置}&quot;&gt;
+    &lt;div class=&quot;pio-action&quot;&gt;&lt;/div&gt;
+    &lt;canvas id=&quot;pio&quot; width=&quot;{看板娘宽度}&quot; height=&quot;{看板娘高度}&quot;&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>允许值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自定位置</td>
+<td><code>left</code> <code>right</code></td>
+</tr>
+<tr>
+<td>看板娘宽度</td>
+<td>整数，不带 <code>px</code>，即 HTML 写法</td>
+</tr>
+<tr>
+<td>看板娘高度</td>
+<td>整数，不带 <code>px</code>，即 HTML 写法</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>设置启动器</p>
+<pre><code class="language-javascript">var pio = new Paul_Pio({
+    &quot;mode&quot;: &quot;fixed&quot;,
+    &quot;hidden&quot;: true,
+    &quot;content&quot;: {
+        &quot;welcome&quot;: [&quot;欢迎来到保罗的小宇宙！&quot;, &quot;今天天气不错，一起来玩吧！&quot;, &quot;博主每天都有些折腾记录，欢迎前往他的小窝阅读~&quot;],
+        &quot;custom&quot;: [
+            {&quot;selector&quot;: &quot;.comment-form&quot;, &quot;text&quot;: &quot;欢迎参与本文评论，别发小广告噢~&quot;},
+            {&quot;selector&quot;: &quot;.home-social a:last-child&quot;, &quot;text&quot;: &quot;在这里可以了解博主的日常噢~&quot;},
+            {&quot;selector&quot;: &quot;.post-item a&quot;, &quot;type&quot;: &quot;read&quot;},
+            {&quot;selector&quot;: &quot;.post-content a, .page-content a&quot;, &quot;type&quot;: &quot;link&quot;}
+        ]
+    },
+    &quot;night&quot;: &quot;single.night()&quot;,
+    &quot;model&quot;: [&quot;https://paugram.com/usr/plugins/Pio/models/yuan/model.json&quot;]
+});
+</code></pre>
+<p>注意把外链的model替换成下载到本地的文件</p>
+<h2 id="开始修改gride主题song的模板文件">开始修改Gride主题Song的模板文件</h2>
+<p>因为时不使用插件，因此只是采用静态资源文件部署。</p>
+<p>​	没什么好说的，下载老婆（大雾）<a href="https://mx.paul.ren/model/sagiri.html">和泉纱雾</a>，把解压缩的文件丢到song主题的<code>song/assets/media/model</code>下，model文件夹是我自己建的。其他不用管，可以把model的外联改为<code>&quot;model&quot;: [&quot;/media/model/model.json&quot;]</code>。<br>
+将<a href="https://github.com/Dreamer-Paul/Pio">demo</a>中的static资源文件<code>l2d.js</code>、<code>pio.css</code>、<code>pio.js</code>放到可以访问的文件夹中，我放到了<code>song/assets/media/scripts</code>目录下，因为song主题编译的时候这些静态文件都会被复制到相应的media文件夹中，因此引入时写为</p>
+<ol>
+<li>
+<p>引用 CSS 资源</p>
+<p>修改<code>templates\includes\head.ejs</code>中</p>
+<pre><code class="language-css">   &lt;!-- 引用看板娘交互所需的样式表 --&gt;
+   &lt;link href='/media/scripts/pio.css' rel='stylesheet' type='text/css'/&gt;
+</code></pre>
+</li>
+<li>
+<p>设置启动器 footer.ejs中添加引用的 JS 资源和插入的DOM内容，在<code>&lt;/footer&gt;</code>标签前添加即可</p>
+<pre><code class="language-html">   &lt;!-- 看板娘--&gt;
+    &lt;div class=&quot;pio-container right&quot;&gt;
+        &lt;div class=&quot;pio-action&quot;&gt;&lt;/div&gt;
+        &lt;canvas id=&quot;pio&quot; width=&quot;250&quot; height=&quot;450&quot;&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+    &lt;!-- 引用 Live2D 核心组件 --&gt;
+    &lt;script src='/media/scripts/l2d.js'&gt;&lt;/script&gt;
+    &lt;!-- 引用看板娘交互组件 --&gt;
+    &lt;script src='/media/scripts/pio.js'&gt;&lt;/script&gt;
+    &lt;script&gt;
+        var pio = new Paul_Pio({
+            &quot;hidden&quot;: true,
+            &quot;content&quot;: {
+                &quot;welcome&quot;: [&quot;欢迎来到布夕的小宇宙！&quot;, &quot;今天天气不错，一起来玩吧！&quot;, &quot;博主每天都有些折腾记录，欢迎前往他的小窝阅读~&quot;],
+                &quot;custom&quot;: [
+                    {&quot;selector&quot;: &quot;.comment-form&quot;, &quot;text&quot;: &quot;欢迎参与本文评论，别发小广告噢~&quot;},
+                    {&quot;selector&quot;: &quot;.home-social a:last-child&quot;, &quot;text&quot;: &quot;在这里可以了解博主的日常噢~&quot;},
+              {&quot;selector&quot;: &quot;.post-item a&quot;, &quot;type&quot;: &quot;read&quot;},
+                    {&quot;selector&quot;: &quot;.post-content a, .page-content a&quot;, &quot;type&quot;: &quot;link&quot;}
+                ]
+            },
+            &quot;night&quot;: &quot;single.night()&quot;,
+            &quot;model&quot;: [&quot;/media/model/model.json&quot;]
+        })
+    &lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<p>如此便完毕了。</p>
+<hr>
+<p>原本的不太好，又换了一个版本：https://github.com/galnetwen/Live2D<br>
+head.ejs</p>
+<pre><code class="language-javascript">&lt;!-- 引用看板娘交互所需的样式表 --&gt;
+	&lt;link rel=&quot;stylesheet&quot; type='text/css' href=&quot;/media/live2d/css/live2d.css&quot; /&gt;
+
+</code></pre>
+<p>footer.ejs</p>
+<pre><code class="language-javascript">&lt;!-- 看板娘--&gt;
+    &lt;div id=&quot;landlord&quot;&gt;
+    &lt;div class=&quot;message&quot; style=&quot;opacity:0&quot;&gt;&lt;/div&gt;
+    &lt;canvas id=&quot;live2d&quot; width=&quot;280&quot; height=&quot;250&quot; class=&quot;live2d&quot;&gt;&lt;/canvas&gt;
+    &lt;div class=&quot;hide-button&quot;&gt;隐藏&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var message_Path = '/media/live2d/'
+    var home_Path = 'https://zdylzdyl.github.io/'
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/media/live2d/js/live2d.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/media/live2d/js/message.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    loadlive2d(&quot;live2d&quot;, &quot;/media/live2d/model/tia/model.json&quot;);
+&lt;/script&gt;
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java操作windows的shell]]></title>
+        <id>https://zdylzdyl.github.io/post/java-shell/</id>
+        <link href="https://zdylzdyl.github.io/post/java-shell/">
+        </link>
+        <updated>2020-04-24T03:50:22.000Z</updated>
+        <content type="html"><![CDATA[<p>使用Jgit操作git进行提交仓库，每次都会重写文件，造成大量资源浪费。本次修改了git提交的工具为脚本提交。<br>
+使用java操作windows的bat脚本</p>
+<pre><code class="language-java">String bat = &quot;E:\\github-cloud\\BatAndShell\\BatPushWithGitSimple.bat&quot;;
+Process process = null;
+process =Runtime.getRuntime().exec(bat, null, new File(&quot;E:\\github-cloud\\&quot;));
+BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+StringBuilder stringBuilder=new StringBuilder();
+String line;
+while ((line = bufferedReader.readLine()) != null) {
+    stringBuilder.append(line);
+}
+logger.info(stringBuilder.toString());
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot+Jgit实现目录对拷github备份]]></title>
+        <id>https://zdylzdyl.github.io/post/SpringBoot2Jgit/</id>
+        <link href="https://zdylzdyl.github.io/post/SpringBoot2Jgit/">
+        </link>
+        <updated>2020-04-23T02:42:11.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>事发原因：git仓库很臃肿了，以前提交了不少大文件，导致历史记录文件很大，也有不少敏感信息，干脆直接新建一个新仓库了。</p>
+</blockquote>
+<p>​    新仓库直接上传文件的时候崩溃了。我使用git上传都1.xGB了，然后崩溃了说每次提交只能有100MB，我不想去旧仓库删除提交记录再去新仓库克隆，干脆分批次提交文件好了。然而手动提交仓库是不可能提交仓库的，文件太小提交频繁也不好，大概文件超过50MB不到100MB就去git提交一次，而且考虑到每次提交任务git都会直接占一般CPU，多任务提交的时候网速也不会更快，就单线程了，那么写代码吧。</p>
+<p>准备：</p>
+<ol>
+<li>springboot开发环境</li>
+<li>Jgit操作Git</li>
+</ol>
+<p>相关依赖(Springboot相关依赖省略)</p>
+<pre><code class="language-xml">    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;!-- jgit版本 --&gt;
+        &lt;jgit.version&gt;5.7.0.202003110725-r&lt;/jgit.version&gt;
+    &lt;/properties&gt;		
+		&lt;!-- 文件工具 --&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.io --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.directory.studio&lt;/groupId&gt;
+            &lt;artifactId&gt;org.apache.commons.io&lt;/artifactId&gt;
+            &lt;version&gt;2.4&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- java操作git--&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.jgit&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.jgit&lt;/artifactId&gt;
+            &lt;version&gt;${jgit.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.jgit&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.jgit.archive&lt;/artifactId&gt;
+            &lt;version&gt;${jgit.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.jcraft&lt;/groupId&gt;
+            &lt;artifactId&gt;jsch&lt;/artifactId&gt;
+            &lt;version&gt;0.1.55&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>相关的配置需要：</p>
+<ul>
+<li>待复制进入仓库的文件夹</li>
+<li>git仓库地址</li>
+<li>git-ssh 密钥路径，安全要求不使用账户名密码进行操作</li>
+<li>git-ssh 记录的host文件</li>
+<li>git仓库地址</li>
+<li>本Java程序提交commit时添加的注释</li>
+<li>文件添加的过滤规则 .是使用.gitignore文件 使用* 则是忽略.gitignore</li>
+</ul>
+<p>于是写成yml配置文件：</p>
+<pre><code class="language-yaml"># 基本的自定义配置
+candy-git:
+  # 待复制进入仓库的文件夹
+  fileInputPath: E:\\copy
+  # git仓库地址
+  fileGithubPath: E:\\github-cloud
+  # git-ssh 密钥路径
+  identity: C:\\Users\\Administrator\\.ssh\\id_rsa
+  # git-ssh 记录的host文件
+  knownHosts: C:\\Users\\Administrator\\.ssh\\known_hosts
+  # git仓库地址 
+  gitUrl: git@github.com:你的仓库地址.git
+  # 本java程序提交commit时添加的注释
+  commitMessage: &quot;this commit from java application.&quot;
+  # 文件添加的过滤规则 .是使用.gitignore文件 使用* 则是忽略.gitignore
+  addFilePattern:  &quot;.&quot;
+</code></pre>
+<p>使用springboot自动读取配置文件</p>
+<pre><code class="language-java">@Component
+@ConfigurationProperties(prefix = &quot;candy-git&quot;)
+public class CandyGitConfig {
+    /**
+     * 入库文件的目录地址
+     */
+    private String fileInputPath;
+    /**
+     * 进行同步仓库的目录地址
+     */
+    private String fileGithubPath;
+    /**
+     * 提交时的messages信息
+     */
+    private String commitMessage = &quot;this commit from java application.&quot;;
+    /**
+     * 添加文件的过滤规则 不能使用* 使用*时 .gitignore不起作用
+     */
+    private String addFilePattern = &quot;.&quot;;
+    /**
+     * git ssh 配置 密钥地址
+     */
+    private String identity = &quot;C:\\Users\\Administrator\\.ssh\\id_rsa.pub&quot;;
+    /**
+     * git ssh 配置 hosts
+     */
+    private String knownHosts = &quot;C:\\Users\\Administrator\\.ssh\\known_hosts&quot;;
+    /**
+     * git ssh 配置 url
+     */
+    private String gitUrl = &quot;git@github.com:你的仓库地址.git&quot;;
+ 	//…………get/set省略  记得生成一下toString方法 
+}
+
+</code></pre>
+<p>文件的拷贝使用org.apache.commons.io.FileUtils即可，写一个file的工具类吧</p>
+<pre><code class="language-java">/**
+     * 遍历目录，将任务添加至workHashMap
+     *
+     * @param file 文件
+     */
+    public static void scanAllFile(File file, HashMap&lt;String, Long&gt; workHashMap, HashMap&lt;String, Long&gt; excludeWorkHashMap) {
+        //文件不存在
+        if (!file.exists()) {
+            return;
+        }
+        //如果是文件 获取文件的KB大小 使用MB会直接导致 不足1MB为0MB文件的存在
+        if (file.isFile()) {
+            if (CandyCopyFileUtils.getFileKbSize(file) &gt; 100 * 1024) {
+                //超过100MB的文件存放在排除目录 不予执行
+                excludeWorkHashMap.put(file.getAbsolutePath(), CandyCopyFileUtils.getFileKbSize(file));
+            }
+            workHashMap.put(file.getAbsolutePath(), CandyCopyFileUtils.getFileKbSize(file));
+        }
+        //如果是文件夹 且不是空文件夹
+        if (file.isDirectory() &amp;&amp; file.listFiles() != null &amp;&amp; Objects.requireNonNull(file.listFiles()).length &gt; 0) {
+            for (File f : Objects.requireNonNull(file.listFiles())) {
+                scanAllFile(f, workHashMap, excludeWorkHashMap);
+            }
+        }
+    }
+    
+    /**
+     * 复制文件 文件对拷 父目录不一致 子目录路径一致
+     *
+     * @param filePath       元文件/待拷贝文件目录
+     * @param candyGitConfig 配置文件
+     * @return 拷贝成功true 拷贝失败false
+     */
+    public static boolean copyFile(String filePath, CandyGitConfig candyGitConfig) {
+        //待拷贝文件目录
+        String fileAbsolutePath = new File(filePath).getAbsolutePath();
+        //拷贝至github目录的目标位置
+        String gitPath = new File(candyGitConfig.getFileGithubPath()).getAbsolutePath()
+                .concat(fileAbsolutePath.substring(candyGitConfig.getFileInputPath().length() - 1));
+        //System.out.println(gitPath);
+        logger.debug(gitPath);
+        //对拷方式 覆盖
+        try {
+            FileUtils.copyFile(new File(filePath), new File(gitPath));
+            return true;
+        } catch (IOException e) {
+            logger.error(&quot;copy file error:{}&quot;, e.getMessage());
+        }
+        return false;
+    }
+
+</code></pre>
+<p>当然jGit工具类也得有</p>
+<pre><code class="language-java">/**
+     * 进行git添加和本地提交
+     *
+     * @param candyGitConfig 配置文件
+     */
+    public void gitAddAndCommit(CandyGitConfig candyGitConfig) {
+        Git git;
+        try {
+            git = Git.open(new File(candyGitConfig.getFileGithubPath()));
+            //添加所有文件
+            DirCache cache = git.add().addFilepattern(candyGitConfig.getAddFilePattern()).call();
+            //logger.info(cache.toString());
+            //提交文件
+            RevCommit commit = git.commit().setMessage(candyGitConfig.getCommitMessage()).call();
+            logger.info(&quot;commit success:{}&quot;, commit.getFullMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+    }
+    
+    /**
+     * git推送
+     *
+     * @param candyGitConfig 配置文件
+     */
+    public void gitPush(CandyGitConfig candyGitConfig) {
+        //设置ssh密钥
+        SshSessionFactory sshSessionFactory = new JschConfigSessionFactory() {
+            @Override
+            protected void configure(OpenSshConfig.Host host, Session session) {
+                //不作域名检查  解除HostKey检查
+                session.setConfig(&quot;StrictHostKeyChecking&quot;, &quot;no&quot;);
+            }
+            
+            @Override
+            protected JSch createDefaultJSch(FS fs) throws JSchException {
+                JSch jSch = super.createDefaultJSch(fs);
+                jSch.addIdentity(candyGitConfig.getIdentity());
+                jSch.setKnownHosts(candyGitConfig.getKnownHosts());
+                return jSch;
+            }
+        };
+        
+        TransportConfigCallback configCallback = transport -&gt; {
+            SshTransport sshTransport = (SshTransport) transport;
+            sshTransport.setSshSessionFactory(sshSessionFactory);
+        };
+        
+        try {
+            Git git = Git.open(new File(candyGitConfig.getFileGithubPath()));
+            // add remote repo:
+            RemoteAddCommand remoteAddCommand = git.remoteAdd();
+            remoteAddCommand.setName(&quot;origin&quot;);
+            remoteAddCommand.setUri(new URIish(candyGitConfig.getGitUrl()));
+            // you can add more settings here if needed
+            remoteAddCommand.call();
+            // push to remote:
+            PushCommand pushCommand = git.push();
+            //设置ssh密码
+            pushCommand.setTransportConfigCallback(configCallback);
+            // you can add more settings here if needed
+            pushCommand.call();
+            logger.info(&quot;git push success.&quot;);
+        } catch (IOException | URISyntaxException | GitAPIException e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+</code></pre>
+<p>由于程序只要运行就好了，于是放到系统任务中运行了</p>
+<pre><code class="language-java">/**
+     * 检查一下candyGitConfig配置
+     *
+     * @param args 参数
+     * @throws Exception 异常
+     */
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        //启动时检查下配置
+        logger.debug(&quot;candyGitConfig 参数检查:{}&quot;, candyGitConfig.toString());
+        //将待同步目录放置于队列中
+        //workList.add(candyGitConfig.getFileInputPath());
+        CandyCopyFileUtils.scanAllFile(new File(candyGitConfig.getFileInputPath()), workHashMap, excludeWorkHashMap);
+        //记录工作目录扫描结果
+        logger.debug(workHashMap.toString());
+    
+        //循环工作所有任务文件
+        while (!workHashMap.isEmpty()) {
+            HashMap&lt;String,Long&gt; cloneWorkHashMap =(HashMap&lt;String,Long&gt; ) workHashMap.clone();
+            for (Map.Entry&lt;String, Long&gt; entry : cloneWorkHashMap.entrySet()) {
+                //文件大小 加上文件累计大小大于50MB
+                if (entry.getValue() + allFileSize &lt; 50 * 1024) {
+                    
+                    //执行一次拷贝 文件总大小计数增加
+                    logger.info(&quot;copying:{}--------{}&quot;, entry.getKey(), entry.getValue());
+                    boolean copyFileResult = CandyCopyFileUtils.copyFile(entry.getKey(), candyGitConfig);
+                    //如果发生拷贝异常
+                    if (!copyFileResult) {
+                        if (excludeWorkHashMap.containsKey(entry.getKey())) {
+                            //仅重试一次 后移除
+                            workHashMap.remove(entry.getKey());
+                        }
+                        //放置于排除目录
+                        excludeWorkHashMap.put(entry.getKey(), entry.getValue());
+                        logger.warn(&quot;file:[{}],size:[{}],put into excludeWorkHashMap.&quot;, entry.getKey(), entry.getValue());
+                    } else {
+                        allFileSize += entry.getValue();
+                        workHashMap.remove(entry.getKey());
+                        logger.info(&quot;file:[{}],size:[{}],copy ok.&quot;, entry.getKey(), entry.getValue());
+                    }
+                    //文件大小不能再增加了 直接执行git同步 推送
+                } else {
+                    //同步次数
+                    int pushCount = 1;
+                    //仅尝试三次
+                    while (pushCount &lt; 3) {
+                        pushCount++;
+                        //不执行拷贝 仅进行文件git 文件提交操作
+                        boolean commitAndPushOK = tryCommitAndPush();
+                        //如果文件同步成功，待同步文件中大小归0
+                        if (commitAndPushOK) {
+                            allFileSize = 0L;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        //查看最终工作队列
+        logger.info(workHashMap.toString());
+        //如果有异常文件 记录超过100MB的文件
+        if (!excludeWorkHashMap.keySet().isEmpty()) {
+            logger.error(excludeWorkHashMap.toString());
+        }
+    }
+    
+    
+    /**
+     * 进行一次推送操作
+     *
+     * @return 成功返回true 失败返回false
+     */
+    private boolean tryCommitAndPush() {
+        try {
+            CandyGitUtils candyGitUtils = new CandyGitUtils();
+            //提交操作
+            candyGitUtils.gitAddAndCommit(candyGitConfig);
+            //推送操作
+            candyGitUtils.gitPush(candyGitConfig);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+</code></pre>
+<p>PS:SSH验证不通过是RSA验证文件文件头的锅。检查一下Jgit不支持SSH KEY开头。</p>
+<p>于是运行即可愉快的同步啦。</p>
+<figure data-type="image" tabindex="1"><img src="https://ae01.alicdn.com/kf/U5ee371f196b94b038fd7f207ed3cb35dJ.jpg" alt="同步情况" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot+Vue全栈开发实战 学习笔记]]></title>
+        <id>https://zdylzdyl.github.io/post/spring_boot_with_vue/</id>
+        <link href="https://zdylzdyl.github.io/post/spring_boot_with_vue/">
+        </link>
+        <updated>2020-04-17T02:54:04.000Z</updated>
+        <content type="html"><![CDATA[<p>1.mvn命令创建项目</p>
+<pre><code class="language-bat">mvn  archetype: generate  -Dgroupid=org.sang  - Dartifactid=chapterOl 
+  - DarchetypeArtifactid  =maven- archetype- quickstart  -DinteractiveMode=false 
+## 仿造书写 
+mvn archetype:generate -DgroupId=cn.candy -DartifactId=create_maven_project
+ -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</code></pre>
+<p>命令解释：</p>
+<ul>
+<li>Dgroupld 组织Id（项目包名）</li>
+<li>DartifactId Artifactld（项目名称或者模块名称）</li>
+<li>DarchetypeArtifactId 项目骨架</li>
+<li>DinteractiveMode 是否使用 交王模式。</li>
+</ul>
+<p>2.不使用springboot parent 管理依赖</p>
+<p>pom.xml文件案例：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;cn.candy&lt;/groupId&gt;
+    &lt;artifactId&gt;no-parent-spring-boot&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;properties&gt;
+        &lt;!--指定springboot版本--&gt;
+        &lt;spring-boot-version&gt;2.0.4.RELEASE&lt;/spring-boot-version&gt;
+        &lt;!--指定springboot编码格式--&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+    &lt;/properties&gt;
+
+    &lt;!--不使用spring-boot-parent管理包依赖--&gt;
+    &lt;dependencyManagement&gt;
+        &lt;dependencies&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;
+                &lt;version&gt;${spring-boot-version}&lt;/version&gt;
+                &lt;type&gt;pom&lt;/type&gt;
+                &lt;scope&gt;import&lt;/scope&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+    &lt;/dependencyManagement&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+            &lt;version&gt;${spring-boot-version}&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- springboot 手动指定编译jdk版本--&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.1&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;source&gt;1.8&lt;/source&gt;
+                    &lt;target&gt;1.8&lt;/target&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+
+            &lt;!--Spring Boot 应用也可以直接打成jar 包运行 mvn package 打包--&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;${spring-boot-version}&lt;/version&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre>
+<p>3.定制banner</p>
+<p>这个 banner 是可以定制的， 在 resources 目录下创建一个 banner.txt 文件，在这个文件中写入的文本将在项目启动时打印出来。 如果想将 TXT 文本设置成艺术字体，有以下几个在线网站可供参考：<br>
+http://www.network-science.de/ascii/<br>
+http://www.kammerl.de/ascii/AsciiSignature.php<br>
+http://patorjk.com/software/taag/</p>
+<p>4.HTTPS 配置</p>
+<p>不过在 jdk 中提供了一个 Java 数字证书管理工具 keytool ， 在\j dk\bin 目 录下，通过这个工具可以自己生成一个数字证书，生成命令如下：</p>
+<pre><code class="language-shell">keytool -genkey -alias tomcathttps -keyalg RSA -keysize 2048 -keystore sang.p12 -validity 365
+</code></pre>
+<p>5.Properties配置</p>
+<p>Spring Boot 项 目中的 application.properties 配置文件一共可以出现在如下 4 个位置(优先级从 1 到 4 依次降低)：</p>
+<ol>
+<li>项目根目录下的 config 文件夫中</li>
+<li>项目根目录下</li>
+<li>classpath 下的 config 文件夫中</li>
+<li>classpath 下</li>
+</ol>
+<pre><code class="language-shell"># jar运行指定配置文件
+java -jar candy-0.0.1-SNAPSHOT.jar --spring.config.name=app
+# jar运行只当配置文件目录
+java -jar candy-0.0.1-SNAPSHOT.jar --spring.config.name=app --spring.config.location=classpath:/
+</code></pre>
+<p>提示没有主清单属性</p>
+<pre><code class="language-xml">&lt;!-- 解决jar包运行，提示没有主清单属性 在pom.xml中的spring-boot-maven-plugin添加--&gt;
+&lt;executions&gt;
+ &lt;execution&gt;
+     &lt;goals&gt;
+         &lt;goal&gt;repackage&lt;/goal&gt;
+     &lt;/goals&gt;
+ &lt;/execution&gt;
+&lt;/executions&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL 练习]]></title>
+        <id>https://zdylzdyl.github.io/post/Mysql50test/</id>
+        <link href="https://zdylzdyl.github.io/post/Mysql50test/">
+        </link>
+        <updated>2020-04-17T02:08:56.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-SQL">-- 注意 本文内容皆为SQL脚本 可以直接导入MySQL使用
+-- 本文使用`practice`库，会删除并重新自建库，注意数据备份！！！！
+-- 原文链接: https://zhuanlan.zhihu.com/p/38354000 作者: 猴子
+-- 学生表: student (学号,学生姓名,出生年月,性别) 
+-- 成绩表: score  
+-- 课程表: course (课程号,课程名称,教师号) 
+-- 教师表: teacher (教师号,教师姓名)
+DROP DATABASE IF EXISTS `practice`;--
+CREATE DATABASE IF NOT EXISTS `practice` DEFAULT CHARACTER SET utf8mb4;--
+USE `practice`;--
+-- 删除表
+DROP TABLE IF EXISTS student,course,teacher,score;-- 
+-- 表在 practice 中创建 student 学生表
+CREATE TABLE IF NOT EXISTS `practice`.`student`  (
+  `s_id` char(4) NOT NULL COMMENT '学生学号',
+  `s_name` char(12) NOT NULL COMMENT '学生姓名',
+  `s_date` date NOT NULL COMMENT '学生生日',
+  `s_sex` char(4) NOT NULL DEFAULT '男' COMMENT '学生性别',
+  PRIMARY KEY (`s_id`)
+) COMMENT = '学生表';-- 
+-- 表在 practice 中创建 score 成绩表
+CREATE TABLE IF NOT EXISTS `practice`.`score`  (
+  `s_id` char(4) NOT NULL COMMENT '学生学号',
+  `c_id` char(4) NOT NULL COMMENT '课程编号',
+  `s_score` float UNSIGNED NULL DEFAULT 0 COMMENT '课程成绩',
+  PRIMARY KEY (`s_id`,`c_id`)
+) COMMENT = '成绩表';-- 
+-- 表在 practice 中创建 course 课程表
+CREATE TABLE IF NOT EXISTS `practice`.`course`  (
+  `c_id` char(4) NOT NULL COMMENT '课程编号',
+  `c_name` char(30) NOT NULL COMMENT '课程名称',
+  `t_id` char(4) NOT NULL COMMENT '教师工号',
+  PRIMARY KEY (`c_id`)
+) COMMENT = '课程表';-- 
+-- 表在 practice 中创建 teacher 教师表
+CREATE TABLE IF NOT EXISTS `practice`.`teacher`  (
+  `t_id` char(4) NOT NULL COMMENT '教师工号',
+  `t_name` char(30) NULL COMMENT '教师姓名',
+  PRIMARY KEY (`t_id`)
+) COMMENT = '教师表';-- 
+-- 添加学生表数据
+INSERT IGNORE INTO student VALUES ('0001','猴子','1989-01-01','男'),('0002','猴子','1990-12-21','女'),('0003','马云','1991-12-21','男'),('0004','王思聪','1990-05-20','男');-- 
+-- 添加成绩表数据
+INSERT IGNORE INTO score VALUES ('0001','0001',80),('0001','0002',90),('0001','0003',99),('0002','0002',60),('0002','0003',80),('0003','0001',80),('0003','0002',80),('0003','0003',80);--
+-- 添加课程表数据
+INSERT INTO course VALUES ('0001','语文','0002'),('0002','数学','0001'),('0003','英语','0003');--
+-- 添加教师表数据
+INSERT IGNORE INTO teacher VALUES ('0001','孟扎扎'),('0002','马化腾'),('0003',NULL),('0004','');--
+-- ----------------------------------------------------------------|
+-- 数据准备完毕----------------------------------------------------|
+-- ----------------------------------------------------------------|
+-- 题目：
+-- 1.简单查询--练习查找学生
+-- 1.1 查询姓'猴'的学生名单
+SELECT*FROM student WHERE s_name LIKE '猴%';--
+-- 1.2 查询姓名中最后一个字是'猴'的学生名单
+SELECT*FROM student WHERE s_name LIKE '%猴';--
+-- 1.3 查询姓名中带'猴'的学生名单
+SELECT*FROM student WHERE s_name LIKE '%猴%';--
+-- 1.4 查询姓'孟'老师的个数
+SELECT*FROM teacher WHERE t_name LIKE '孟%';--
+-- 2.汇总分析
+-- 2.1 查询课程编号为'0002'的总成绩
+SELECT sum(s.s_score) FROM score AS s WHERE s.c_id='0002';--
+-- 2.2 查询选了课程的学生人数
+SELECT count(DISTINCT s.s_id) AS '学生人数' FROM score AS s;--
+-- 2.3.分组
+-- 2.3.1 查询各科成绩最高和最低的分
+SELECT c.c_name,Max(sc.s_score) AS '最高分',Min(sc.s_score) AS '最低分' FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id;--
+-- 2.3.2 查询每门课程被选修的学生数
+SELECT c.c_name AS '课程',count(1) AS '选修学生数' FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id;-- 
+-- 2.3.3 查询男生、女生人数
+SELECT s.s_sex AS '学生性别',count(1) AS '人数' FROM student AS s GROUP BY s.s_sex;-- 
+-- 2.4.分组结果的条件
+-- 2.4.1 查询平均成绩大于60分学生的学号和平均成绩
+SELECT sc.s_id AS '学号',round(avg(sc.s_score),2) AS '平均成绩' FROM score AS sc GROUP BY sc.s_id HAVING avg(sc.s_score)&gt; 60;-- 
+-- 2.4.2 查询至少选修两门课程的学生的学号
+SELECT sc.s_id AS '学号' FROM score AS sc GROUP BY sc.s_id HAVING count(sc.c_id)&gt; 1;--
+-- 2.4.3 查询同名同姓学生名单并统计同名人数
+SELECT s.s_id AS '学号',s.s_name AS '学生名',count(1) AS '同名人数' FROM student AS s GROUP BY s.s_name HAVING count(1)&gt; 1;--
+-- 2.4.4 查询不及格的课程并按课程号从大到小排列
+SELECT*FROM score AS sc WHERE sc.s_score&lt; 60 GROUP BY sc.c_id DESC;-- 
+-- 2.4.5 查询每门课程的平均成绩，结果按平均成绩升序排序，平均成绩相同时，按课程号降序排列
+SELECT c.c_name AS '课程名',round(avg(sc.s_score),2) AS 平均成绩 FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id ORDER BY 平均成绩,sc.c_id;--
+-- 2.4.6 检索课程编号为“0004”且分数小于60的学生学号，结果按按分数降序排列
+SELECT s.s_id,sc.s_score FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id WHERE sc.c_id='0004' AND sc.s_score&lt; 60 ORDER BY sc.s_score DESC;-- 
+-- 2.4.7 统计每门课程的学生选修人数(超过2人的课程才统计)
+-- 要求输出课程号和选修人数，查询结果按人数降序排序，若人数相同，按课程号升序排序
+SELECT c.c_id,c.c_name AS '课程',count(1) AS '选修学生数' FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id HAVING count(1)&gt; 1 ORDER BY count(1) DESC;-- 
+-- 2.4.8 查询两门以上不及格课程的同学的学号及其平均成绩
+SELECT sc.s_id AS '学号',round(avg(sc.s_score),2) AS '平均成绩' FROM score AS sc WHERE sc.s_score&lt; 60 GROUP BY sc.s_id HAVING count(1)&gt; 2;-- 
+-- 3.复杂查询
+-- 3.1 查询所有课程成绩小于60分学生的学号、姓名
+SELECT s.s_id AS '学号',s.s_name AS '姓名' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id WHERE sc.s_score&lt; 60;-- 
+-- 3.2 -- 查询没有学全所有课的学生的学号、姓名
+SELECT s.s_id AS '学号',s.s_name AS '姓名' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id WHERE sc.s_score IS NULL;-- 
+-- 3.3 查询出只选修了两门课程的全部学生的学号和姓名
+SELECT s.s_id AS '学号',s.s_name AS '姓名' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id GROUP BY sc.s_id HAVING count(sc.c_id)=2;--  
+-- 3.4 1990年出生的学生名单
+SELECT s.s_id AS '学号',s.s_name AS '姓名' FROM student AS s WHERE YEAR(s.s_date)='1990';-- 
+-- 3.5 查询各科成绩前两名的记录?
+SELECT s.s_id AS '学号',s.s_name AS '姓名',c.c_name AS '课程',temp.s_score AS '成绩' FROM ((SELECT*FROM score AS sc WHERE sc.c_id='0001' ORDER BY sc.s_score DESC LIMIT 0,2) UNION (SELECT*FROM score AS sc WHERE sc.c_id='0002' ORDER BY sc.s_score DESC LIMIT 0,2) UNION (SELECT*FROM score AS sc WHERE sc.c_id='0003' ORDER BY sc.s_score DESC LIMIT 0,2)) AS temp LEFT JOIN student AS s ON temp.s_id=s.s_id LEFT JOIN course AS c ON temp.c_id=c.c_id ORDER BY c.c_name,temp.s_score DESC;--
+-- 4.多表查询-联结
+-- 4.1 查询所有学生的学号、姓名、选课数、总成绩
+SELECT s.s_id AS '学号',s.s_name AS '姓名',count(sc.c_id) AS '选课数',SUM(IF (sc.c_id IS NOT NULL,sc.s_score,0)) AS '总成绩' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id GROUP BY sc.s_id;--
+-- 4.2 查询平均成绩大于85的所有学生的学号、姓名和平均成绩
+SELECT s.s_id AS '学号',s.s_name AS '姓名',Round(AVG(IF (sc.c_id IS NOT NULL,sc.s_score,0)),2) AS '平均成绩' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id GROUP BY sc.s_id;--
+-- 4.3 查询学生的选课情况：学号，姓名，课程号，课程名称
+SELECT s.s_id AS '学号',s.s_name AS '姓名',sc.c_id AS '课程号',c.c_name AS '课程名称' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id LEFT JOIN course AS c ON sc.c_id=c.c_id;--
+-- 4.4 查询出每门课程的及格人数和不及格人数
+SELECT c.c_name AS '课程',sum(IF (sc.s_score&gt; 59,1,0)) AS '及格人数',sum(IF (sc.s_score&gt; 59,0,1)) AS '不及格人数' FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id;--
+-- 4.5 使用分段[100-85],[85-70],[70-60],[&lt;60]来统计各科成绩，分别统计：各分数段人数，课程号和课程名称
+SELECT c.c_id AS '课程号',c.c_name AS '课程名',sum(IF (85&lt; sc.s_score AND sc.s_score&lt;=100,1,0)) AS '[100-85]人数',sum(IF (70&lt;=sc.s_score AND sc.s_score&lt;=85,1,0)) AS '[85-70]人数',sum(IF (60&lt;=sc.s_score AND sc.s_score&lt; 70,1,0)) AS '[70-60]人数',sum(IF (sc.s_score&lt; 60,1,0)) AS '[&lt;60]人数' FROM score AS sc LEFT JOIN course AS c ON sc.c_id=c.c_id GROUP BY sc.c_id;--
+-- 4.6 查询课程编号为0003且课程成绩在80分以上的学生的学号和姓名
+SELECT s.s_id AS '学号',s.s_name AS '姓名' FROM student AS s LEFT JOIN score AS sc ON s.s_id=sc.s_id LEFT JOIN course AS c ON sc.c_id=c.c_id WHERE sc.c_id='0003' AND sc.s_score&gt; 80;--
+-- 4.7 下面是学生的成绩表（表名score，列名：学号、课程号、成绩）行转列
+SELECT sc.s_id AS '学号',max(IF (sc.c_id='0001',sc.s_score,0)) AS '课程号0001',max(IF (sc.c_id='0002',sc.s_score,0)) AS '课程号0002',max(IF (sc.c_id='0003',sc.s_score,0)) AS '课程号0003' FROM score AS sc WHERE sc.c_id IS NOT NULL GROUP BY sc.s_id;
+
+</code></pre>
+<blockquote>
+<p>原文链接: https://zhuanlan.zhihu.com/p/38354000 作者: 猴子</p>
+</blockquote>
+]]></content>
+    </entry>
+</feed>
