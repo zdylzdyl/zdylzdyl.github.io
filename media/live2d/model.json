@@ -2,7 +2,7 @@
     "version": "Sample 1.0.0",
     "model": "moc/aoba.moc",
     "textures": [
-        "moc/aoba2048/texture_00.png"
+        "https://ae01.alicdn.com/kf/H962418e925f746c495b83fe5fb3a0275h.jpg"
     ],
     "physics": "json/physics.json",
     "pose": "json/pose.json",
