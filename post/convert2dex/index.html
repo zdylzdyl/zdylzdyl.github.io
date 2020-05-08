@@ -4,7 +4,7 @@
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>Ubuntu16的快捷方式记录 | zdylzdyl</title>
+    <title>记一次Javascript转class及dex文件记录 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -68,62 +68,77 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="post-title  mdui-m-b-1">Ubuntu16的快捷方式记录</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-04-27 14:46:42">2020-04-27 / 1 min read</div>
-                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
-对于一些自带的软件就不需要自己编辑了。<br>
-备份一些软件的快捷方式：</p>
-<pre><code class="language-shell">
-[Desktop Entry]
-Encoding=UTF-8
-Name=LXTerminal
-Name[zh_CN]=LX 终端
-GenericName=Terminal
-GenericName[zh_CN]=终端
-Comment=Use the command line
-Comment[zh_CN]=使用命令行
-Comment[zh_TW]=使用命令列
-TryExec=lxterminal
-Exec=lxterminal
-Icon=lxterminal
-Type=Application
-Categories=GTK;System;TerminalEmulator;
-Keywords=console;command line;execute;
+                                    <div class="post-title  mdui-m-b-1">记一次Javascript转class及dex文件记录</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-05-08 13:14:00">2020-05-08 / 4 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><pre><code>咳，其实真是内容是：Rhino 怎么用源码将js转成.class字节码
+小伙伴需要在auto.js中使用自己的js脚本，分享文件但是不想泄露源代码，于是想js转.class文件然后预编译成为.dex文件，这样可以直接在auto.js中调用。
+这里使用java实现的javascript引擎解析js脚本文件，生成预编译的class文件，然后使用SDK的dx编译成dex文件。
+其实我也想做出像公众号里面交互式的脚本，但是觉得挺麻烦的，还需要读取参数，定义参数，而我的调试环境是win10，小伙伴的调试环境是win7，还有点差异。而且需要java环境，很多教程用idea，于是还要装一个巨无霸的超级笨重IDE？不是吧？更别提我就是转码一下js，还需要把安卓的SDK也安排上？光是装环境就得整半天把？
+贴一下批处理脚本：
+</code></pre>
+<pre><code class="language-bat">@echo off
+@TITLE 转为Javascript为dex文件
 
-[Desktop Entry]
-Keywords=editor
-Name=Leafpad
-Comment=Simple text editor
-Comment[zh_CN]=简易文字编辑器
-Exec=leafpad %f
-Icon=leafpad
-Terminal=false
-Type=Application
-MimeType=text/plain
-Categories=GTK;Utility;TextEditor;
+@rem 临时添加本机的JDK目录 E:\JsConvert\jdk1.8.0 如果放置于其他路径，对应修改即可
+SET JAVA_HOME E:\JsConvert\jdk1.8.0
+@rem 临时设置classpath路径，固定写法,不用改
+SET CLASSPATH &quot;.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;&quot;
+@rem 临时添加path路径内容
+SET PATH &quot;%Path%;;%JAVA_HOME%\bin;&quot;
 
-
-
-
-
-
-
-
-
-
-
-
+@REM js文件放在同文件夹目录内 test.js改为你自己的js文件名，或者将你的js文件改为test.js  名字可以修改 但是注意统一
+Setlocal enabledelayedexpansion
+@REM 此命令将js转为test.class文件  名字可以修改 但是注意统一
+echo org.mozilla.javascript.tools.jsc.Main.main([&quot;MyTestScript.js&quot;]) | java -jar rhino1772.jar 
+@REM 此命令将test.class文件转为test.dex文件 名字可以修改 但是注意统一
+java -jar dx.jar --dex --output MyTestScript.dex MyTestScript.class
+@ECHO 转换结束
+pause &amp;&amp; exit
 
 </code></pre>
+<pre><code>其实批处理一开始写的是SET（临时设置），后来改成了SETX（永久设置）了，因为win7它不好使。我也没太讲究，于是就这样把JAVA的JDK环境安排上了。
+至于`MyTestScript.js`这就是待转换的js文件的文件名了，统一改名就好了。
+
+本来想写纯粹的JAVA代码的，然后发现使用虚拟环境运行的话，那个bug是真的美，不敢过于深究了，就这样批处理混混日子。
+最后还闹了个大笑话，原本的示例如下：
+</code></pre>
+<pre><code class="language-javascript">
+&quot;ui&quot;; //需要加载UI的，这一句仍然不能少
+runtime.loadDex(&quot;joy.dex&quot;) //加载dex，名字无所谓
+new Packages.joy.main()()  //这个很重要，与toClassFile()生成的类名要对应好
+
+</code></pre>
+<pre><code>这儿的`ui`是固定写法，runtime.loadDex()是auto.js自带的内置函数，用来加载dex文件，里面写文件路径就行。new 新对象，joy是自定义的包名，main()是主函数，绕了半天运行不了，心态有些不对了。
+
+最后小伙伴能用的格式代码：
+</code></pre>
+<pre><code class="language-javascript">'ui';
+runtime.loadDex('./test1.dex') 
+new Packages[&quot;test&quot;]()()
+
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-javascript">'ui';
+new Packages[&quot;test&quot;]()()
+
+</code></pre>
+<p>参考文章：</p>
+<ol>
+<li>https://mp.weixin.qq.com/s/uOWsWuw7vczQwXGdgqNcFw</li>
+<li>https://blog.csdn.net/qq_37214567/article/details/105948836</li>
+<li>https://github.com/snailuncle/batchJs2Dex</li>
+<li>https://github.com/Liiking/SwingTest/tree/master/tools</li>
+<li>https://www.bilibili.com/video/av92147958</li>
+</ol>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">
                                        
-                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/convert2dex/">记一次Javascript转class及dex文件记录</a></div></div>
+                                        <div class="mdui-col"> </div>
                                         
 
                                         
-                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Linux系统的一些图标记录</a></div> </div>
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/ocO-U-Lk9/">Ubuntu16的快捷方式记录</a></div> </div>
                                        
                                       </div>
                                    
