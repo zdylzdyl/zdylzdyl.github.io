@@ -69,6 +69,28 @@
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
                                                          
                                <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-10 10:43:40">2020-05-10</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/redis_0/">Redis缓存策略</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+
+
+
+策略：（1234代表最糟状况顺序）
+
+延时双删
+
+线程A删除缓存    ----同时 2.线程B查询缓存为空
+线程A更新数据库  ---同时 3.线程B查询数据库并加入到缓存
+线程A删除缓存
+
+
+
+真正靠谱的方案：将访问操作串行化
+...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/redis_0/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-08 13:14:00">2020-05-08</div>
                                     <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/convert2dex/">记一次Javascript转class及dex文件记录</a></div>
                                     <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>咳，其实真是内容是：Rhino 怎么用源码将js转成.class字节码
@@ -181,17 +203,6 @@ mvn  archetype: generate  -Dgroupid=org.sang  - Dartifactid=chapterOl
 -- 本文使用`practice`库，会删除并重新自建库，注意数据备份！！！！
 -- 原文链接: https://zhuanlan.zhihu.com/p/38354000 作...</p></div>
                                     <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Mysql50test/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 18:05:27">2020-02-25</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/sms/">免费短信接码网站</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>来源：https://hao.su/2495/
-免费短信接码网站
-现如今不管注册、咨询、查询、等等... 都需要使用手机短信验证码认证，
-以下是收集的一些免费接码平台。配合临时邮箱使用更佳。
-需要注意的是这些都是所有人可以使用的，不要进行敏...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/sms/">Read More</a></div>
                                 </article>
                                 
 

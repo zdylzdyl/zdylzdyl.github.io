@@ -69,6 +69,28 @@
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
                                                          
                                <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-10 10:43:40">2020-05-10</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/redis_0/">Redis缓存策略</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+
+
+
+策略：（1234代表最糟状况顺序）
+
+延时双删
+
+线程A删除缓存    ----同时 2.线程B查询缓存为空
+线程A更新数据库  ---同时 3.线程B查询数据库并加入到缓存
+线程A删除缓存
+
+
+
+真正靠谱的方案：将访问操作串行化
+...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/redis_0/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-08 13:14:00">2020-05-08</div>
                                     <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/convert2dex/">记一次Javascript转class及dex文件记录</a></div>
                                     <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>咳，其实真是内容是：Rhino 怎么用源码将js转成.class字节码
