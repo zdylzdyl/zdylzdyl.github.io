@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>linux | zdylzdyl</title>
+    <title>修改linux的swap缓存 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     
 </head>
     <body>
-    <header class="header mdui-m-b-5">
+        <header class="header mdui-m-b-5">
     <div class="container  ">
         <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
              style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
@@ -66,41 +66,94 @@
 </header>
         <div class="mdui-container ">
                 <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
-                                                         
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-14 15:28:57">2020-05-14</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">修改linux的swap缓存</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>添加新的 swap 分区
-1.创建文件夹 mkdir /developer/
-2.设置交换分区大小 dd if=/dev/zero of=/developer/swap bs=2048 count=2048000
-3.创建交换分区 mksw...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">Read More</a></div>
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">修改linux的swap缓存</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-05-14 15:28:57">2020-05-14 / 1 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>添加新的 swap 分区<br>
+1.创建文件夹 mkdir /developer/<br>
+2.设置交换分区大小 dd if=/dev/zero of=/developer/swap bs=2048 count=2048000<br>
+3.创建交换分区 mkswap /developer/swap<br>
+4.启动交换分区 swapon /developer/swap<br>
+5.若要想使开机时自启用，则需修改文件/etc/fstab中的swap行 /whatever/swap swap swap defaults 0 0<br>
+6.查看创建好的分区 free -h<br>
+参考链接：https://blog.csdn.net/qq_33666373/java/article/details/78625982</p>
+<p>设置缓存比例 sysctl vm.swappiness=60 设置比例为60%<br>
+sysctl vm.swappiness=0 使用比例0%，全部使用内存<br>
+sysctl vm.swappiness=100 使用比例100% 全部使用物理空间，不使用内存</p>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> </div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/redis_0/">Redis缓存策略</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
                                 </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-27 14:46:42">2020-04-27</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Linux系统的一些图标记录</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications
-对于一些自带的软件就不需要自己编辑了。
-备份一些软件的快捷方式：
 
-[Desktop Entry]
-Encoding=UTF-8
-Na...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Read More</a></div>
-                                </article>
-                                
-
-                                                            <nav class="mdui-m-t-5">
-                                
-                                
-                                </nav>     
-
+                                    
                         </div>
                       </div>
+    
+                
+
               </div>
-    <footer class="footer mdui-m-t-5 mdui-text-center">
+        <footer class="footer mdui-m-t-5 mdui-text-center">
     <nav class="social-links">
         <ul>
             
