@@ -70,17 +70,19 @@
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="post-title  mdui-m-b-1">修改linux的swap缓存</div>
                                     <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-05-14 15:28:57">2020-05-14 / 1 min read</div>
-                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>添加新的 swap 分区<br>
-1.创建文件夹 mkdir /developer/<br>
-2.设置交换分区大小 dd if=/dev/zero of=/developer/swap bs=2048 count=2048000<br>
-3.创建交换分区 mkswap /developer/swap<br>
-4.启动交换分区 swapon /developer/swap<br>
-5.若要想使开机时自启用，则需修改文件/etc/fstab中的swap行 /whatever/swap swap swap defaults 0 0<br>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>添加新的 swap 分区，比如默认阿里云是没有swap分区的<br>
+1.创建文件夹 mkdir /my_swap/<br>
+2.设置交换分区大小(4GB) dd if=/dev/zero of=/my_swap/swap bs=1M count=4096<br>
+3.创建交换分区 mkswap /my_swap/swap<br>
+4.启动交换分区 swapon /my_swap/swap<br>
+5.若要想使开机时自启用，则需修改文件/etc/fstab中的swap行 /my_swap/swap swap swap defaults 0 0<br>
 6.查看创建好的分区 free -h<br>
 参考链接：https://blog.csdn.net/qq_33666373/java/article/details/78625982</p>
 <p>设置缓存比例 sysctl vm.swappiness=60 设置比例为60%<br>
 sysctl vm.swappiness=0 使用比例0%，全部使用内存<br>
-sysctl vm.swappiness=100 使用比例100% 全部使用物理空间，不使用内存</p>
+sysctl vm.swappiness=100 使用比例100% 全部使用物理空间，不使用内存<br>
+修改 /etc/sysctl.conf 永久保存<br>
+sysctl -p 刷新配置</p>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">

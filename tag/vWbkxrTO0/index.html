@@ -71,10 +71,9 @@
                                <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-14 15:28:57">2020-05-14</div>
                                     <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">修改linux的swap缓存</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>添加新的 swap 分区
-1.创建文件夹 mkdir /developer/
-2.设置交换分区大小 dd if=/dev/zero of=/developer/swap bs=2048 count=2048000
-3.创建交换分区 mksw...</p></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>添加新的 swap 分区，比如默认阿里云是没有swap分区的
+1.创建文件夹 mkdir /my_swap/
+2.设置交换分区大小(4GB) dd if=/dev/zero of=/my_swap/swap bs=1M count=4096...</p></div>
                                     <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">Read More</a></div>
                                 </article>
                                 
