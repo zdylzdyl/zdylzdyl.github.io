@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-14T09:09:35.480Z</updated>
+    <updated>2020-05-15T06:25:10.078Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[JAVA 虚拟机的简单选择]]></title>
+        <id>https://zdylzdyl.github.io/post/java-jvm/</id>
+        <link href="https://zdylzdyl.github.io/post/java-jvm/">
+        </link>
+        <updated>2020-05-15T06:20:24.000Z</updated>
+        <content type="html"><![CDATA[<p>了解OpentJDK，于是去下载<br>
+https://adoptopenjdk.net/?variant=openjdk8&amp;jvmVariant=hotspot<br>
+发现有HotSpot和OpenJ9的选择<br>
+简单了解一下，计算密集型，内存充足追求速度使用HotSpot，而IO密集型，内存稀缺计算资源充足使用Openj9.因为它小</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[修改linux的swap缓存]]></title>
         <id>https://zdylzdyl.github.io/post/linux-swap/</id>
@@ -506,27 +518,6 @@ head.ejs</p>
 
 </code></pre>
 <p>参考博客（抄袭博客/出处）：https://www.ohyhello.com/archives/530.html</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java操作windows的shell]]></title>
-        <id>https://zdylzdyl.github.io/post/java-shell/</id>
-        <link href="https://zdylzdyl.github.io/post/java-shell/">
-        </link>
-        <updated>2020-04-24T03:50:22.000Z</updated>
-        <content type="html"><![CDATA[<p>使用Jgit操作git进行提交仓库，每次都会重写文件，造成大量资源浪费。本次修改了git提交的工具为脚本提交。<br>
-使用java操作windows的bat脚本</p>
-<pre><code class="language-java">String bat = &quot;E:\\github-cloud\\BatAndShell\\BatPushWithGitSimple.bat&quot;;
-Process process = null;
-process =Runtime.getRuntime().exec(bat, null, new File(&quot;E:\\github-cloud\\&quot;));
-BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-StringBuilder stringBuilder=new StringBuilder();
-String line;
-while ((line = bufferedReader.readLine()) != null) {
-    stringBuilder.append(line);
-}
-logger.info(stringBuilder.toString());
-</code></pre>
 ]]></content>
     </entry>
 </feed>
