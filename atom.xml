@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-19T06:56:23.332Z</updated>
+    <updated>2020-05-19T07:39:12.503Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[git输错密码怎么办？]]></title>
+        <id>https://zdylzdyl.github.io/post/KVcuyoXHI/</id>
+        <link href="https://zdylzdyl.github.io/post/KVcuyoXHI/">
+        </link>
+        <updated>2020-05-19T07:33:00.000Z</updated>
+        <content type="html"><![CDATA[<p>在win平台使用git是自动生产凭据的，也就是说，他不会问你输入第二次密码，一次凭据默认是永久的。<br>
+那么我输错了怎么办？<br>
+控制面板-&gt;凭据管理器-&gt;windows凭据<br>
+<img src="http://upload.ouliu.net/i/20200519152116g1n3k.png" alt="windows凭据" loading="lazy"></p>
+<p>删除凭据就好了</p>
+<p>顺便一说，发现昨天刚装的系统有个不认识的凭据，随手删了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JAVA 虚拟机的简单选择]]></title>
         <id>https://zdylzdyl.github.io/post/java-jvm/</id>
@@ -348,176 +362,6 @@ ls -al ~/.ssh
 <img src="/images/raiden-mei/80597963.jpg" alt="img" loading="lazy"><br>
 <img src="/images/raiden-mei/80599141.jpg" alt="img" loading="lazy"><br>
 <img src="/images/raiden-mei/80792640.jpg" alt="img" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[给Gridea博客增加Live2D老婆]]></title>
-        <id>https://zdylzdyl.github.io/post/blog-live2d/</id>
-        <link href="https://zdylzdyl.github.io/post/blog-live2d/">
-        </link>
-        <updated>2020-04-24T09:01:49.000Z</updated>
-        <content type="html"><![CDATA[<p>参考地址：https://docs.paul.ren/pio/</p>
-<p>模型资源：https://mx.paul.ren/page/3/</p>
-<p>由于是独立使用</p>
-<ol>
-<li>
-<p>引用 CSS 资源</p>
-<p>在你网站的 <code>head</code> 标签内引用本项目的 CSS 样式表文件：</p>
-<pre><code class="language-css">&lt;!-- 引用看板娘交互所需的样式表 --&gt;
-&lt;link href='你的站点路径/static/pio.css' rel='stylesheet' type='text/css'/&gt;
-</code></pre>
-</li>
-<li>
-<p>引用 JS 资源</p>
-<pre><code class="language-js">&lt;!-- 引用 Live2D 核心组件 --&gt;
-&lt;script src='你的站点路径/static/l2d.js'&gt;&lt;/script&gt;
-&lt;!-- 引用看板娘交互组件 --&gt;
-&lt;script src='你的站点路径/static/pio.js'&gt;&lt;/script&gt;
-</code></pre>
-</li>
-<li>
-<p>插入 DOM 内容</p>
-<pre><code class="language-html">&lt;div class=&quot;pio-container {自定位置}&quot;&gt;
-    &lt;div class=&quot;pio-action&quot;&gt;&lt;/div&gt;
-    &lt;canvas id=&quot;pio&quot; width=&quot;{看板娘宽度}&quot; height=&quot;{看板娘高度}&quot;&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数名</th>
-<th>允许值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>自定位置</td>
-<td><code>left</code> <code>right</code></td>
-</tr>
-<tr>
-<td>看板娘宽度</td>
-<td>整数，不带 <code>px</code>，即 HTML 写法</td>
-</tr>
-<tr>
-<td>看板娘高度</td>
-<td>整数，不带 <code>px</code>，即 HTML 写法</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>设置启动器</p>
-<pre><code class="language-javascript">var pio = new Paul_Pio({
-    &quot;mode&quot;: &quot;fixed&quot;,
-    &quot;hidden&quot;: true,
-    &quot;content&quot;: {
-        &quot;welcome&quot;: [&quot;欢迎来到保罗的小宇宙！&quot;, &quot;今天天气不错，一起来玩吧！&quot;, &quot;博主每天都有些折腾记录，欢迎前往他的小窝阅读~&quot;],
-        &quot;custom&quot;: [
-            {&quot;selector&quot;: &quot;.comment-form&quot;, &quot;text&quot;: &quot;欢迎参与本文评论，别发小广告噢~&quot;},
-            {&quot;selector&quot;: &quot;.home-social a:last-child&quot;, &quot;text&quot;: &quot;在这里可以了解博主的日常噢~&quot;},
-            {&quot;selector&quot;: &quot;.post-item a&quot;, &quot;type&quot;: &quot;read&quot;},
-            {&quot;selector&quot;: &quot;.post-content a, .page-content a&quot;, &quot;type&quot;: &quot;link&quot;}
-        ]
-    },
-    &quot;night&quot;: &quot;single.night()&quot;,
-    &quot;model&quot;: [&quot;https://paugram.com/usr/plugins/Pio/models/yuan/model.json&quot;]
-});
-</code></pre>
-<p>注意把外链的model替换成下载到本地的文件</p>
-<h2 id="开始修改gride主题song的模板文件">开始修改Gride主题Song的模板文件</h2>
-<p>因为时不使用插件，因此只是采用静态资源文件部署。</p>
-<p>​	没什么好说的，下载老婆（大雾）<a href="https://mx.paul.ren/model/sagiri.html">和泉纱雾</a>，把解压缩的文件丢到song主题的<code>song/assets/media/model</code>下，model文件夹是我自己建的。其他不用管，可以把model的外联改为<code>&quot;model&quot;: [&quot;/media/model/model.json&quot;]</code>。<br>
-将<a href="https://github.com/Dreamer-Paul/Pio">demo</a>中的static资源文件<code>l2d.js</code>、<code>pio.css</code>、<code>pio.js</code>放到可以访问的文件夹中，我放到了<code>song/assets/media/scripts</code>目录下，因为song主题编译的时候这些静态文件都会被复制到相应的media文件夹中，因此引入时写为</p>
-<ol>
-<li>
-<p>引用 CSS 资源</p>
-<p>修改<code>templates\includes\head.ejs</code>中</p>
-<pre><code class="language-css">   &lt;!-- 引用看板娘交互所需的样式表 --&gt;
-   &lt;link href='/media/scripts/pio.css' rel='stylesheet' type='text/css'/&gt;
-</code></pre>
-</li>
-<li>
-<p>设置启动器 footer.ejs中添加引用的 JS 资源和插入的DOM内容，在<code>&lt;/footer&gt;</code>标签前添加即可</p>
-<pre><code class="language-html">   &lt;!-- 看板娘--&gt;
-    &lt;div class=&quot;pio-container right&quot;&gt;
-        &lt;div class=&quot;pio-action&quot;&gt;&lt;/div&gt;
-        &lt;canvas id=&quot;pio&quot; width=&quot;250&quot; height=&quot;450&quot;&gt;&lt;/canvas&gt;
-    &lt;/div&gt;
-    &lt;!-- 引用 Live2D 核心组件 --&gt;
-    &lt;script src='/media/scripts/l2d.js'&gt;&lt;/script&gt;
-    &lt;!-- 引用看板娘交互组件 --&gt;
-    &lt;script src='/media/scripts/pio.js'&gt;&lt;/script&gt;
-    &lt;script&gt;
-        var pio = new Paul_Pio({
-            &quot;hidden&quot;: true,
-            &quot;content&quot;: {
-                &quot;welcome&quot;: [&quot;欢迎来到布夕的小宇宙！&quot;, &quot;今天天气不错，一起来玩吧！&quot;, &quot;博主每天都有些折腾记录，欢迎前往他的小窝阅读~&quot;],
-                &quot;custom&quot;: [
-                    {&quot;selector&quot;: &quot;.comment-form&quot;, &quot;text&quot;: &quot;欢迎参与本文评论，别发小广告噢~&quot;},
-                    {&quot;selector&quot;: &quot;.home-social a:last-child&quot;, &quot;text&quot;: &quot;在这里可以了解博主的日常噢~&quot;},
-              {&quot;selector&quot;: &quot;.post-item a&quot;, &quot;type&quot;: &quot;read&quot;},
-                    {&quot;selector&quot;: &quot;.post-content a, .page-content a&quot;, &quot;type&quot;: &quot;link&quot;}
-                ]
-            },
-            &quot;night&quot;: &quot;single.night()&quot;,
-            &quot;model&quot;: [&quot;/media/model/model.json&quot;]
-        })
-    &lt;/script&gt;
-</code></pre>
-</li>
-</ol>
-</li>
-</ol>
-<p>如此便完毕了。</p>
-<hr>
-<p>原本的不太好，又换了一个版本：https://github.com/galnetwen/Live2D<br>
-head.ejs</p>
-<pre><code class="language-javascript">&lt;!-- 引用看板娘交互所需的样式表 --&gt;
-	&lt;link rel=&quot;stylesheet&quot; type='text/css' href=&quot;/media/live2d/css/live2d.css&quot; /&gt;
-
-</code></pre>
-<p>footer.ejs</p>
-<pre><code class="language-javascript">&lt;!-- 看板娘--&gt;
-    &lt;div id=&quot;landlord&quot;&gt;
-    &lt;div class=&quot;message&quot; style=&quot;opacity:0&quot;&gt;&lt;/div&gt;
-    &lt;canvas id=&quot;live2d&quot; width=&quot;280&quot; height=&quot;250&quot; class=&quot;live2d&quot;&gt;&lt;/canvas&gt;
-    &lt;div class=&quot;hide-button&quot;&gt;隐藏&lt;/div&gt;
-&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var message_Path = '/media/live2d/'
-    var home_Path = 'https://zdylzdyl.github.io/'
-&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;/media/live2d/js/live2d.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;/media/live2d/js/message.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    loadlive2d(&quot;live2d&quot;, &quot;/media/live2d/model/tia/model.json&quot;);
-&lt;/script&gt;
-
-</code></pre>
-<p>想借此使用四宫辉夜的模型的，来源：https://www.bilibili.com/video/BV164411H7sw。可惜这个模型太粗糙了，而且只有脸，试用了一下受不了，删了。<br>
-换新老婆，ok</p>
-<hr>
-<p>head.ejs同样</p>
-<pre><code class="language-javascript">    &lt;!-- 引用看板娘交互所需的样式表 --&gt;
-	&lt;link rel=&quot;stylesheet&quot; type='text/css' href=&quot;/media/live2d/live2d.css&quot; /&gt;
-</code></pre>
-<p>footer.ejs同样</p>
-<pre><code class="language-javascript">
-    &lt;!-- 看板娘--&gt;
-    &lt;div class=&quot;waifu&quot;&gt;
-    &lt;!--&lt;div class=&quot;waifu-tips&quot;&gt;&lt;/div&gt;--&gt;
-    &lt;canvas id=&quot;live2d&quot; width=&quot;300&quot; height=&quot;1150&quot; class=&quot;live2d&quot;&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-
-&lt;script async src=&quot;/media/live2d/waifu-tips.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/media/live2d/live2d.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    loadlive2d(&quot;live2d&quot;, &quot;/media/live2d/model.json&quot;);
-&lt;/script&gt;
-
-</code></pre>
-<p>参考博客（抄袭博客/出处）：https://www.ohyhello.com/archives/530.html</p>
 ]]></content>
     </entry>
 </feed>
