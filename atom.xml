@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-19T07:39:12.503Z</updated>
+    <updated>2020-05-20T08:31:38.084Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows 缓存]]></title>
+        <id>https://zdylzdyl.github.io/post/RAM-Cache/</id>
+        <link href="https://zdylzdyl.github.io/post/RAM-Cache/">
+        </link>
+        <updated>2020-05-20T06:22:17.000Z</updated>
+        <content type="html"><![CDATA[<p>由于笔记本内存升级到了16GB，而日常使用的量并不多，不像8GB的时候经常跑满，于是折腾了内存盘Ramdisk。<br>
+顾名思义，内存盘，用内存当作硬盘使用，搜索了一下，很多软件都不错，随手选了一个虚拟光驱内存盘UltraRAMDisk1.65做内存盘使用<br>
+一开始机械还在，使用机械和内存盘混合做虚拟盘，但是机械接口不太好，只好卸下机械了。考虑到唯一的硬盘是固态，本来读写就是避免固态的频繁读写，于是干脆整了一个纯粹的内存盘，目前先放了4GB，还算可以。</p>
+<ol>
+<li>动态分配内存，这样不容易炸内存</li>
+<li>驱动器号<code>R</code>，看起来也直观，卷标就是RAM</li>
+<li>更改IE缓存</li>
+<li>变更环境变量TEMP到内存盘</li>
+<li>修改chrome的缓存到内存盘</li>
+<li>由于我没有交换文件，有交换文件建议优先放在机械给固态续命</li>
+</ol>
+<p>但是只有这些怎么够？那么多临时文件，都放在内存盘该多好？<br>
+于是 <code>win+R</code> 输入 <code>regedit</code> 开启注册表<br>
+计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders<br>
+<img src="http://upload.ouliu.net/i/20200520161103zo029.png" alt="示意图" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git输错密码怎么办？]]></title>
         <id>https://zdylzdyl.github.io/post/KVcuyoXHI/</id>
@@ -333,35 +356,6 @@ ls -al ~/.ssh
 </code></pre>
 <p>如果接收100个任务，它只会开16个线程，而其余的都丢在队列中，想要令80个线程全都开启，必须队列先塞满才能继续创建线程。</p>
 <p>而tomcat和Dubbo的线程池创建都不是这样的，他们都是最大线程池满了才放进队列中等待执行。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[图床？使用本地发布地址]]></title>
-        <id>https://zdylzdyl.github.io/post/raiden-mei/</id>
-        <link href="https://zdylzdyl.github.io/post/raiden-mei/">
-        </link>
-        <updated>2020-04-25T02:53:43.000Z</updated>
-        <summary type="html"><![CDATA[<p>一直使用typora，使用外链图传，都忘了，github自己什么都有。<br>
-都忘了其实是自带图床的，用github自己的就好了，用不着外链了。<br>
-发点牙医的图。图片名就是Pivix的图片编号。总觉得我去<a href="https://danbooru.donmai.us/">Danbooru</a>找图片总是哪里有问题。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>一直使用typora，使用外链图传，都忘了，github自己什么都有。<br>
-都忘了其实是自带图床的，用github自己的就好了，用不着外链了。<br>
-发点牙医的图。图片名就是Pivix的图片编号。总觉得我去<a href="https://danbooru.donmai.us/">Danbooru</a>找图片总是哪里有问题。</p>
-<!-- more -->
-<p><img src="/images/raiden-mei/48688942.png" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/60181665.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/70347016.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/70477591.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/71319398.png" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/73826908.png" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/76496233.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/77013534.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/80075990.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/80331501.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/80597963.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/80599141.jpg" alt="img" loading="lazy"><br>
-<img src="/images/raiden-mei/80792640.jpg" alt="img" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>
