@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-20T08:31:38.084Z</updated>
+    <updated>2020-05-22T09:00:40.632Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[Zookeeper开箱简配]]></title>
+        <id>https://zdylzdyl.github.io/post/zookeeper_option/</id>
+        <link href="https://zdylzdyl.github.io/post/zookeeper_option/">
+        </link>
+        <updated>2020-05-22T08:50:07.000Z</updated>
+        <content type="html"><![CDATA[<p>又到了使用zookeeper的时候了，虽然我对他不熟。<br>
+我很讨厌zookeeper，不单单是CP的原因。<br>
+平时测试zookeeper不想用云端的，开win版本的，结果会再本磁盘创建缓存文件，还比较大，欺负我不懂它的配置。<br>
+隔了一段时间了，打开zookeper的zip包，打开报错</p>
+<ol>
+<li>
+<p>没有JDK环境，于是我去zkEnv.md里面补了一句<code>SET JAVA_HOME=&quot;D:\JAVA\JDK\jdk1.8.0&quot;</code></p>
+</li>
+<li>
+<p><code>错误: 找不到或无法加载主类 org.apache.zookeeper.server.quorum.QuorumPeerMain</code>,好家伙，一搜索，这不是可以使用的版本，于是下bin的zip包。</p>
+</li>
+<li>
+<p>下好windows包，打开依然报错，嗯，知道了，配置文件的文件名不对，但是我会改配置文件的文件名嘛？明显不会</p>
+<pre><code class="language-bat">@REM setup java environment variables
+
+@REM 配置JDK
+SET JAVA_HOME=&quot;D:\JAVA\JDK\jdk1.8.0&quot;
+@REM 释放配置文件
+cd ../conf
+if exist &quot;zoo_sample.cfg&quot; (
+ren &quot;zoo_sample.cfg&quot; &quot;zoo.cfg&quot;
+)
+cd ../bin
+
+</code></pre>
+<p>是的，你没看错，在<code>/bin</code>目录下的zkEnv.md文件总<code>@REM setup java environment variables</code>的下一行增加了如上的内容，反正不会手动重命名。</p>
+<p>配置文件保存一下，再也不想配置Zookeeper了。</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Windows 缓存]]></title>
         <id>https://zdylzdyl.github.io/post/RAM-Cache/</id>
@@ -31,6 +68,7 @@
 于是 <code>win+R</code> 输入 <code>regedit</code> 开启注册表<br>
 计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders<br>
 <img src="http://upload.ouliu.net/i/20200520161103zo029.png" alt="示意图" loading="lazy"></p>
+<p>把下载地址啊，之类的常用地址都改了</p>
 ]]></content>
     </entry>
     <entry>
@@ -343,19 +381,6 @@ chmod 700 ~/.ssh/id_rsa.pub
 # 检查下
 ls -al ~/.ssh
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[原来JDK线程池令人困惑是因为这个！]]></title>
-        <id>https://zdylzdyl.github.io/post/S21q2yrAO/</id>
-        <link href="https://zdylzdyl.github.io/post/S21q2yrAO/">
-        </link>
-        <updated>2020-04-26T08:26:49.000Z</updated>
-        <content type="html"><![CDATA[<p>使用JAVA的JDK有一个令我困惑不解的地方，比如新建一个线程池：</p>
-<pre><code class="language-java">new ThreadPoolExecutor(16,80,60,TimeUnit.SECONDS,new LinkedBlockingQueue&lt;&gt;(1000),new NamedThreadFactory(&quot;线程池测试&quot;));
-</code></pre>
-<p>如果接收100个任务，它只会开16个线程，而其余的都丢在队列中，想要令80个线程全都开启，必须队列先塞满才能继续创建线程。</p>
-<p>而tomcat和Dubbo的线程池创建都不是这样的，他们都是最大线程池满了才放进队列中等待执行。</p>
 ]]></content>
     </entry>
 </feed>

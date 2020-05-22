@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>使用心得 | zdylzdyl</title>
+    <title>Zookeeper开箱简配 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     
 </head>
     <body>
-    <header class="header mdui-m-b-5">
+        <header class="header mdui-m-b-5">
     <div class="container  ">
         <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
              style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
@@ -66,56 +66,112 @@
 </header>
         <div class="mdui-container ">
                 <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
-                                                         
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-24 16:20:12">2020-02-24</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/pc-zhi-nan/">PC购买使用指南</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">Zookeeper开箱简配</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-05-22 16:50:07">2020-05-22 / 2 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>又到了使用zookeeper的时候了，虽然我对他不熟。<br>
+我很讨厌zookeeper，不单单是CP的原因。<br>
+平时测试zookeeper不想用云端的，开win版本的，结果会再本磁盘创建缓存文件，还比较大，欺负我不懂它的配置。<br>
+隔了一段时间了，打开zookeper的zip包，打开报错</p>
+<ol>
+<li>
+<p>没有JDK环境，于是我去zkEnv.md里面补了一句<code>SET JAVA_HOME=&quot;D:\JAVA\JDK\jdk1.8.0&quot;</code></p>
+</li>
+<li>
+<p><code>错误: 找不到或无法加载主类 org.apache.zookeeper.server.quorum.QuorumPeerMain</code>,好家伙，一搜索，这不是可以使用的版本，于是下bin的zip包。</p>
+</li>
+<li>
+<p>下好windows包，打开依然报错，嗯，知道了，配置文件的文件名不对，但是我会改配置文件的文件名嘛？明显不会</p>
+<pre><code class="language-bat">@REM setup java environment variables
 
-【笔记本选购】
-一句话，想好了买来干啥的
+@REM 配置JDK
+SET JAVA_HOME=&quot;D:\JAVA\JDK\jdk1.8.0&quot;
+@REM 释放配置文件
+cd ../conf
+if exist &quot;zoo_sample.cfg&quot; (
+ren &quot;zoo_sample.cfg&quot; &quot;zoo.cfg&quot;
+)
+cd ../bin
 
-选购笔记本电脑验机指南
-夏蒙乾每月指导
+</code></pre>
+<p>是的，你没看错，在<code>/bin</code>目录下的zkEnv.md文件总<code>@REM setup java environment variables</code>的下一行增加了如上的内容，反正不会手动重命名。</p>
+<p>配置文件保存一下，再也不想配置Zookeeper了。</p>
+</li>
+</ol>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> </div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/RAM-Cache/">Windows 缓存</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
 
 
 
-【PC小工具】
-
-流量性能悬浮窗TrafficMonitor
-Gridea博客
-PotPlayer - 多媒体播放器
-
-
-
-【浏览器扩展】
-去谷歌...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/pc-zhi-nan/">Read More</a></div>
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
                                 </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2018-12-12 00:00:00">2018-12-12</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/hello-gridea/">Hello Gridea 快速入门</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>参考博客：https://fehey.com/post/hve-notes-start/
-主题下载：https://gridea.dev/themes/
-注意Gitalk的坑：
-Settings / Developer settings /...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/hello-gridea/">Read More</a></div>
-                                </article>
-                                
 
-                                                            <nav class="mdui-m-t-5">
-                                
-                                <div class="index-yema mdui-float-left"><a href="https://zdylzdyl.github.io/tag/ToolExperience">上一页</a></div>
-                                 
-                                
-                                </nav>     
-
+                                    
                         </div>
                       </div>
+    
+                
+
               </div>
-    <footer class="footer mdui-m-t-5 mdui-text-center">
+        <footer class="footer mdui-m-t-5 mdui-text-center">
     <nav class="social-links">
         <ul>
             
