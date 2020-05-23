@@ -335,10 +335,10 @@ SELECT sc.s_id AS '学号',max(IF (sc.c_id='0001',sc.s_score,0)) AS '课程号00
             });
             $("body").append($i);
             $i.animate({
-                    "top": y - 150,  //点击后文字上升高度
+                    "top": y - 180,  //点击后文字上升高度
                     "opacity": 0    //透明度
                 },
-                1000,
+                2000,
                 function() {
                     $i.remove();//文字消失时间
                 });

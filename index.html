@@ -283,10 +283,10 @@ new ThreadPoolExecutor(16,80,60,TimeUnit.SECONDS,new LinkedBlockingQueue&lt;&gt;
             });
             $("body").append($i);
             $i.animate({
-                    "top": y - 150,  //点击后文字上升高度
+                    "top": y - 180,  //点击后文字上升高度
                     "opacity": 0    //透明度
                 },
-                1000,
+                2000,
                 function() {
                     $i.remove();//文字消失时间
                 });
