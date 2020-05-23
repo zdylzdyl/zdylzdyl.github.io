@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-22T09:00:40.632Z</updated>
+    <updated>2020-05-23T01:46:31.972Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,50 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[鼠标点击浮动文字]]></title>
+        <id>https://zdylzdyl.github.io/post/js-click/</id>
+        <link href="https://zdylzdyl.github.io/post/js-click/">
+        </link>
+        <updated>2020-05-23T01:37:01.000Z</updated>
+        <content type="html"><![CDATA[<p>今天想起来，别人的网页都有鼠标点击的特效，我还没安排上，于是搜了下，准备安排上</p>
+<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $(&quot;body&quot;).click(function(e) {
+            var a = new Array(&quot;总想把世界上最好的都给你，却发现世界最好的就是你。&quot;, &quot;以你之名，冠我之姓，一生一世，不离不弃。&quot;, &quot;山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。&quot;, &quot;睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。&quot;, &quot;我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。&quot;, &quot;遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。&quot;, &quot;最温柔的月光，也敌不过，你转瞬的回眸。&quot; ,&quot;不是除了你，我就没人要了。只是除了你，我谁都不想要。&quot;, &quot;每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。&quot;, &quot;梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。&quot;, &quot;你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。&quot;, &quot;我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。&quot;,&quot;任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。&quot;,&quot;认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！&quot;,&quot;我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。&quot;,&quot;我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。&quot;,&quot;最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。&quot;);
+            var $i = $(&quot;&lt;span /&gt;&quot;).text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                &quot;z-index&quot;: 9999999999999 ,
+                &quot;top&quot;: y - 20,
+                &quot;left&quot;: x,
+                &quot;position&quot;: &quot;absolute&quot;,
+                &quot;font-weight&quot;: &quot;bold&quot;,
+                &quot;color&quot;: &quot;#ff6651&quot;,
+                &quot;-webkit-user-select&quot;:&quot;none&quot;,
+                &quot;-moz-user-select&quot;:&quot;none&quot;,
+                &quot;-ms-user-select&quot;:&quot;none&quot;,
+                &quot;user-select&quot;:&quot;none&quot;,
+            });
+            $(&quot;body&quot;).append($i);
+            $i.animate({
+                    &quot;top&quot;: y - 150,  //点击后文字上升高度
+                    &quot;opacity&quot;: 0    //透明度
+                },
+                1000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+&lt;/script&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Zookeeper开箱简配]]></title>
         <id>https://zdylzdyl.github.io/post/zookeeper_option/</id>
@@ -350,36 +394,6 @@ Name[zh_CN]=Chrome
 
 
 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Git推送使用SSH秘钥还有的安全问题]]></title>
-        <id>https://zdylzdyl.github.io/post/git-key-push/</id>
-        <link href="https://zdylzdyl.github.io/post/git-key-push/">
-        </link>
-        <updated>2020-04-27T03:15:06.000Z</updated>
-        <content type="html"><![CDATA[<p>git推送的问题</p>
-<p>如下所示：</p>
-<pre><code class="language-bash">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-Permissions 0777 for '/home/buxi/.ssh/id_rsa' are too open.
-It is required that your private key files are NOT accessible by others.
-This private key will be ignored.
-Load key &quot;/home/buxi/.ssh/id_rsa&quot;: bad permissions
-Permission denied (publickey).
-fatal: Could not read from remote repository.
-
-Please make sure you have the correct access rights
-and the repository exists.
-</code></pre>
-<p>这时候只是需要将秘钥权限修改一下即可：</p>
-<pre><code class="language-bash">chmod 700 ～/.ssh/id_rsa
-# 以防万一，顺便都改下
-chmod 700 ~/.ssh/id_rsa.pub
-# 检查下
-ls -al ~/.ssh
 </code></pre>
 ]]></content>
     </entry>
