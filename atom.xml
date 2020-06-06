@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-05-23T05:34:31.665Z</updated>
+    <updated>2020-06-06T02:50:31.867Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,73 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[LG V30 US998电信联通网络破解配置]]></title>
+        <id>https://zdylzdyl.github.io/post/LG_V30_US998/</id>
+        <link href="https://zdylzdyl.github.io/post/LG_V30_US998/">
+        </link>
+        <updated>2020-06-06T01:18:52.000Z</updated>
+        <content type="html"><![CDATA[<p>被种草久了，于是入手了LG V30 US998美版吧，咸鱼入手的，价格420单机无配件</p>
+<p>入手配置是已经Root和BL解锁的，面具模块也是都好了，可惜太费电了，而且我对安全要求比较高，ROOT是不可能ROOT的，ROOT了我又没有什么好处，相反，ROOT获取的功能中我需要的，我基本都能靠ADB获取到。嗯，前情就酱紫。</p>
+<p>到手重置系统，发现已有TRWP，重置后，可以插卡电信卡，可以短信，我就大意了，没仔细检查就收货了。上一个洋垃圾MOTO Z2f则是不重置系统无信号流量，谁知道V30的电信可以电话短信，不可以流量！</p>
+<p>那么开始配置流量上网吧！</p>
+<blockquote>
+<p><strong>工具</strong><br>
+链接:链接: https://pan.baidu.com/s/11crXTBU5w-SJrdj9gMCVDQ 密码: 6xvb</p>
+</blockquote>
+<ol>
+<li>
+<p>第一步：安装驱动，<strong>注意手机驱动只有LG Bridge自己更新的有用！！！！</strong></p>
+<ol>
+<li>
+<p>安装驱动，建议装LG Bridge 链接：http://pan.baidu.com/s/1jHQryyq 或者直接LG官网下载LG Bridge</p>
+</li>
+<li>
+<p>安装好QPST 链接：http://pan.baidu.com/s/1dEGsolb</p>
+</li>
+</ol>
+</li>
+<li>
+<p>第二步：开启Port check Test，勾选，设置为enable，我的US998直接手机拨号<code>*#546368#*998#</code>  就会弹出了</p>
+<figure data-type="image" tabindex="1"><img src="http://upload.ouliu.net/i/20200606102241axgmk.jpeg" alt="拨号1" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://upload.ouliu.net/i/20200606102438wmvcu.jpeg" alt="拨号2" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="http://upload.ouliu.net/i/20200606102459s9r8v.jpeg" alt="拨号3" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="http://upload.ouliu.net/i/20200606102521kdsad.jpeg" alt="拨号4" loading="lazy"></figure>
+<p>点一下Port check test 让下面的disabled 变成 enabled.好了后退出就行</p>
+<pre><code class="language-text">提醒：但是不同的机型可能进入工程模式不一样，而且路径可能稍微有点不同。可以一个一个主目录找，直到找到Port check Test，建议不要乱动里面的数据。
+
+方法1：输入3845#*手机型号#，比如说手机是G6美版H993，输入3845#*993#（xxx(一个个找)-Port check Test-enable）
+
+方法2：输入*#546368#*手机型号#，以作者LG V30+ US998为例： 输入*#546368#*998#可以成功进入工程模式（SVC menu-Port check Test-enable）
+
+方法3：网络选择:输入5457#*手机型号#，比如说手机是G6美版H993，输入5457#*993#
+
+方法4：输入##7764726996（其他版本如US998，后面三位数字就变成998）按拨号键，输入000000，进入隐藏菜单；点击W2BI-TEST SETTING选择W2BI SETTING ENABLE；（据反馈不适合ls998和as998因为这机子初始spc不是000000，spc码破解
+
+以上任何方法只要开启开启Port check Test，勾选，设置为enable。即可。
+</code></pre>
+</li>
+<li>
+<p>第二步：QPST设置</p>
+<ol>
+<li>手机连接电脑，下拉屏幕usb模式选择文件传输</li>
+<li>从开始菜单中，打开QPST configuration。</li>
+<li>点开Ports标签，选择右下角的add new ports，然后去掉√，选择带有unknown那个端口，再点“ok”按钮</li>
+<li>点Start Client菜单中的EFS Explorer选项。<br>
+<img src="http://upload.ouliu.net/i/202006061030420yt3e.jpeg" alt="img" loading="lazy"></li>
+<li>什么都不需要改，直接点OK按钮。<br>
+<img src="http://upload.ouliu.net/i/202006061031049bbo3.jpeg" alt="img" loading="lazy"><br>
+等待设备响应。（大约1分钟）</li>
+<li>找到/policyman目录，ctrl+a 全选里面的文件，点击右键选择delete删除，然后选择需要复制进去的文件，联通和电信分别选择对应的参数拖到里面。<br>
+<img src="http://upload.ouliu.net/i/20200606103123ao5ua.png" alt="img" loading="lazy"></li>
+<li>添加完毕，点phone选择reset phone按钮，手机会重启，然后关闭QPST。  <img src="http://upload.ouliu.net/i/2020060610314571o5e.png" alt="img" loading="lazy"></li>
+<li>重启手机后，全球模式或者lte/cdma，然后接入点设置成ctnet （上网设置 ：设置-更多-移动网络-接入点-新建 电信接入点：名称和apn都为ctnet，保存退出） 就应该可以上4G了。</li>
+<li>教程完毕，谢谢！</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[鼠标点击浮动文字]]></title>
         <id>https://zdylzdyl.github.io/post/js-click/</id>
@@ -299,95 +366,6 @@ Categories=GTK;Utility;TextEditor;
 
 
 
-
-
-
-
-
-
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Linux系统的一些图标记录]]></title>
-        <id>https://zdylzdyl.github.io/post/ubuntu-Desktop/</id>
-        <link href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">
-        </link>
-        <updated>2020-04-27T06:46:42.000Z</updated>
-        <content type="html"><![CDATA[<p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
-对于一些自带的软件就不需要自己编辑了。<br>
-备份一些软件的快捷方式：</p>
-<pre><code class="language-shell">
-[Desktop Entry]
-Encoding=UTF-8
-Name=LXTerminal
-Name[zh_CN]=LX 终端
-GenericName=Terminal
-GenericName[zh_CN]=终端
-Comment=Use the command line
-Comment[zh_CN]=使用命令行
-Comment[zh_TW]=使用命令列
-TryExec=lxterminal
-Exec=lxterminal
-Icon=lxterminal
-Type=Application
-Categories=GTK;System;TerminalEmulator;
-Keywords=console;command line;execute;
-
-[Desktop Entry]
-Keywords=editor
-Name=Leafpad
-Comment=Simple text editor
-Comment[zh_CN]=简易文字编辑器
-Exec=leafpad %f
-Icon=leafpad
-Terminal=false
-Type=Application
-MimeType=text/plain
-Categories=GTK;Utility;TextEditor;
-
-[Desktop Entry]
-Name=gridea
-GenericName=gridea
-Exec=gridea
-Terminal=false
-Type=Application
-Icon=/opt/Gridea/resources/app/img/logo.118b2eb7.png
-Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
-Encoding=UTF-8
-Name[zh_CN]=gridea
-Path=/home/buxi/GrideaSpace
-
-[Desktop Entry]
-Name=Idea
-GenericName=Idea
-Exec=/opt/idea/bin/idea.sh
-Terminal=false
-Type=Application
-Icon=/opt/idea/bin/idea.png
-Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
-Encoding=UTF-8
-
-[Desktop Entry]
-Name=Typora
-GenericName=Typora
-Exec=/opt/typora/Typora
-Terminal=false
-Type=Application
-Icon=/opt/typora/resources/app/asserts/icon/icon_256x256@2x.png
-Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
-Encoding=UTF-8
-
-[Desktop Entry]
-Name=Google Chrome
-GenericName=Chrome
-Exec=/opt/google/chrome/chrome
-Terminal=false
-Type=Application
-Icon=/opt/google/chrome/product_logo_256.png
-Categories=GNOME;GTK;Network;WebBrowser;
-Encoding=UTF-8
-Name[zh_CN]=Chrome
 
 
 
