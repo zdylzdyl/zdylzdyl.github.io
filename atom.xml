@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-06-06T02:50:31.867Z</updated>
+    <updated>2020-06-06T02:57:35.485Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -68,13 +68,39 @@
 <img src="http://upload.ouliu.net/i/202006061031049bbo3.jpeg" alt="img" loading="lazy"><br>
 等待设备响应。（大约1分钟）</li>
 <li>找到/policyman目录，ctrl+a 全选里面的文件，点击右键选择delete删除，然后选择需要复制进去的文件，联通和电信分别选择对应的参数拖到里面。<br>
-<img src="http://upload.ouliu.net/i/20200606103123ao5ua.png" alt="img" loading="lazy"></li>
-<li>添加完毕，点phone选择reset phone按钮，手机会重启，然后关闭QPST。  <img src="http://upload.ouliu.net/i/2020060610314571o5e.png" alt="img" loading="lazy"></li>
-<li>重启手机后，全球模式或者lte/cdma，然后接入点设置成ctnet （上网设置 ：设置-更多-移动网络-接入点-新建 电信接入点：名称和apn都为ctnet，保存退出） 就应该可以上4G了。</li>
-<li>教程完毕，谢谢！</li>
+<img src="http://upload.ouliu.net/i/20200606103123ao5ua.png" alt="img" loading="lazy"><pre><code class="language-text">    找到policyman文件夹，先备份原carrier_policy.xml: 鼠标右键，copy data file to PC。把修改好的carrier_policy.xml拖进policyman文件夹替换原文件；
+</code></pre>
+</li>
 </ol>
 </li>
 </ol>
+<p>4&gt;关闭QPST，重启手机，去手机设置→网络→更多→移动网络→接入点名称，添加中国电信APN，名称和APN都设置为CTNET即可。<br>
+APN设置：<br>
+名称：CTLTE 4G<br>
+接入点名称:ctnet<br>
+端口：80<br>
+用户名：vnet@mycdma.cn<br>
+密码：vnet.mobi<br>
+服务器地址：10.0.0.200<br>
+MMSC :http://mmsc.vnet.mobi<br>
+彩信代理：10.0.0.200<br>
+端口：80<br>
+MCC:460    MNC:11<br>
+身份验证类型：pap或chap<br>
+APN类型：default,mms,supl,hirpi<br>
+APN协议：IPv4<br>
+APN漫游协议：IPv4<br>
+彩信网络设置 ：<br>
+名称：MMSC<br>
+Apn：ctwap<br>
+MMSC：http://mmsc.vnet.mobi<br>
+MMS proxy：10.0.0.200<br>
+port：80<br>
+Apn Type：mms<br>
+```<br>
+7. 添加完毕，点phone选择reset phone按钮，手机会重启，然后关闭QPST。  <img src="http://upload.ouliu.net/i/2020060610314571o5e.png" alt="img" loading="lazy"><br>
+8. 重启手机后，全球模式或者lte/cdma，然后接入点设置成ctnet （上网设置 ：设置-更多-移动网络-接入点-新建 电信接入点：名称和apn都为ctnet，保存退出） 就应该可以上4G了。<br>
+9. 教程完毕，谢谢！</p>
 ]]></content>
     </entry>
     <entry>
