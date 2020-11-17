@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-06-07T03:55:54.854Z</updated>
+    <updated>2020-11-17T08:54:37.115Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL学习笔记]]></title>
+        <id>https://zdylzdyl.github.io/post/MySQL-note/</id>
+        <link href="https://zdylzdyl.github.io/post/MySQL-note/">
+        </link>
+        <updated>2020-11-17T08:40:01.000Z</updated>
+        <summary type="html"><![CDATA[<p>MySQL学习笔记</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>MySQL学习笔记</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LG V30 US998电信联通网络破解配置]]></title>
         <id>https://zdylzdyl.github.io/post/LG_V30_US998/</id>
@@ -98,9 +110,10 @@ MMS proxy：10.0.0.200<br>
 port：80<br>
 Apn Type：mms<br>
 ```<br>
-7. 添加完毕，点phone选择reset phone按钮，手机会重启，然后关闭QPST。  <img src="http://upload.ouliu.net/i/2020060610314571o5e.png" alt="img" loading="lazy"><br>
+7. 添加完毕，点phone选择reset phone按钮，手机会重启，然后关闭QPST。<br>
+<img src="http://upload.ouliu.net/i/2020060610314571o5e.png" alt="img" loading="lazy"><br>
 8. 重启手机后，全球模式或者lte/cdma，然后接入点设置成ctnet （上网设置 ：设置-更多-移动网络-接入点-新建 电信接入点：名称和apn都为ctnet，保存退出） 就应该可以上4G了。<br>
-9. 教程完毕，谢谢！</p>
+9.  教程完毕，谢谢！</p>
 ]]></content>
     </entry>
     <entry>
@@ -346,59 +359,6 @@ new Packages[&quot;test&quot;]()()
 <li>https://github.com/Liiking/SwingTest/tree/master/tools</li>
 <li>https://www.bilibili.com/video/av92147958</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ubuntu16的快捷方式记录]]></title>
-        <id>https://zdylzdyl.github.io/post/ocO-U-Lk9/</id>
-        <link href="https://zdylzdyl.github.io/post/ocO-U-Lk9/">
-        </link>
-        <updated>2020-04-27T06:46:42.000Z</updated>
-        <content type="html"><![CDATA[<p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
-对于一些自带的软件就不需要自己编辑了。<br>
-备份一些软件的快捷方式：</p>
-<pre><code class="language-shell">
-[Desktop Entry]
-Encoding=UTF-8
-Name=LXTerminal
-Name[zh_CN]=LX 终端
-GenericName=Terminal
-GenericName[zh_CN]=终端
-Comment=Use the command line
-Comment[zh_CN]=使用命令行
-Comment[zh_TW]=使用命令列
-TryExec=lxterminal
-Exec=lxterminal
-Icon=lxterminal
-Type=Application
-Categories=GTK;System;TerminalEmulator;
-Keywords=console;command line;execute;
-
-[Desktop Entry]
-Keywords=editor
-Name=Leafpad
-Comment=Simple text editor
-Comment[zh_CN]=简易文字编辑器
-Exec=leafpad %f
-Icon=leafpad
-Terminal=false
-Type=Application
-MimeType=text/plain
-Categories=GTK;Utility;TextEditor;
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>
