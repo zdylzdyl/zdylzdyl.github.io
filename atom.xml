@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-11-17T08:54:37.115Z</updated>
+    <updated>2020-11-19T06:25:54.704Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -16,10 +16,96 @@
         <link href="https://zdylzdyl.github.io/post/MySQL-note/">
         </link>
         <updated>2020-11-17T08:40:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>MySQL学习笔记</p>
-]]></summary>
         <content type="html"><![CDATA[<p>MySQL学习笔记</p>
-<!-- more -->
+<p>[TOC]</p>
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85">一、安装</a></li>
+<li><a href="#row_format">Row_Format</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-安装">一、安装</h2>
+<p>1.1 Ubuntu 16 安装MySQL</p>
+<pre><code class="language-shell">apt-get install mysql-server-5.7
+
+</code></pre>
+<p>1.2 CentOS8 安装MySQL</p>
+<pre><code class="language-shell"># 查询MySQL的安装情况
+rpm -qa |grep mysql
+# 卸载原有MySQL的repo 没有可以不做
+# rpm -e mysql80-community-release-el7-3.noarch
+# 下载最新MySQL的repo的yum源
+# 获取地址 https://dev.mysql.com/downloads/repo/yum/
+wget https://repo.mysql.com//mysql80-community-release-el8-1.noarch.rpm
+# 安装MySQL源
+rpm -ivh mysql80-community-release-el8-1.noarch.rpm
+# 修改默认MySQL8为MySQL5.7 不想使用5.7想用8可以不做
+vim /etc/yum.repos.d/mysql-community.repo
+# 将 [mysql57-community] 下的 enabled 设置为1，表示打开5.7
+# 将 [mysql80-community] 下的 enabled 设置为0，表示关闭8.0
+
+# （仅限EL8系统）基于RHEL8和Oracle Linux 8的基于EL8的系统包括默认情况下启用的MySQL模块。 除非禁用此模块，否则它将屏蔽MySQL存储库提供的软件包。 要禁用包含的模块并使MySQL存储库软件包可见，请使用以下命令（对于启用了dnf的系统，请将该命令中的yum替换为dnf
+yum module disable mysql
+yum install mysql-community-server
+# 查看MySQL版本
+mysql --version
+# 检查MySQL状态
+systemctl start mysqld.service
+systemctl status mysqld.service
+</code></pre>
+<p>2.1 配置文件</p>
+<pre><code class="language-shell"># 查看MySQL配置文件路径
+mysql --help|grep 'my.cnf'
+# Ubuntu 默认安装的MySQL配置文件路径
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+
+# CentOS 默认安装的MySQL配置文件路径
+vim /etc/my.cnf
+
+# 查看MySQL默认的配置文件路径
+locate my.cnf
+# 如果出现以下错误
+# locate: can not stat () `/var/lib/mlocate/mlocate.db': No such file or directory
+# 可以使用 updatedb 命令解决
+
+# 在 /etc/my.cnf 后面加 skip-grant-tables  免密登录
+</code></pre>
+<pre><code class="language-mysql">
+
+use mysql;
+
+select host,user from user;
+
+update user set host='%' where user='root';
+
+grant all privileges on *.* to 'root'@'%' identified by 'qq498423089';
+
+# 如果 grant all ....遇到以下错误
+# ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+# 执行刷新即可解决
+flush privileges;
+
+
+</code></pre>
+<p>其他</p>
+<pre><code class="language-shell">#CentOS修改ssh端口
+vim /etc/ssh/sshd_conf
+# 去掉注释 port 并写入相应的值即可
+
+
+</code></pre>
+<h2 id="row_format">Row_Format</h2>
+<pre><code class="language-mysql">
+# 查看默认的 Row_format 低版本MySQL没有  // innodb_default_row_format
+show variables like '%format%';
+# 查看表order的Row_format等信息
+SHOW TABLE STATUS LIKE 'order';
+
+
+</code></pre>
 ]]></content>
     </entry>
     <entry>
