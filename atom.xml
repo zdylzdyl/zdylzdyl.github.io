@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-11-19T06:25:54.704Z</updated>
+    <updated>2020-11-19T13:01:07.029Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -106,6 +106,7 @@ SHOW TABLE STATUS LIKE 'order';
 
 
 </code></pre>
+<p>MySQL 双链表数据页，数据页内单链表数据+目录槽辅助定位，很有意思</p>
 ]]></content>
     </entry>
     <entry>
