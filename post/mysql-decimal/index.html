@@ -4,7 +4,7 @@
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>MySQL学习笔记 | zdylzdyl</title>
+    <title>有关Mysql的Decimal记事 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -68,204 +68,60 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="post-title  mdui-m-b-1">MySQL学习笔记</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-17 16:40:01">2020-11-17 / 4 min read</div>
-                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>MySQL学习笔记</p>
-<p>[TOC]</p>
-<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85mysql">一、安装MySQL</a>
-<ul>
-<li><a href="#1%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">1.常用数据类型</a>
-<ul>
-<li><a href="#11-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">1.1 整数类型</a></li>
-<li><a href="#12-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">1.2 整数类型</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#row_format">Row_Format</a></li>
-</ul>
-</li>
-</ul>
-</p>
+                                    <div class="post-title  mdui-m-b-1">有关Mysql的Decimal记事</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-21 18:59:10">2020-11-21 / 1 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>记录一个Decimal字节数的问题<br>
+大部分博客上搜到的结果是这样的：<br>
+<code>DECIMAL(M,D) M字节(D+2 , 如果M &lt; D)</code><br>
+菜鸟教程也是如此<br>
+DECIMAL	对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2	依赖于M和D的值	依赖于M和D的值	小数</p>
 <blockquote>
-<p>学习笔记，本笔记主要记录学习以下俩本书籍的内容</p>
-<p><a href="https://juejin.cn/book/6844733802426662926">MySQL 是怎样使用的：从零蛋开始学习 MySQL</a></p>
-<p><a href="https://juejin.cn/book/6844733769996304392">MySQL 是怎样运行的：从根儿上理解 MySQL</a></p>
+<p>菜鸟教程 https://www.runoob.com/mysql/mysql-data-types.html</p>
 </blockquote>
-<h2 id="一-安装mysql">一、安装MySQL</h2>
-<p>1.1 Ubuntu 16 安装MySQL</p>
-<pre><code class="language-shell">apt-get install mysql-server-5.7
-</code></pre>
-<p>1.2 CentOS8 安装MySQL</p>
-<pre><code class="language-shell"># 查询MySQL的安装情况
-rpm -qa |grep mysql
-# 卸载原有MySQL的repo 没有可以不做
-# rpm -e mysql80-community-release-el7-3.noarch
-# 下载最新MySQL的repo的yum源
-# 获取地址 https://dev.mysql.com/downloads/repo/yum/
-wget https://repo.mysql.com//mysql80-community-release-el8-1.noarch.rpm
-# 安装MySQL源
-rpm -ivh mysql80-community-release-el8-1.noarch.rpm
-# 修改默认MySQL8为MySQL5.7 不想使用5.7想用8可以不做
-vim /etc/yum.repos.d/mysql-community.repo
-# 将 [mysql57-community] 下的 enabled 设置为1，表示打开5.7
-# 将 [mysql80-community] 下的 enabled 设置为0，表示关闭8.0
-
-# （仅限EL8系统）基于RHEL8和Oracle Linux 8的基于EL8的系统包括默认情况下启用的MySQL模块。 除非禁用此模块，否则它将屏蔽MySQL存储库提供的软件包。 要禁用包含的模块并使MySQL存储库软件包可见，请使用以下命令（对于启用了dnf的系统，请将该命令中的yum替换为dnf
-yum module disable mysql
-yum install mysql-community-server
-# 查看MySQL版本
-mysql --version
-# 检查MySQL状态
-systemctl start mysqld.service
-systemctl status mysqld.service
-</code></pre>
-<p>1.3 安装 Percona Server for MySQL</p>
-<pre><code class="language-shell"># 下载地址https://www.percona.com/downloads/Percona-Server-5.7/LATEST/
-# yum安装 https://www.percona.com/doc/percona-server/5.7/installation/yum_repo.html
-
-</code></pre>
-<p>2.1 配置文件</p>
-<pre><code class="language-shell"># 查看MySQL配置文件路径
-mysql --help|grep 'my.cnf'
-# Ubuntu 默认安装的MySQL配置文件路径
-vim /etc/mysql/mysql.conf.d/mysqld.cnf
-
-# CentOS 默认安装的MySQL配置文件路径
-vim /etc/my.cnf
-
-# 查看MySQL默认的配置文件路径
-locate my.cnf
-# 如果出现以下错误
-# locate: can not stat () `/var/lib/mlocate/mlocate.db': No such file or directory
-# 可以使用 updatedb 命令解决
-
-# 在 /etc/my.cnf 后面加 skip-grant-tables  免密登录
-</code></pre>
-<pre><code class="language-mysql">
-
-use mysql;
-
-select host,user from user;
-
-update user set host='%' where user='root';
-
-grant all privileges on *.* to 'root'@'%' identified by 'qq498423089';
-
-# 如果 grant all ....遇到以下错误
-# ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
-# 执行刷新即可解决
-flush privileges;
-
-
-</code></pre>
-<p>其他</p>
-<pre><code class="language-shell">#CentOS修改ssh端口
-vim /etc/ssh/sshd_conf
-# 去掉注释 port 并写入相应的值即可
-
-
-</code></pre>
-<h3 id="1常用数据类型">1.常用数据类型</h3>
-<h4 id="11-整数类型">1.1 整数类型</h4>
+<p>但是掘金小册却不是这样：</p>
+<p><a href="https://juejin.cn/book/6844733802426662926/section/6844733802611245070">MySQL 是怎样使用的：从零蛋开始学习 MySQL</a></p>
 <table>
 <thead>
 <tr>
-<th>类型</th>
-<th>占用存储空间(字节)</th>
-<th>无符号数值范围</th>
-<th>有符号数值范围</th>
-<th>含义</th>
+<th>组中包含的十进制位数</th>
+<th>占用存储空间大小（单位：字节）</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>TINYINT</td>
+<td>1或2</td>
 <td>1</td>
-<td>0 ~ 2⁸-1</td>
-<td>-2⁷ ~ 2⁷-1</td>
-<td>非常小的整数</td>
 </tr>
 <tr>
-<td>SMALLINT</td>
+<td>3或4</td>
 <td>2</td>
-<td>0 ~ 2¹⁶-1</td>
-<td>-2¹⁵ ~ 2¹⁵-1</td>
-<td>小的整数</td>
 </tr>
 <tr>
-<td>MEDIUMINT</td>
+<td>5或6</td>
 <td>3</td>
-<td>0 ~ 2²⁴-1</td>
-<td>-2²³ ~ 2²³-1</td>
-<td>中等大小的整数</td>
 </tr>
 <tr>
-<td>INT(别名:INTEGER)</td>
+<td>7或8或9</td>
 <td>4</td>
-<td>0 ~ 2³²-1</td>
-<td>-2³¹ ~ 2³¹-1</td>
-<td>标准的整数</td>
-</tr>
-<tr>
-<td>BIGINT</td>
-<td>8</td>
-<td>0 ~ 2⁶⁴-1</td>
-<td>-2⁶³ ~ 2⁶³-1</td>
-<td>大整数</td>
 </tr>
 </tbody>
 </table>
-<h4 id="12-整数类型">1.2 整数类型</h4>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>占用存储空间(字节)</th>
-<th>绝对值最小非0值</th>
-<th>绝对值最大非0值</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FLOAT</td>
-<td>4</td>
-<td>±1.175494351E-38</td>
-<td>±3.402823466E+38</td>
-<td>单精度浮点数</td>
-</tr>
-<tr>
-<td>DOUBLE</td>
-<td>8</td>
-<td>±2.2250738585072014E-308</td>
-<td>±1.7976931348623157E+308</td>
-<td>双精度浮点数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="row_format">Row_Format</h2>
-<pre><code class="language-mysql">
-# 查看默认的 Row_format 低版本MySQL没有  // innodb_default_row_format
-show variables like '%format%';
-# 查看表order的Row_format等信息
-SHOW TABLE STATUS LIKE 'order';
-
-
-</code></pre>
-<p>MySQL 双链表数据页，数据页内单链表数据+目录槽辅助定位，很有意思</p>
+<blockquote>
+<p>去请教了小册作者，作者让查询：</p>
+<p>源文件：decimal.c<br>
+函数名：decimal2bin</p>
+</blockquote>
+<p>于是可以看到：https://github.com/mysql/mysql-server/blob/5.7/strings/decimal.c</p>
+<p>搜索<code>decimal2bin()</code>就能看到，逻辑的确不是简单的 M字节(D+2 , 如果M &lt; D) 。</p>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">
                                        
-                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/mysql-decimal/">有关Mysql的Decimal记事</a></div></div>
+                                        <div class="mdui-col"> </div>
                                         
 
                                         
-                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/LG_V30_US998/">LG V30 US998电信联通网络破解配置</a></div> </div>
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/MySQL-note/">MySQL学习笔记</a></div> </div>
                                        
                                       </div>
                                    

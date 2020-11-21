@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-11-19T13:01:07.029Z</updated>
+    <updated>2020-11-21T11:10:31.279Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,57 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[有关Mysql的Decimal记事]]></title>
+        <id>https://zdylzdyl.github.io/post/mysql-decimal/</id>
+        <link href="https://zdylzdyl.github.io/post/mysql-decimal/">
+        </link>
+        <updated>2020-11-21T10:59:10.000Z</updated>
+        <content type="html"><![CDATA[<p>记录一个Decimal字节数的问题<br>
+大部分博客上搜到的结果是这样的：<br>
+<code>DECIMAL(M,D) M字节(D+2 , 如果M &lt; D)</code><br>
+菜鸟教程也是如此<br>
+DECIMAL	对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2	依赖于M和D的值	依赖于M和D的值	小数</p>
+<blockquote>
+<p>菜鸟教程 https://www.runoob.com/mysql/mysql-data-types.html</p>
+</blockquote>
+<p>但是掘金小册却不是这样：</p>
+<p><a href="https://juejin.cn/book/6844733802426662926/section/6844733802611245070">MySQL 是怎样使用的：从零蛋开始学习 MySQL</a></p>
+<table>
+<thead>
+<tr>
+<th>组中包含的十进制位数</th>
+<th>占用存储空间大小（单位：字节）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1或2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3或4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5或6</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7或8或9</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>去请教了小册作者，作者让查询：</p>
+<p>源文件：decimal.c<br>
+函数名：decimal2bin</p>
+</blockquote>
+<p>于是可以看到：https://github.com/mysql/mysql-server/blob/5.7/strings/decimal.c</p>
+<p>搜索<code>decimal2bin()</code>就能看到，逻辑的确不是简单的 M字节(D+2 , 如果M &lt; D) 。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MySQL学习笔记]]></title>
         <id>https://zdylzdyl.github.io/post/MySQL-note/</id>
@@ -21,16 +72,29 @@
 <p><ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85">一、安装</a></li>
+<li><a href="#%E4%B8%80-%E5%AE%89%E8%A3%85mysql">一、安装MySQL</a>
+<ul>
+<li><a href="#1%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">1.常用数据类型</a>
+<ul>
+<li><a href="#11-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">1.1 整数类型</a></li>
+<li><a href="#12-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">1.2 整数类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#row_format">Row_Format</a></li>
 </ul>
 </li>
 </ul>
 </p>
-<h2 id="一-安装">一、安装</h2>
+<blockquote>
+<p>学习笔记，本笔记主要记录学习以下俩本书籍的内容</p>
+<p><a href="https://juejin.cn/book/6844733802426662926">MySQL 是怎样使用的：从零蛋开始学习 MySQL</a></p>
+<p><a href="https://juejin.cn/book/6844733769996304392">MySQL 是怎样运行的：从根儿上理解 MySQL</a></p>
+</blockquote>
+<h2 id="一-安装mysql">一、安装MySQL</h2>
 <p>1.1 Ubuntu 16 安装MySQL</p>
 <pre><code class="language-shell">apt-get install mysql-server-5.7
-
 </code></pre>
 <p>1.2 CentOS8 安装MySQL</p>
 <pre><code class="language-shell"># 查询MySQL的安装情况
@@ -55,6 +119,11 @@ mysql --version
 # 检查MySQL状态
 systemctl start mysqld.service
 systemctl status mysqld.service
+</code></pre>
+<p>1.3 安装 Percona Server for MySQL</p>
+<pre><code class="language-shell"># 下载地址https://www.percona.com/downloads/Percona-Server-5.7/LATEST/
+# yum安装 https://www.percona.com/doc/percona-server/5.7/installation/yum_repo.html
+
 </code></pre>
 <p>2.1 配置文件</p>
 <pre><code class="language-shell"># 查看MySQL配置文件路径
@@ -97,6 +166,84 @@ vim /etc/ssh/sshd_conf
 
 
 </code></pre>
+<h3 id="1常用数据类型">1.常用数据类型</h3>
+<h4 id="11-整数类型">1.1 整数类型</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用存储空间(字节)</th>
+<th>无符号数值范围</th>
+<th>有符号数值范围</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>0 ~ 2⁸-1</td>
+<td>-2⁷ ~ 2⁷-1</td>
+<td>非常小的整数</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2</td>
+<td>0 ~ 2¹⁶-1</td>
+<td>-2¹⁵ ~ 2¹⁵-1</td>
+<td>小的整数</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>0 ~ 2²⁴-1</td>
+<td>-2²³ ~ 2²³-1</td>
+<td>中等大小的整数</td>
+</tr>
+<tr>
+<td>INT(别名:INTEGER)</td>
+<td>4</td>
+<td>0 ~ 2³²-1</td>
+<td>-2³¹ ~ 2³¹-1</td>
+<td>标准的整数</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>0 ~ 2⁶⁴-1</td>
+<td>-2⁶³ ~ 2⁶³-1</td>
+<td>大整数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12-整数类型">1.2 整数类型</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用存储空间(字节)</th>
+<th>绝对值最小非0值</th>
+<th>绝对值最大非0值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FLOAT</td>
+<td>4</td>
+<td>±1.175494351E-38</td>
+<td>±3.402823466E+38</td>
+<td>单精度浮点数</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8</td>
+<td>±2.2250738585072014E-308</td>
+<td>±1.7976931348623157E+308</td>
+<td>双精度浮点数</td>
+</tr>
+</tbody>
+</table>
 <h2 id="row_format">Row_Format</h2>
 <pre><code class="language-mysql">
 # 查看默认的 Row_format 低版本MySQL没有  // innodb_default_row_format
@@ -378,74 +525,6 @@ sysctl -p 刷新配置</p>
 <p>真正靠谱的方案：将访问操作串行化</p>
 <p>先删缓存，将更新数据库的操作放进有序队列中<br>
 从缓存查不到的查询操作，都进入有序队列</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记一次Javascript转class及dex文件记录]]></title>
-        <id>https://zdylzdyl.github.io/post/convert2dex/</id>
-        <link href="https://zdylzdyl.github.io/post/convert2dex/">
-        </link>
-        <updated>2020-05-08T05:14:00.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>咳，其实真是内容是：Rhino 怎么用源码将js转成.class字节码
-小伙伴需要在auto.js中使用自己的js脚本，分享文件但是不想泄露源代码，于是想js转.class文件然后预编译成为.dex文件，这样可以直接在auto.js中调用。
-这里使用java实现的javascript引擎解析js脚本文件，生成预编译的class文件，然后使用SDK的dx编译成dex文件。
-其实我也想做出像公众号里面交互式的脚本，但是觉得挺麻烦的，还需要读取参数，定义参数，而我的调试环境是win10，小伙伴的调试环境是win7，还有点差异。而且需要java环境，很多教程用idea，于是还要装一个巨无霸的超级笨重IDE？不是吧？更别提我就是转码一下js，还需要把安卓的SDK也安排上？光是装环境就得整半天把？
-贴一下批处理脚本：
-</code></pre>
-<pre><code class="language-bat">@echo off
-@TITLE 转为Javascript为dex文件
-
-@rem 临时添加本机的JDK目录 E:\JsConvert\jdk1.8.0 如果放置于其他路径，对应修改即可
-SET JAVA_HOME E:\JsConvert\jdk1.8.0
-@rem 临时设置classpath路径，固定写法,不用改
-SET CLASSPATH &quot;.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;&quot;
-@rem 临时添加path路径内容
-SET PATH &quot;%Path%;;%JAVA_HOME%\bin;&quot;
-
-@REM js文件放在同文件夹目录内 test.js改为你自己的js文件名，或者将你的js文件改为test.js  名字可以修改 但是注意统一
-Setlocal enabledelayedexpansion
-@REM 此命令将js转为test.class文件  名字可以修改 但是注意统一
-echo org.mozilla.javascript.tools.jsc.Main.main([&quot;MyTestScript.js&quot;]) | java -jar rhino1772.jar 
-@REM 此命令将test.class文件转为test.dex文件 名字可以修改 但是注意统一
-java -jar dx.jar --dex --output MyTestScript.dex MyTestScript.class
-@ECHO 转换结束
-pause &amp;&amp; exit
-
-</code></pre>
-<pre><code>其实批处理一开始写的是SET（临时设置），后来改成了SETX（永久设置）了，因为win7它不好使。我也没太讲究，于是就这样把JAVA的JDK环境安排上了。
-至于`MyTestScript.js`这就是待转换的js文件的文件名了，统一改名就好了。
-
-本来想写纯粹的JAVA代码的，然后发现使用虚拟环境运行的话，那个bug是真的美，不敢过于深究了，就这样批处理混混日子。
-最后还闹了个大笑话，原本的示例如下：
-</code></pre>
-<pre><code class="language-javascript">
-&quot;ui&quot;; //需要加载UI的，这一句仍然不能少
-runtime.loadDex(&quot;joy.dex&quot;) //加载dex，名字无所谓
-new Packages.joy.main()()  //这个很重要，与toClassFile()生成的类名要对应好
-
-</code></pre>
-<pre><code>这儿的`ui`是固定写法，runtime.loadDex()是auto.js自带的内置函数，用来加载dex文件，里面写文件路径就行。new 新对象，joy是自定义的包名，main()是主函数，绕了半天运行不了，心态有些不对了。
-
-最后小伙伴能用的格式代码：
-</code></pre>
-<pre><code class="language-javascript">'ui';
-runtime.loadDex('./test1.dex') 
-new Packages[&quot;test&quot;]()()
-
-</code></pre>
-<p>或者：</p>
-<pre><code class="language-javascript">'ui';
-new Packages[&quot;test&quot;]()()
-
-</code></pre>
-<p>参考文章：</p>
-<ol>
-<li>https://mp.weixin.qq.com/s/uOWsWuw7vczQwXGdgqNcFw</li>
-<li>https://blog.csdn.net/qq_37214567/article/details/105948836</li>
-<li>https://github.com/snailuncle/batchJs2Dex</li>
-<li>https://github.com/Liiking/SwingTest/tree/master/tools</li>
-<li>https://www.bilibili.com/video/av92147958</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
