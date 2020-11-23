@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>linux | zdylzdyl</title>
+    <title>运维记录 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     
 </head>
     <body>
-    <header class="header mdui-m-b-5">
+        <header class="header mdui-m-b-5">
     <div class="container  ">
         <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
              style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
@@ -66,70 +66,192 @@
 </header>
         <div class="mdui-container ">
                 <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
-                                                         
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-11-23 21:18:20">2020-11-23</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/Linux_more/">运维记录</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Linux相关维护、软件安装、构建等将会丢在这里
-
-
-
-1.软件安装
-
-1.Java环境
-2.tomcat部署
-4.jetkins安装部署
-
-
-
-
-
-
-[toc]
-1.软件安装
-1.Java环境
-
-
-安装方式1
-# 下载略
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">运维记录</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-23 21:18:20">2020-11-23 / 3 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>Linux相关维护、软件安装、构建等将会丢在这里<br>
+<ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85">1.软件安装</a>
+<ul>
+<li><a href="#1java%E7%8E%AF%E5%A2%83">1.Java环境</a></li>
+<li><a href="#2tomcat%E9%83%A8%E7%BD%B2">2.tomcat部署</a></li>
+<li><a href="#4jetkins%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2">4.jetkins安装部署</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<p>[toc]</p>
+<h2 id="1软件安装">1.软件安装</h2>
+<h3 id="1java环境">1.Java环境</h3>
+<ul>
+<li>
+<p>安装方式1</p>
+<pre><code class="language-shell"># 下载略
 # 解压
-tar...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Linux_more/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-05-14 15:28:57">2020-05-14</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">修改linux的swap缓存</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>添加新的 swap 分区，比如默认阿里云是没有swap分区的
-1.创建文件夹 mkdir /my_swap/
-2.设置交换分区大小(4GB) dd if=/dev/zero of=/my_swap/swap bs=1M count=4096...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/linux-swap/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-27 14:46:42">2020-04-27</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Linux系统的一些图标记录</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications
-对于一些自带的软件就不需要自己编辑了。
-备份一些软件的快捷方式：
+tar -zxvf jdk-8u271-linux-x64.tar.gz
+# 移动目录
+mv jdk1.8.0_271/ /usr/local/jdk
+# 修改环境配置
+vim /etc/profile
+	# 文件中添加以下内容
+    set java environment
+    JAVA_HOME=/usr/local/jdk
+    JRE_HOME=/usr/local/jdk/jre
+    CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+    PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+    export JAVA_HOME JRE_HOME CLASS_PATH PATH
+# 刷新环境
+source /etc/profile
+</code></pre>
+</li>
+<li>
+<p>安装方式2</p>
+<pre><code class="language-shell"># 下载略
+tar -zxvf jdk-8u271-linux-x64.tar.gz
+# 移动目录
+mv jdk1.8.0_271/ /usr/local/jdk
+# 修改环境配置
+echo 'PATH=$PATH:/usr/local/jdk/bin' &gt;&gt; /etc/profile
+# 刷新环境
+source /etc/profile
+</code></pre>
+</li>
+<li>
+<p>安装方式3</p>
+<pre><code class="language-shell"># CentOS安装
+sudo yum install java-1.8.0-openjdk -y
+# Ubuntu安装
+sudo apt-get install openjdk-8-jdk -y
+</code></pre>
+</li>
+<li>
+<p>安装完成后检查Java版本</p>
+<pre><code class="language-shell"># 检查Java版本
+java -version
+# 显示如下：
+# java version &quot;1.8.0_271&quot;
+# Java(TM) SE Runtime Environment (build 1.8.0_271-b09)
+# Java HotSpot(TM) 64-Bit Server VM (build 25.271-b09, mixed mode)
+</code></pre>
+<blockquote>
+<p>默认会安装Java偶数测试版本，如272版本，而不是271稳定版本，因此习惯手动安装稳定版本。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2tomcat部署">2.tomcat部署</h3>
+<ul>
+<li>
+<p>方法一</p>
+<pre><code class="language-shell"># 下载tomcat 8.5.x版本官网地址:https://tomcat.apache.org/download-80.cgi
+wget https://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz
+# 解压
+tar -zxvf apache-tomcat-8.5.60.tar.gz
+# 移动文件
+mv apache-tomcat-8.5.60/ /usr/local/tomcat
+# 开启服务方式1:
+cd /usr/local/tomcat/bin/
+./startup.sh 
+# 开启服务方式2:
+/usr/local/tomcat/bin/startup.sh 
+</code></pre>
+</li>
+<li>
+<p>方法二</p>
+<pre><code class="language-shell">
 
-[Desktop Entry]
-Encoding=UTF-8
-Na...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Read More</a></div>
+
+</code></pre>
+</li>
+</ul>
+<h3 id="4jetkins安装部署">4.jetkins安装部署</h3>
+<p>下载地址：https://www.jenkins.io/download/</p>
+<p>安装指南**(推荐)**：https://www.jenkins.io/doc/book/installing/linux/#prerequisites</p>
+<pre><code class="language-shell"># 下载war包
+
+cd /usr/local/tomcat/webapps/ROOT/
+rm -rf ./*
+mv jenkins.war /usr/local/tomcat/webapps/ROOT/
+unzip jenkins.war
+
+</code></pre>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> </div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/mysql-decimal/">有关Mysql的Decimal记事</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
                                 </article>
-                                
 
-                                                            <nav class="mdui-m-t-5">
-                                
-                                
-                                </nav>     
-
+                                    
                         </div>
                       </div>
+    
+                
+
               </div>
-    <footer class="footer mdui-m-t-5 mdui-text-center">
+        <footer class="footer mdui-m-t-5 mdui-text-center">
     <nav class="social-links">
         <ul>
             

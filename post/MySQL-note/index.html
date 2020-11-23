@@ -69,7 +69,7 @@
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="post-title  mdui-m-b-1">MySQL学习笔记</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-17 16:40:01">2020-11-17 / 4 min read</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-17 16:40:01">2020-11-17 / 5 min read</div>
                                     <div class="mdui-m-b-2 mdui-typo post-neirong"><p>MySQL学习笔记</p>
 <p>[TOC]</p>
 <p><ul class="markdownIt-TOC">
@@ -127,6 +127,20 @@ systemctl status mysqld.service
 <pre><code class="language-shell"># 下载地址https://www.percona.com/downloads/Percona-Server-5.7/LATEST/
 # yum安装 https://www.percona.com/doc/percona-server/5.7/installation/yum_repo.html
 
+yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y
+
+yum list | grep percona
+
+sudo dnf module disable mysql
+</code></pre>
+<p>卸载</p>
+<pre><code class="language-shell"># 查看yum已安装的MySQL版本
+yum list installed| grep mysql
+# 卸载
+yum remove mysql-community-client.x86_64 -y
+yum remove mysql-community-common.x86_64 -y
+yum remove mysql-community-libs.x86_64 -y
+yum remove mysql-community-server.x86_64 -y
 </code></pre>
 <p>2.1 配置文件</p>
 <pre><code class="language-shell"># 查看MySQL配置文件路径
