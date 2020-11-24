@@ -172,14 +172,10 @@ cd /usr/local/tomcat/bin/
 <p>下载地址：https://www.jenkins.io/download/</p>
 <p>安装指南**(推荐)**：https://www.jenkins.io/doc/book/installing/linux/#prerequisites</p>
 <pre><code class="language-shell"># 下载war包
-
-cd /usr/local/tomcat/webapps/ROOT/
-rm -rf ./*
-mv jenkins.war /usr/local/tomcat/webapps/ROOT/
-unzip jenkins.war
-
+wget https://get.jenkins.io/war-stable/2.249.3/jenkins.war
+# 开启服务(后台)
+nohup java -jar jenkins.war --httpPort=80 &amp;
 </code></pre>
-<p>1</p>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">

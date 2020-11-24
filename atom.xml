@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2020-11-24T00:46:17.333Z</updated>
+    <updated>2020-11-24T02:01:37.674Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -118,14 +118,10 @@ cd /usr/local/tomcat/bin/
 <p>下载地址：https://www.jenkins.io/download/</p>
 <p>安装指南**(推荐)**：https://www.jenkins.io/doc/book/installing/linux/#prerequisites</p>
 <pre><code class="language-shell"># 下载war包
-
-cd /usr/local/tomcat/webapps/ROOT/
-rm -rf ./*
-mv jenkins.war /usr/local/tomcat/webapps/ROOT/
-unzip jenkins.war
-
+wget https://get.jenkins.io/war-stable/2.249.3/jenkins.war
+# 开启服务(后台)
+nohup java -jar jenkins.war --httpPort=80 &amp;
 </code></pre>
-<p>1</p>
 ]]></content>
     </entry>
     <entry>
