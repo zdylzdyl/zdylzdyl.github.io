@@ -176,11 +176,23 @@ wget https://get.jenkins.io/war-stable/2.249.3/jenkins.war
 # 开启服务(后台)
 nohup java -jar jenkins.war --httpPort=80 &amp;
 </code></pre>
+<p>维护</p>
+<pre><code class="language-shell"># jenkins可选插件为空
+# 列如:
+http://106.12.92.100/pluginManager/available
+# 到管理页面取消https链接，转为http链接
+http://106.12.92.100/pluginManager/advanced
+# 将原 https://updates.jenkins.io/update-center.json
+# 修改成 http://updates.jenkins.io/update-center.json
+</code></pre>
+<p>其他：</p>
+<p>参考文档：</p>
+<p>Jenkins奇技淫巧  https://www.jianshu.com/p/f9c19c3077b7</p>
 </div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">
                                        
-                                        <div class="mdui-col"> </div>
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/">json-lib导入maven出错？</a></div></div>
                                         
 
                                         
