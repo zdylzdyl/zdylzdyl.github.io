@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>使用心得 | zdylzdyl</title>
+    <title>发现一个Win10有意思的bug | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     
 </head>
     <body>
-    <header class="header mdui-m-b-5">
+        <header class="header mdui-m-b-5">
     <div class="container  ">
         <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
              style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
@@ -66,92 +66,96 @@
 </header>
         <div class="mdui-container ">
                 <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
-                                                         
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 11:17:16">2020-02-25</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/Films/">电影阅览</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>《jokers小丑》--2019.全片过于压抑，看似喜剧演员却是人生悲剧，总想寻求别人的认同，别人的关注，却难以逃脱社会的欺凌。小丑觉得自己的生活没有价值，只是希望“我只希望我的死亡比我的人生更有价值”。让人感觉亚瑟(小丑)对自己的存在一点...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Films/">Read More</a></div>
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">发现一个Win10有意思的bug</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-28 16:01:59">2020-11-28 / 1 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>启动activeMQ本地报错，提示端口已被占用<code>Failed to bind to server socket:tcp://localhost:61616 due to : java.net.BindException</code>，但是这是我开机运行的第一个程序，查询端口也没有占用，怎么可能？<br>
+百度到这样一段话：</p>
+<pre><code>
+使用netstat -ano 命令查询61616端口号发现查不到。
+
+在网上查了发现 Internet Connection Sharing (ICS)服务占用，要kill了这个服务。
+
+</code></pre>
+<p>一阵激灵：我开了笔记本的热点！<br>
+关闭热点，打开MQ，OK正常，然后再打开热点，好家伙，一切正常！</p>
+<blockquote>
+<p>环境win10 2004 版本号19041.630</p>
+</blockquote>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> </div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/">json-lib导入maven出错？</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
                                 </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 09:52:09">2020-02-25</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/LearnMore/">练习、思考、学习</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>none
-</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/LearnMore/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-24 19:31:49">2020-02-24</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/about/">关于</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Gridea博客帮助。博客抒写，兴趣使然。
-</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/about/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-24 19:28:58">2020-02-24</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/IdeaHelp/">Idea帮助指南</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Java Tool
-Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial
-[Toc]
-1. IntelliJ IDEA
 
-1.启动优化
-64位机器修改idea64.exe....</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/IdeaHelp/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-24 16:20:12">2020-02-24</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/pc-zhi-nan/">PC购买使用指南</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
-
-【笔记本选购】
-一句话，想好了买来干啥的
-
-选购笔记本电脑验机指南
-夏蒙乾每月指导
-
-
-
-【PC小工具】
-
-流量性能悬浮窗TrafficMonitor
-Gridea博客
-PotPlayer - 多媒体播放器
-
-
-
-【浏览器扩展】
-去谷歌...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/pc-zhi-nan/">Read More</a></div>
-                                </article>
-                                
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2018-12-12 00:00:00">2018-12-12</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/hello-gridea/">Hello Gridea 快速入门</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>参考博客：https://fehey.com/post/hve-notes-start/
-主题下载：https://gridea.dev/themes/
-注意Gitalk的坑：
-Settings / Developer settings /...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/hello-gridea/">Read More</a></div>
-                                </article>
-                                
-
-                                                            <nav class="mdui-m-t-5">
-                                
-                                <div class="index-yema mdui-float-left"><a href="https://zdylzdyl.github.io/tag/ToolExperience">上一页</a></div>
-                                 
-                                
-                                </nav>     
-
+                                    
                         </div>
                       </div>
+    
+                
+
               </div>
-    <footer class="footer mdui-m-t-5 mdui-text-center">
+        <footer class="footer mdui-m-t-5 mdui-text-center">
     <nav class="social-links">
         <ul>
             
