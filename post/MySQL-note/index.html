@@ -69,7 +69,7 @@
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="post-title  mdui-m-b-1">MySQL学习笔记</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-17 16:40:01">2020-11-17 / 5 min read</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-17 16:40:01">2020-11-17 / 6 min read</div>
                                     <div class="mdui-m-b-2 mdui-typo post-neirong"><p>MySQL学习笔记</p>
 <p>[TOC]</p>
 <p><ul class="markdownIt-TOC">
@@ -261,6 +261,41 @@ vim /etc/ssh/sshd_conf
 </tr>
 </tbody>
 </table>
+<p>拾遗</p>
+<ol>
+<li><code>COUNT(*)</code>：对表中行的数目进行计数，不管列的值是不是<code>NULL</code>。</li>
+<li><code>COUNT(列名)</code>：对特定的列进行计数，会忽略掉该列为<code>NULL</code>的行。</li>
+</ol>
+<p>SELECT [DISTINCT] 查询列表 [FROM 表名] [WHERE 布尔表达式] [GROUP BY 分组列表 ] [HAVING 分组过滤条件] [ORDER BY 排序列表] [LIMIT 开始行, 限制条数]</p>
+<p>EXISTS和NOT EXISTS子查询</p>
+<p>有时候外层查询并不关心子查询中的结果是什么，而只关心子查询的结果集是不是为空集，这时可以用到下边这两个操作符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">示例</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>EXISTS</code></td>
+<td style="text-align:center"><code>EXISTS (SELECT ...)</code></td>
+<td style="text-align:center">当子查询结果集不是空集时表达式为真</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>NOT EXISTS</code></td>
+<td style="text-align:center"><code>NOT EXISTS (SELECT ...)</code></td>
+<td style="text-align:center">当子查询结果集是空集时表达式为真</td>
+</tr>
+</tbody>
+</table>
+<p><strong>相关子查询</strong></p>
+<p>内连接、外连接</p>
+<ul>
+<li>对于<code>内连接</code>的两个表，驱动表中的记录在被驱动表中找不到匹配的记录，该记录不会加入到最后的结果集，我们上边提到的连接都是所谓的<code>内连接</code>。</li>
+<li>对于<code>外连接</code>的两个表，驱动表中的记录即使在被驱动表中没有匹配的记录，也仍然需要加入到结果集。</li>
+</ul>
 <h2 id="row_format">Row_Format</h2>
 <pre><code class="language-mysql">
 # 查看默认的 Row_format 低版本MySQL没有  // innodb_default_row_format
