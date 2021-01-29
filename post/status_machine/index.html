@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>运维 | zdylzdyl</title>
+    <title>状态机学习 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     
 </head>
     <body>
-    <header class="header mdui-m-b-5">
+        <header class="header mdui-m-b-5">
     <div class="container  ">
         <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
              style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
@@ -66,47 +66,100 @@
 </header>
         <div class="mdui-container ">
                 <div class="mdui-row">
-                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
-                                                         
-                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-11-23 21:18:20">2020-11-23</div>
-                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/Linux_more/">运维记录</a></div>
-                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Linux相关维护、软件安装、构建等将会丢在这里
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">状态机学习</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-12-24 21:38:33">2020-12-24 / 1 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>流程中存在很多状态,遂学习状态机使用.</p>
+<p>[toc]</p>
+<p>学习:</p>
+<ol>
+<li>
+<p><a href="https://www.jianshu.com/p/8def04b34b3c">简书 EventBus-实现java状态机</a></p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/a/1190000009906317">状态机引擎选型</a></p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/a/1190000012363771">有限状态机学习</a></p>
+</li>
+<li>
+<p><a href="http://hekailiang.github.io/squirrel/">Squirrel State Machine</a></p>
+</li>
+</ol>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/java_function/">函数式编程笔记</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/win10_bug0/">发现一个Win10有意思的bug</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
 
 
 
-1.软件安装
-
-1.Java环境
-2.tomcat部署
-4.jetkins安装部署
-5.其余安装脚本
-
-
-
-
-
-
-[toc]
-1.软件安装
-1.Java环境
-
-
-安装方式1
-# 下载略...</p></div>
-                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Linux_more/">Read More</a></div>
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
                                 </article>
-                                
 
-                                                            <nav class="mdui-m-t-5">
-                                
-                                
-                                </nav>     
-
+                                    
                         </div>
                       </div>
+    
+                
+
               </div>
-    <footer class="footer mdui-m-t-5 mdui-text-center">
+        <footer class="footer mdui-m-t-5 mdui-text-center">
     <nav class="social-links">
         <ul>
             

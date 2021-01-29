@@ -69,7 +69,7 @@
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
                                     <div class="post-title  mdui-m-b-1">运维记录</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-23 21:18:20">2020-11-23 / 3 min read</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-11-23 21:18:20">2020-11-23 / 5 min read</div>
                                     <div class="mdui-m-b-2 mdui-typo post-neirong"><p>Linux相关维护、软件安装、构建等将会丢在这里<br>
 <ul class="markdownIt-TOC">
 <li>
@@ -79,6 +79,7 @@
 <li><a href="#1java%E7%8E%AF%E5%A2%83">1.Java环境</a></li>
 <li><a href="#2tomcat%E9%83%A8%E7%BD%B2">2.tomcat部署</a></li>
 <li><a href="#4jetkins%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2">4.jetkins安装部署</a></li>
+<li><a href="#5%E5%85%B6%E4%BD%99%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC">5.其余安装脚本</a></li>
 </ul>
 </li>
 </ul>
@@ -184,6 +185,91 @@ http://106.12.92.100/pluginManager/available
 http://106.12.92.100/pluginManager/advanced
 # 将原 https://updates.jenkins.io/update-center.json
 # 修改成 http://updates.jenkins.io/update-center.json
+</code></pre>
+<h3 id="5其余安装脚本">5.其余安装脚本</h3>
+<pre><code class="language-shell">#!/bin/bash
+# 注意需要chmoe +x 使得本文件具备执行权限
+
+
+# 向导
+if [ -z &quot;$1&quot; ]; then
+	echo &quot;===================================================&quot;;
+	echo &quot;input start to start,使用start初始化.&quot;;
+	echo &quot;input install to install,使用install进行安装.&quot;;
+	echo &quot;input uninstall to uninstall,使用uninstall进行卸载.&quot;;
+	echo '';
+	echo `date`;
+	echo &quot;===================================================&quot;;
+fi
+
+
+# 初始化
+if [ &quot;$1&quot; == &quot;start&quot; ]; then
+	# 添加ssh免密rsa认证
+	echo 'ssh-rsa xxxxxxx' &gt; /root/.ssh/authorized_keys
+	# 修改默认SSH开启端口
+	sed -i 's/#Port 22/Port 22222/' /etc/ssh/sshd_config
+	# 禁止SSH密码登录
+	sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+	# 重启服务
+	systemctl restart sshd
+	echo '';
+	echo `date`;
+	echo 'START OK!';
+fi
+
+
+#安装
+if [ &quot;$1&quot; == &quot;install&quot; ]; then
+	# 创建安装包文件夹
+	if [ ! -d ~/packages ]; then
+		mkdir ~/packages;
+	fi
+	# 下载idea激活码 
+	wget -cb -o wget_jihuoma_idea_file.log -O ~/packages/jihuoma_idea.zip http://idea.medeming.com/jets/images/jihuoma.zip
+	rm wget_jihuoma_idea_file.log -f
+	# 备份idea激活插件
+	wget -cb -o wget_ide-eval-resetter_file.log -O ~/packages/ide-eval-resetter.zip https://plugins.zhile.io/files/ide-eval-resetter-2.1.12.zip
+	rm wget_ide-eval-resetter_file.log -f
+	# jenkins
+	wget -cb -o wget_jenkins_file.log -O ~/packages/jenkins.war https://get.jenkins.io/war-stable/2.263.3/jenkins.war
+	rm wget_jenkins_file.log -f
+
+	# 检查JAVA_HOME 并自动安装
+	if [ -z &quot;$JAVA_HOME&quot; ]; then
+	  echo &quot;JAVA_HOME is empty.JAVA IS NOT INSTALL.start to install JAVA.&quot;;
+	  # 解压到指定文件夹
+	  tar -zxf ~/packages/jdk-8u281-linux-x64.tar.gz -C ~/packages/
+	  # 重命名
+	  rm -rf /usr/local/jdk
+	  mv ~/packages/jdk1.8.0_281/ /usr/local/jdk
+
+	# 追加写入JAVA_HOME 配置
+	echo &quot;export JAVA_HOME=/usr/local/jdk
+	export PATH=$PATH:$JAVA_HOME/bin
+	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+	export JRE_HOME=$JAVA_HOME/jre
+	&quot;&gt;&gt;/etc/profile
+	  
+	  # 刷新配置
+	  source /etc/profile
+	fi
+	echo '';
+	echo `date`;
+	echo 'install OK!';
+fi
+
+
+# 卸载
+if [ &quot;$1&quot; == &quot;uninstall&quot; ]; then 
+ echo &quot;uninstall ok&quot;;
+ 
+ 	echo '';
+	echo `date`;
+	echo 'uninstall OK!';
+fi
+
+
 </code></pre>
 <p>其他：</p>
 <p>参考文档：</p>
