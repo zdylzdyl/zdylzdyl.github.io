@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2021-01-29T02:27:06.513Z</updated>
+    <updated>2021-01-29T02:57:34.010Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -247,7 +247,7 @@ http://106.12.92.100/pluginManager/advanced
 </code></pre>
 <h3 id="5其余安装脚本">5.其余安装脚本</h3>
 <pre><code class="language-shell">#!/bin/bash
-# 注意需要chmoe +x 使得本文件具备执行权限
+# 注意需要chmod +x 使得本文件具备执行权限
 
 
 # 向导
