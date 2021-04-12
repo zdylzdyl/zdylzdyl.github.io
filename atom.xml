@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2021-04-04T07:33:00.019Z</updated>
+    <updated>2021-04-12T12:01:10.780Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot 学习笔记]]></title>
+        <id>https://zdylzdyl.github.io/post/SpringBootStudy/</id>
+        <link href="https://zdylzdyl.github.io/post/SpringBootStudy/">
+        </link>
+        <updated>2021-04-04T07:36:24.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[锐龙AMD VMware 安装 macOS Catalina10.15.7]]></title>
         <id>https://zdylzdyl.github.io/post/AMD_VMware_macOS/</id>
@@ -1108,38 +1115,6 @@ mouse.vusb.enable = &quot;TRUE&quot;</p>
 <blockquote>
 <p>环境win10 2004 版本号19041.630</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[json-lib导入maven出错？]]></title>
-        <id>https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/</id>
-        <link href="https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/">
-        </link>
-        <updated>2020-11-27T03:32:22.000Z</updated>
-        <content type="html"><![CDATA[<p>首先，迁移项目到maven，有一个包在中央仓库找到了，却不能使用</p>
-<pre><code class="language-xml">
-        &lt;!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;net.sf.json-lib&lt;/groupId&gt;
-            &lt;artifactId&gt;json-lib&lt;/artifactId&gt;
-            &lt;version&gt;2.4&lt;/version&gt;
-        &lt;/dependency&gt;
-
-</code></pre>
-<p>检查maven下载下来相应的jar文件，却是名叫：json-lib-2.4-jdk15.jar<br>
-需要指定 <classifier>jdk15</classifier><br>
-它表示在相同版本下针对不同的环境或者jdk使用的jar,如果配置了这个元素，则会将这个元素名在加在最后来查找相应的jar</p>
-<p>最终写法：</p>
-<pre><code class="language-xml">
-        &lt;!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;net.sf.json-lib&lt;/groupId&gt;
-            &lt;artifactId&gt;json-lib&lt;/artifactId&gt;
-            &lt;version&gt;2.4&lt;/version&gt;
-            &lt;classifier&gt;jdk15&lt;/classifier&gt;
-        &lt;/dependency&gt;
-
-</code></pre>
 ]]></content>
     </entry>
 </feed>
