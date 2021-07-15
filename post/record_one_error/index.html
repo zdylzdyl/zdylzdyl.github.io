@@ -4,7 +4,7 @@
     <meta name="viewport"
           content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
     <meta charset="utf-8">
-    <title>SpringBoot 学习笔记 | zdylzdyl</title>
+    <title>记一次Oracle准A号记录 | zdylzdyl</title>
     <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
     <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
@@ -68,17 +68,47 @@
                 <div class="mdui-row">
                         <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
                                 <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
-                                    <div class="post-title  mdui-m-b-1">SpringBoot 学习笔记</div>
-                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2021-04-04 15:36:24">2021-04-04 / 0 min read</div>
-                                    <div class="mdui-m-b-2 mdui-typo post-neirong"></div>
+                                    <div class="post-title  mdui-m-b-1">记一次Oracle准A号记录</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2021-07-15 09:34:02">2021-07-15 / 2 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p></p>
+<p>[toc]</p>
+<p>记一次Oracle的准A号的错误</p>
+<p>事件的过程：</p>
+<p>提交模测，发现功能不能完成，检查为PAAS故障，最终定位为PAAS的获取Oracle的SQL有问题。报错原因是实体类属性已被注释，没有这一条属性，但是XML中最终结果依然有这一条ampConfig属性，并且我自己写的SQ语句中为SELECT *。多次测试时，由于没有这条属性，因此测试数据库中这条数据为NULL，测试取出的时不用注入属性，因此不会提示异常。而在实际模测库中，该字段均有值，因此在模拟测试时，试图在没有该字段的实体类中注入不存在的属性，因此报错。</p>
+<p>最后的结果：</p>
+<p>在XML中删除实体类中不存在的属性值，在SELECT查询时使用确定的字段值。</p>
+<p>得到的教训，以后该怎么样避免：</p>
+<ol>
+<li>
+<p>IDEA提示的红色警告必须解决并重点关注</p>
+</li>
+<li>
+<p>XML的配置与Bean对应的必须检查对比好无误</p>
+</li>
+<li>
+<p>在XML中尽量不写SELECT *，避免踩坑，必须明确获取的字段</p>
+</li>
+<li>
+<p>查询动作的意图，必须在方法上解释清除，意图与用处</p>
+</li>
+<li>
+<p>使用的表，需要先行问清楚每个字段的含义及使用情况</p>
+</li>
+<li>
+<p>ut的编写必须完成，不能略过</p>
+</li>
+</ol>
+<p>其他方面的测试共处：<br>
+必须先自己全流程完成一次或多次的测试，再提交测试多进行测试几次。</p>
+</div>
                                     <div class="mdui-divider mdui-m-b-2"></div>
                                     <div class="mdui-row-xs-2 post-fenye">
                                        
-                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/record_one_error/">记一次Oracle准A号记录</a></div></div>
+                                        <div class="mdui-col"> </div>
                                         
 
                                         
-                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/AMD_VMware_macOS/">锐龙AMD VMware 安装 macOS Catalina10.15.7</a></div> </div>
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/SpringBootStudy/">SpringBoot 学习笔记</a></div> </div>
                                        
                                       </div>
                                    

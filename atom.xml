@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zdylzdyl.github.io</id>
     <title>zdylzdyl</title>
-    <updated>2021-04-12T12:01:10.780Z</updated>
+    <updated>2021-07-15T01:57:39.368Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zdylzdyl.github.io"/>
     <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
@@ -10,6 +10,44 @@
     <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
     <icon>https://zdylzdyl.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[记一次Oracle准A号记录]]></title>
+        <id>https://zdylzdyl.github.io/post/record_one_error/</id>
+        <link href="https://zdylzdyl.github.io/post/record_one_error/">
+        </link>
+        <updated>2021-07-15T01:34:02.000Z</updated>
+        <content type="html"><![CDATA[<p></p>
+<p>[toc]</p>
+<p>记一次Oracle的准A号的错误</p>
+<p>事件的过程：</p>
+<p>提交模测，发现功能不能完成，检查为PAAS故障，最终定位为PAAS的获取Oracle的SQL有问题。报错原因是实体类属性已被注释，没有这一条属性，但是XML中最终结果依然有这一条ampConfig属性，并且我自己写的SQ语句中为SELECT *。多次测试时，由于没有这条属性，因此测试数据库中这条数据为NULL，测试取出的时不用注入属性，因此不会提示异常。而在实际模测库中，该字段均有值，因此在模拟测试时，试图在没有该字段的实体类中注入不存在的属性，因此报错。</p>
+<p>最后的结果：</p>
+<p>在XML中删除实体类中不存在的属性值，在SELECT查询时使用确定的字段值。</p>
+<p>得到的教训，以后该怎么样避免：</p>
+<ol>
+<li>
+<p>IDEA提示的红色警告必须解决并重点关注</p>
+</li>
+<li>
+<p>XML的配置与Bean对应的必须检查对比好无误</p>
+</li>
+<li>
+<p>在XML中尽量不写SELECT *，避免踩坑，必须明确获取的字段</p>
+</li>
+<li>
+<p>查询动作的意图，必须在方法上解释清除，意图与用处</p>
+</li>
+<li>
+<p>使用的表，需要先行问清楚每个字段的含义及使用情况</p>
+</li>
+<li>
+<p>ut的编写必须完成，不能略过</p>
+</li>
+</ol>
+<p>其他方面的测试共处：<br>
+必须先自己全流程完成一次或多次的测试，再提交测试多进行测试几次。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SpringBoot 学习笔记]]></title>
         <id>https://zdylzdyl.github.io/post/SpringBootStudy/</id>
@@ -1094,27 +1132,6 @@ mouse.vusb.enable = &quot;TRUE&quot;</p>
 <p><a href="http://hekailiang.github.io/squirrel/">Squirrel State Machine</a></p>
 </li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[发现一个Win10有意思的bug]]></title>
-        <id>https://zdylzdyl.github.io/post/win10_bug0/</id>
-        <link href="https://zdylzdyl.github.io/post/win10_bug0/">
-        </link>
-        <updated>2020-11-28T08:01:59.000Z</updated>
-        <content type="html"><![CDATA[<p>启动activeMQ本地报错，提示端口已被占用<code>Failed to bind to server socket:tcp://localhost:61616 due to : java.net.BindException</code>，但是这是我开机运行的第一个程序，查询端口也没有占用，怎么可能？<br>
-百度到这样一段话：</p>
-<pre><code>
-使用netstat -ano 命令查询61616端口号发现查不到。
-
-在网上查了发现 Internet Connection Sharing (ICS)服务占用，要kill了这个服务。
-
-</code></pre>
-<p>一阵激灵：我开了笔记本的热点！<br>
-关闭热点，打开MQ，OK正常，然后再打开热点，好家伙，一切正常！</p>
-<blockquote>
-<p>环境win10 2004 版本号19041.630</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>
