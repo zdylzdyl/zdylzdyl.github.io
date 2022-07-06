@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>锐龙AMD VMware 安装 macOS Catalina10.15.7 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+        <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">锐龙AMD VMware 安装 macOS Catalina10.15.7</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2021-03-26 08:48:39">2021-03-26 / 6 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>[TOC]<br>
+<ul class="markdownIt-TOC">
+<li><a href="#vmware-%E5%AE%89%E8%A3%85-macos">VMware 安装 macOS</a>
+<ul>
+<li><a href="#1%E7%89%88%E6%9C%AC%E7%9A%84%E9%80%89%E6%8B%A9">1.版本的选择？</a></li>
+<li><a href="#4%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B">4.安装过程</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="vmware-安装-macos">VMware 安装 macOS</h1>
+<p>使用VMware体验MAC系统，不影响原系统，也会不受硬件的较大影响。成功后如图：</p>
+<img src="https://ae01.alicdn.com/kf/Ucdbf51e12a3f466580258181d1d13d14q.jpg" alt="安装成功如图" style="zoom:50%;" />
+<ol>
+<li>
+<p>系统要求：开启虚拟化</p>
+<p><a href="https://ae01.alicdn.com/kf/U9c9a398a99684642ae240b31a770116eu.jpg"><img src="https://ae01.alicdn.com/kf/U9c9a398a99684642ae240b31a770116eu.jpg" alt="https://ae01.alicdn.com/kf/U9c9a398a99684642ae240b31a770116eu.jpg" style="zoom: 33%;" /></a></p>
+<blockquote>
+<p>请检查关闭一些“占用虚拟化服务”的软件，<strong>关闭</strong>360的核晶防护，<strong>关闭</strong>Hyper-V功能，<strong>关闭</strong>Win10安全中心的内存完整性。（对于普通用户而言，一般不会开启Hyper-V功能和Win10安全中心的内存完整性，要是没有安装360的话这一步可以跳过）。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="1版本的选择">1.版本的选择？</h2>
+<ol>
+<li>
+<p>首先MAC OS的选择：</p>
+<p>当前的MAC OS 版本有如下：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>macOS代号</th>
+<th>macOS版本</th>
+<th>版号</th>
+<th>MAS/零售原版</th>
+<th>版本引导</th>
+<th>VMware/ESXi</th>
+<th>发布时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS Big Sur</td>
+<td>11.2.3</td>
+<td>20D91</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td></td>
+<td>2021-03-08</td>
+</tr>
+<tr>
+<td>macOS Catalina</td>
+<td>10.15.7</td>
+<td>19H2</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2020-09-24</td>
+</tr>
+<tr>
+<td>macOS Mojave</td>
+<td>10.14.6</td>
+<td>18G103</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2019-07-22</td>
+</tr>
+<tr>
+<td>macOS High Sierra</td>
+<td>10.13.6</td>
+<td>17G66</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2018-07-13</td>
+</tr>
+<tr>
+<td>macOS Sierra</td>
+<td>10.12.6</td>
+<td>16G29</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2017-07-19</td>
+</tr>
+<tr>
+<td>OS X El Capitan</td>
+<td>10.11.6</td>
+<td>15G31</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2016-07-18</td>
+</tr>
+<tr>
+<td>OS X Yosemite</td>
+<td>10.10.5</td>
+<td>14F27</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2015-08-13</td>
+</tr>
+<tr>
+<td>OS X Mavericks</td>
+<td>10.9.5</td>
+<td>13F34</td>
+<td>原版镜像</td>
+<td>引导镜像</td>
+<td>CDR/ISO</td>
+<td>2014-09-17</td>
+</tr>
+<tr>
+<td>OS X Mountain Lion</td>
+<td>10.8.5</td>
+<td>12F37</td>
+<td>原版镜像</td>
+<td>不区分</td>
+<td>-</td>
+<td>2013-09-12</td>
+</tr>
+<tr>
+<td>OS X Lion</td>
+<td>10.7.5</td>
+<td>11G56</td>
+<td>原版镜像</td>
+<td>不区分</td>
+<td>-</td>
+<td>2012-09-19</td>
+</tr>
+<tr>
+<td>Mac OS X Snow Leopard</td>
+<td>10.6.8</td>
+<td>10K540</td>
+<td>原版镜像</td>
+<td>不区分</td>
+<td>-</td>
+<td>2011-07-15</td>
+</tr>
+<tr>
+<td>Mac OS X Leopard</td>
+<td>10.5.8</td>
+<td>9L30</td>
+<td>原版镜像</td>
+<td>不区分</td>
+<td>-</td>
+<td>2009-08-12</td>
+</tr>
+<tr>
+<td>Mac OS X Tiger</td>
+<td>10.4.11</td>
+<td>8S165</td>
+<td>原版镜像</td>
+<td>不区分</td>
+<td>-</td>
+<td>2007-11-14</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.apple114.com/pages/macos/">表格来源</a></p>
+<blockquote>
+<p>MaccOS10.9.6最好用，最后一版拟物化的图标（我对扁平化一直不感冒）最后一版3D Dock栏。文件系统依然HFS+，Shell终端依然用Bash，自带Clang编译器，不需要安装开发者套件，使用gcc别名指向Clang，vim可以直接写C，用命令clang或gcc编译均可。Finder很流畅。Telnet和FTP依然保留。</p>
+<p>首先，10.15是Mac OS X系列的最后一个版本，这个版本阉割了32位的支持，极度不推荐。其次，10.14全是bug，基本上就是个废物。 那么最新的就只能是10.13了,建议10.13不解释。</p>
+<p>观点来源：知乎：https://www.zhihu.com/question/286767707/answer/1521985818</p>
+<p>经典版本号：10.6.8,10.8.5,10.13.6<br>
+发售时最大的版本的最终版 NO<br>
+发售时最大的版本+1 的最终版 YES<br>
+最新版.4 以后 YES</p>
+</blockquote>
+<p>本文选择 macOS Catalina最后一版：<code>10.15.7 19H2</code>。</p>
+<ul>
+<li>mac OS 下载地址：
+<ul>
+<li><a href="https://www.52pojie.cn/thread-1079306-1-1.html">macOS10.15.2系统原装镜像新鲜刚出炉的亲测可用</a>:
+<ul>
+<li>链接: https://pan.baidu.com/s/1i636ZE1cX4V_kP9RymjhdQ 提取码: glbl</li>
+</ul>
+</li>
+<li><a href="https://www.52pojie.cn/thread-1290299-1-1.html">Catalina 10.15.7 (19H2).iso 虚拟机安装macOS</a>
+<ul>
+<li>链接：https://pan.baidu.com/s/1k0mMrW8ZVsjnuxvJZHR6iw 提取码：qqzo</li>
+</ul>
+</li>
+<li><a href="https://blog.csdn.net/xiaocheng0404/article/details/106963575">Catalina 10.15.5 .cdr</a>
+<ul>
+<li>链接：https://pan.baidu.com/s/1DoNYszZyq_XZpY9RgqYafg 提取码：7pwi</li>
+</ul>
+</li>
+<li><a href="https://sysin.org/article/how-to-install-macos-big-sur/">获取 macOS Big Sur 正式版软件包</a></li>
+<li><a href="https://sysin.org/article/macOS/">Apple macOS 下载汇总</a></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>VMware版本下载</p>
+<p><strong>VMware Workstation软件版本不要超过15.1.0以上（目前最新版本是15.5.5或者更高），超过15.1.0的版本无法安装macOS，且暂时无解。</strong></p>
+<p>本文选择 VMware14最后一个版本14.1.8，作为虚拟机使用。</p>
+<p>官方链接：<a href="https://my.vmware.com/cn/group/vmware/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/14_0">下载 VMware Workstation Pro 14</a></p>
+<pre><code class="language-shell"># VMware Workstation 14 密钥
+ZF34H-8RD95-481LQ-TEQZV-MYAD2
+FZ1D8-61Z13-M88HY-UQQ7E-Q20G6
+FF788-D7E53-M8E0Y-L5MXE-WZUF4
+YC10H-8GE0L-M89LZ-RQPNX-QQA82
+GV7JK-04X91-M88TY-YXX59-NQU96
+CG54H-D8D0H-H8DHY-C6X7X-N2KG6
+ZC3WK-AFXEK-488JP-A7MQX-XL8YF
+AC5XK-0ZD4H-088HP-9NQZV-ZG2R4
+ZC5XK-A6E0M-080XQ-04ZZG-YF08D
+ZY5H0-D3Y8K-M89EZ-AYPEG-MYUA8
+</code></pre>
+</li>
+<li>
+<p>unlocker解锁工具下载</p>
+<p><a href="https://pan.baidu.com/s/1DoNYszZyq_XZpY9RgqYafg">unlocker下载</a>，提取码：7pwi</p>
+<p>工具来源：<a href="https://blog.csdn.net/xiaocheng0404/article/details/106963575">最详细AMD Ryzen CPU，VMware 15安装macOS 10.15.x Catalina 记录</a></p>
+<p>开始使用unlocker对VMware 进行解锁：</p>
+<p>进入unlocker目录，能看到里面一些文件，解压后找到该目录下的win-install.cmd<br>
+右键win-install.cmd，找到“管理员身份运行”，运行即可<br>
+unlocker运行后，一般会自动下载一个文件（com.vmware.fusion.tools.darwin.zip.tar），此时若下载失败则install将会失效，需自行解决网络问题。本安装工具直接安装需要梯子，否则超慢。</p>
+<p>可以直接使用浏览器进行下载安装工具的资源：http://softwareupdate.vmware.com/cds/vmw-desktop/fusion/12.1.0/17195230/core/com.vmware.fusion.zip.tar</p>
+<p>下载好com.vmware.fusion.zip.tar后打开其中的com.vmware.fusion.zip，提取文件</p>
+<p>payload\VMware Fusion.app\Contents\Library\isoimages\darwin.iso<br>
+payload\VMware Fusion.app\Contents\Library\isoimages\darwinPre15.iso</p>
+<p>到unlocker更目录下自动创建的tools中，然后编辑win-install.cmd文本，将<code>gettools.exe</code>此行内容修改为：<code>: ::gettools.exe</code>（即注释掉）。后续再管理员执行win-install.cmd即可。</p>
+</li>
+</ol>
+<h2 id="4安装过程">4.安装过程</h2>
+<p>问题：<strong>To pair a Bluetooth keyboard, turn it on and wait for your computer toconnect to it.</strong></p>
+<p>安装后提示需要等待蓝牙链接设备，但是由于是笔记本安装，既不想额外插入键盘，也没有其他教程那样按空格键就能跳过。</p>
+<p>解决来源：<a href="https://blog.csdn.net/weixin_34006468/article/details/93892518">vmware安装mac虚拟机键盘失灵解决方法</a></p>
+<p>找到虚拟机里的 .vmx 文件，找到 guestOS = &quot;freebsd-64&quot; 一行，将 freebsd-64 改为 darwin10，然后增加下面几行：</p>
+<p>ich7m.present = &quot;TRUE&quot;<br>
+smc.present = &quot;FALSE&quot;<br>
+keyboard.vusb.enable = &quot;TRUE&quot;<br>
+mouse.vusb.enable = &quot;TRUE&quot;</p>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/SpringBootStudy/">SpringBoot 学习笔记</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/critical_thinking/">超越感觉--批判性思考</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="1150" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+<!-- 加上鼠标点击特效咯-->
+<script type="text/javascript">
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("总想把世界上最好的都给你，却发现世界最好的就是你。", "以你之名，冠我之姓，一生一世，不离不弃。", "山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。", "睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。", "我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。", "遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。", "最温柔的月光，也敌不过，你转瞬的回眸。" ,"不是除了你，我就没人要了。只是除了你，我谁都不想要。", "每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。", "梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。", "你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。", "我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。","任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。","认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！","我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。","我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。","最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。");
+            var $i = $("<span />").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                "z-index": 9999999999999 ,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651",
+                "-webkit-user-select":"none",
+                "-moz-user-select":"none",
+                "-ms-user-select":"none",
+                "user-select":"none",
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,  //点击后文字上升高度
+                    "opacity": 0    //透明度
+                },
+                2000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+</script>
+</footer>
+    </body>
+</html>

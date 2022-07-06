@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>使用心得 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+    <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
+                                                         
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2022-06-13 19:22:50">2022-06-13</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/springboot_package/">Spring Boot打包的jar运行的时候提示：没有主清单属性</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>打包测试时手写spring boot忘了这个
+pom添加一下即可
+&lt;build&gt;
+    &lt;finalName&gt;patient-interaction&lt;/finalName&gt;
+    &lt;plugin...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/springboot_package/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2022-06-13 19:00:58">2022-06-13</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/es_bug/">一个bug修一天-ES查询</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>一个bug修一天，后续填坑size
+</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/es_bug/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2022-06-11 15:40:30">2022-06-11</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/caffeine_config/">Caffeine本地缓存较简便的配置</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>使用SpringBoot时，相对较好的本地缓存是Caffeine，然而Caffeine的缓存配置有些繁琐，例如默认Demo配置：
+Maven依赖：
+        &lt;dependency&gt;
+            &lt;gro...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/caffeine_config/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2022-06-11 15:11:31">2022-06-11</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/common_programs/">常用软件记录</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+一些常用软件记录，免得迷路
+
+
+本博客的编辑软件，使用非常方便
+https://gridea.dev/#started
+JDK:https://www.oracle.com/java/technologies/javase/javase-...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/common_programs/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2022-06-11 14:55:14">2022-06-11</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/hutool_error/">Hutool工具箱升级排错</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>原本项目使用的是5.5.7版本的hutool工具箱，直接引用的all版本的组件，升级5.8.2版本后却发现中文转发请求的访问出现问题，代码检查发现是URI转码未使用UTF-8编码，检查代码发现原本5.5.7是默认使用UTF-8编码，而5.7...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/hutool_error/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2021-12-08 23:16:33">2021-12-08</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/repair_wechat/">微信YYDS！</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+微信作为一个耗电超过手机屏幕，单APP耗电占据超过60%的APP，是永远的神！
+
+微信一直有国际版和国内版的区别，但是差别非常大，国际版内存占用相对不多，也没有肆意的广告，一直想迁移到谷歌版本，因为续航和广告。为了手机续航耗电和广告的问题...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/repair_wechat/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2021-12-08 22:48:14">2021-12-08</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/Stay_away_from_Xiaomi/">远离小米，远离MIUI</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Stay away from Xiaomi,Stay away from MIUI
+之前双卡手机在小区信号不好，觉得是手机问题，于是多方考虑9月入手了一台红米9.
+主要是考虑双卡（仅需单卡4G），副卡吃流量，主卡收短信接电话。
+用了2个月，...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Stay_away_from_Xiaomi/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2021-03-26 08:48:39">2021-03-26</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/AMD_VMware_macOS/">锐龙AMD VMware 安装 macOS Catalina10.15.7</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>[TOC]
+
+VMware 安装 macOS
+
+1.版本的选择？
+4.安装过程
+
+
+
+
+VMware 安装 macOS
+使用VMware体验MAC系统，不影响原系统，也会不受硬件的较大影响。成功后如图：
+
+
+
+系统要求：开启虚拟化
+
+
+请检...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/AMD_VMware_macOS/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2021-02-24 15:23:46">2021-02-24</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/use_md5/">MD5加密三两事</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>页面下单加了简单的MD5加密认证，防止订单入口误入。于是遇到的了前后端加密的问题。
+1、前端怎么加密？
+解决方法：直接vue中使用方法即可。
+2、前后端加密认证结果不一致？
+解决方法：在加密之前双方统一编码，并且JS中 MD5(encode...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/use_md5/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2021-02-19 10:29:20">2021-02-19</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/learn_plan/">学习计划</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>学习计划
+[TOC]
+
+学习计划
+
+
+
+因为不能漫无目的学习，也不能想到一茬干一茬，于是在此记录并开始学习，借此合理安排学习。
+
+书单：
+《亲密关系》罗兰·米勒 √
+《非暴力沟通》马歇尔·卢森堡 √
+《正面管教》简·尼尔森 √
+《自卑与超越...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/learn_plan/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-11-28 16:01:59">2020-11-28</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/win10_bug0/">发现一个Win10有意思的bug</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>启动activeMQ本地报错，提示端口已被占用Failed to bind to server socket:tcp://localhost:61616 due to : java.net.BindException，但是这是我开机运行的第...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/win10_bug0/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-11-27 11:32:22">2020-11-27</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/">json-lib导入maven出错？</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>首先，迁移项目到maven，有一个包在中央仓库找到了，却不能使用
+
+        &lt;!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib --&gt;
+   ...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/java_maven_import_2020_11_27/">Read More</a></div>
+                                </article>
+                                
+
+                                                            <nav class="mdui-m-t-5">
+                                
+                                
+                                <div class="index-yema mdui-float-right"><a href="https://zdylzdyl.github.io/tag/ToolExperience/page/2">下一页</a></div>
+                                 
+                                </nav>     
+
+                        </div>
+                      </div>
+              </div>
+    <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="1150" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+<!-- 加上鼠标点击特效咯-->
+<script type="text/javascript">
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("总想把世界上最好的都给你，却发现世界最好的就是你。", "以你之名，冠我之姓，一生一世，不离不弃。", "山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。", "睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。", "我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。", "遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。", "最温柔的月光，也敌不过，你转瞬的回眸。" ,"不是除了你，我就没人要了。只是除了你，我谁都不想要。", "每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。", "梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。", "你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。", "我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。","任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。","认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！","我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。","我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。","最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。");
+            var $i = $("<span />").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                "z-index": 9999999999999 ,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651",
+                "-webkit-user-select":"none",
+                "-moz-user-select":"none",
+                "-ms-user-select":"none",
+                "user-select":"none",
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,  //点击后文字上升高度
+                    "opacity": 0    //透明度
+                },
+                2000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+</script>
+</footer>
+    </body>
+</html>

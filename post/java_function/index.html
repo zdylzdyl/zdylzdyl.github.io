@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>函数式编程笔记 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+        <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">函数式编程笔记</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2021-01-13 16:42:10">2021-01-13 / 2 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><h1 id="函数式编程笔记">函数式编程笔记</h1>
+<p>[TOC]<br>
+<ul class="markdownIt-TOC">
+<li><a href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0">函数式编程笔记</a>
+<ul>
+<li><a href="#%E4%B8%80-%E8%AE%A4%E8%AF%86">一、认识</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-认识">一、认识</h2>
+<p>开始提问：</p>
+<blockquote>
+<p>什么是函数？</p>
+</blockquote>
+<p>是被称为函数定义域（function domain）的源集（source set ）和被称为函数陪域（也nction codomain ）的目标集（target set ）之间的关系。</p>
+<p>函数:一个数集映射成另一个值数集的方法</p>
+<blockquote>
+<p>什么是函数式编程？</p>
+</blockquote>
+<p>需要接收参数返回确定值，不修改参数。</p>
+<ul>
+<li>它是独立的。它并不依赖于任何外部的设备来工作。 你可以在任何上下文中使用它一一你需要做的一切就是提供一个有效的参数。</li>
+<li>它是确定的，意味着相同的参数总是返回相同的结果。在引用透明的代码中，不会有意外发生。它可能返回一个错误的结果，可至少结果对于相同的参数而言是绝对不会变化的。</li>
+<li>它绝对不会抛出任何种类的 Exceptio口。它可能抛出错误，例如OOME( out-of-memory error，即内存耗尽）或是 SOE(stack-overflow error， 即堆栈溢出），但是这些错误表示代码有 bug，并不是作为程序员的你或是你 API的用户应该处理的（除了让应用程序崩溃井最终修复 bug ）。任何时候它都不会导致其他代码意外失败。例如，它不会改变参数或是外界的数据， 从而导致调用者发现自己的数据过期或者并发访问异常。</li>
+<li>它不会由于外部设备（数据库、文件系统或网络）不可用、太慢或坏掉而崩溃。</li>
+</ul>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/love_game/">爱的博弈</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/status_machine/">状态机学习</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="1150" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+<!-- 加上鼠标点击特效咯-->
+<script type="text/javascript">
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("总想把世界上最好的都给你，却发现世界最好的就是你。", "以你之名，冠我之姓，一生一世，不离不弃。", "山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。", "睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。", "我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。", "遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。", "最温柔的月光，也敌不过，你转瞬的回眸。" ,"不是除了你，我就没人要了。只是除了你，我谁都不想要。", "每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。", "梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。", "你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。", "我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。","任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。","认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！","我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。","我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。","最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。");
+            var $i = $("<span />").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                "z-index": 9999999999999 ,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651",
+                "-webkit-user-select":"none",
+                "-moz-user-select":"none",
+                "-ms-user-select":"none",
+                "user-select":"none",
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,  //点击后文字上升高度
+                    "opacity": 0    //透明度
+                },
+                2000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+</script>
+</footer>
+    </body>
+</html>

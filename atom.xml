@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zdylzdyl.github.io</id>
+    <title>zdylzdyl</title>
+    <updated>2022-07-06T09:26:20.468Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zdylzdyl.github.io"/>
+    <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
+    <icon>https://zdylzdyl.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2022, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[下载文件链接检查]]></title>
+        <id>https://zdylzdyl.github.io/post/download_file_check/</id>
+        <link href="https://zdylzdyl.github.io/post/download_file_check/">
+        </link>
+        <updated>2022-07-06T09:08:14.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>遇到一个问题，返回的下载链接可能无法下载文件（GET请求链接），而我返回给前端的链接是不走我服务的链接，如果文件存在则可以下载，如果文件不存在对方服务器上，也能下载，但是下载的文件是0KB。
+这就比较烦恼了，我想后端做个检查，OK的话就返回给前端，但是有个问题，如果文件大小过大，使用服务器去下载文件，把文件下载到内存，就浪费内存甚至还有OOM的风险，那么有什么办法不下载文件知道文件的大小呢？去对方服务上加个检查文件的接口也行(笑😀)。
+这时候只好用Head请求了，先准备环境，在测试服务器上创建个1GB的文件和正常3MB的文件：
+```shell
+</code></pre>
+<h1 id="比如创建一个1gb的文件">比如创建一个1GB的文件</h1>
+<p>failocate -l 1GB test.tar<br>
+<code>    测试请求代码如下：    </code>java<br>
+private static boolean checkFile(String url) throws IOException {<br>
+//本次测试链接不需要重定向<br>
+HttpURLConnection.setFollowRedirects(false);<br>
+//打开链接<br>
+HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();<br>
+//设置发送HEAD请求 实际不会返回请求体<br>
+connection.setRequestMethod(&quot;HEAD&quot;);<br>
+//设置超时事件<br>
+connection.setReadTimeout(30_0000);<br>
+connection.setConnectTimeout(30_0000);<br>
+//输出请求体大小<br>
+System.out.println(connection.getContentLength());<br>
+return connection.getResponseCode() == HttpURLConnection.HTTP_OK;<br>
+}</p>
+<pre><code>```
+
+
+这样就可以愉快的请求文件，获取文件大小，但是不接受请求体啦，也就没有请求文件大小过大，OOM的风险啦。
+
+参考链接： https://stackoverflow.com/questions/19755016/
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Google SRE Notes]]></title>
+        <id>https://zdylzdyl.github.io/post/Google SRE Notes/</id>
+        <link href="https://zdylzdyl.github.io/post/Google SRE Notes/">
+        </link>
+        <updated>2022-07-04T15:11:26.000Z</updated>
+        <content type="html"><![CDATA[<p>谷歌运维解密</p>
+<blockquote>
+<p>研发：随时随地发布新功能，没有任何阻拦</p>
+<p>运维：一旦一个东西在生产环境中正常工作了，就不要再进行任何改动。</p>
+</blockquote>
+<p>UNIX系统内部细节和1~3层网络知识时Google最看重的两类额外技术能力。</p>
+<p>SRE职责：<strong>可用性改进、延迟优化、性能优化、效率优化、变更管理、监控，紧急事务处理以及容量规划与管理。</strong></p>
+<ol>
+<li>
+<p>确保长期关注研发工作（SRE团队的运维工作限制在50%以内，其他用于研发项目）</p>
+<p>每8~12个小时的轮值期间，最多处理2个紧急事件：正确处理故障、恢复服务、撰写事后报告。</p>
+</li>
+<li></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Spring Boot打包的jar运行的时候提示：没有主清单属性]]></title>
+        <id>https://zdylzdyl.github.io/post/springboot_package/</id>
+        <link href="https://zdylzdyl.github.io/post/springboot_package/">
+        </link>
+        <updated>2022-06-13T11:22:50.000Z</updated>
+        <content type="html"><![CDATA[<p>打包测试时手写spring boot忘了这个<br>
+pom添加一下即可</p>
+<pre><code class="language-xml">&lt;build&gt;
+    &lt;finalName&gt;patient-interaction&lt;/finalName&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        	&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+        	&lt;executions&gt;
+                    &lt;execution&gt;
+                        &lt;goals&gt;
+                            &lt;goal&gt;repackage&lt;/goal&gt;
+                        &lt;/goals&gt;
+                    &lt;/execution&gt;
+                &lt;/executions&gt;
+	&lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一个bug修一天-ES查询]]></title>
+        <id>https://zdylzdyl.github.io/post/es_bug/</id>
+        <link href="https://zdylzdyl.github.io/post/es_bug/">
+        </link>
+        <updated>2022-06-13T11:00:58.000Z</updated>
+        <content type="html"><![CDATA[<p>一个bug修一天，后续填坑size</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Caffeine本地缓存较简便的配置]]></title>
+        <id>https://zdylzdyl.github.io/post/caffeine_config/</id>
+        <link href="https://zdylzdyl.github.io/post/caffeine_config/">
+        </link>
+        <updated>2022-06-11T07:40:30.000Z</updated>
+        <content type="html"><![CDATA[<p>使用SpringBoot时，相对较好的本地缓存是Caffeine，然而Caffeine的缓存配置有些繁琐，例如默认Demo配置：<br>
+Maven依赖：</p>
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.github.ben-manes.caffeine&lt;/groupId&gt;
+            &lt;artifactId&gt;caffeine&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>yml配置</p>
+<pre><code class="language-yml"># 选择spring配置实现为caffeine
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      # 缓存配置 最大数量为500，存活时间为15秒
+      spec: maximumSize=500,expireAfterWrite=15s
+      # 缓存名称
+    cache-names: local,cache1,cache2
+</code></pre>
+<p>注解开启缓存，添加在@SpringBootApplication一起就行</p>
+<pre><code class="language-java">@EnableCaching
+@SpringBootApplication
+</code></pre>
+<p>使用缓存</p>
+<pre><code class="language-java">@Cacheable(value = &quot;cache1&quot;,key = &quot;'result'&quot;)
+public xx xx(){}
+</code></pre>
+<p>除了配置文件配置，还可以使用java代码进行配置：</p>
+<pre><code class="language-java">@Configuration
+public class CaffeineConfig extends CachingConfigurerSupport {
+ 
+    @Override
+    @Bean(name = &quot;cacheManager&quot;)
+    public CacheManager cacheManager() {
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager();
+ 
+        // 方案一(常用)：定制化缓存Cache
+        cacheManager.setCaffeine(Caffeine.newBuilder()
+                .expireAfterWrite(10, TimeUnit.MINUTES)
+                .initialCapacity(100)
+                .maximumSize(10_000));
+ 
+        return cacheManager;
+    }
+ 
+    /**
+     * 在@cacheable使用时，指定cacheManager=specCacheManager
+     *
+     * @return CacheManager
+     */
+    @Bean(name = &quot;specCacheManager&quot;)
+    public CacheManager cacheManagerWithSpec() {
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager();
+        // 不允许空值
+        cacheManager.setAllowNullValues(false);
+        // 传入一个CaffeineSpec定制缓存，它的好处是可以把配置方便写在配置文件里
+        cacheManager.setCaffeineSpec(CaffeineSpec.parse(&quot;initialCapacity=20,maximumSize=100,expireAfterWrite=10m&quot;));
+ 
+        // 指定使用该策略的CacheNames
+        cacheManager.setCacheNames(new ArrayList&lt;String&gt;(Arrays.asList(&quot;fetchById&quot;, &quot;fetchByName&quot;)));
+ 
+        return cacheManager;
+    }
+}
+</code></pre>
+<p>但是实际上，这里有一个很不好的问题，项目中实际缓存会需要不同的过期时间，而使用配置文件的方式，可以支持多个缓存的配置名，但是确是相同的过期刷新机制，如果实际需要多个过期时间的配置，那么不得不使用注解的方式写一大串差不多的缓存对象。<br>
+此时可以配合spring的ConfigurationProperties简化配置：</p>
+<pre><code class="language-yml"># 选择spring配置实现为caffeine
+spring:
+  cache:
+    type: caffeine
+    caffeine:
+      config:
+        second30: 30
+        minutes1: 60
+        minutes2: 120
+        minutes5: 300
+        minutes10: 600
+        hour1: 3600
+</code></pre>
+<p>配合ConfigurationProperties使用自定义对象解析配置：</p>
+<pre><code class="language-java">@Configuration
+@ConfigurationProperties(prefix = &quot;spring.cache.caffeine&quot;)
+public class CustomCaffeineConfig {
+    /**
+     * 配置文件读取的map
+     */
+    private Map&lt;String, Integer&gt; config;
+
+    public Map&lt;String, Integer&gt; getConfig() {
+        return config;
+    }
+
+    public void setConfig(Map&lt;String, Integer&gt; config) {
+        this.config = config;
+    }
+
+    @Bean
+    public CacheManager cacheManager() {
+        Ticker ticker = Ticker.systemTicker();
+        SimpleCacheManager simpleCacheManager = new SimpleCacheManager();
+        if (Objects.nonNull(config)) {
+            simpleCacheManager.setCaches(config.entrySet().stream()
+                    .map(entry -&gt; buildCache(entry.getKey(), entry.getValue(), ticker))
+                    .collect(Collectors.toList()));
+        }
+        return simpleCacheManager;
+    }
+
+    private CaffeineCache buildCache(String name, Integer timeout, Ticker ticker) {
+        Log log = LogFactory.getLog(CustomCaffeineConfig.class);
+        log.info(&quot;自定义初始化缓存对象,缓存配置名:[&quot; + name + &quot;],缓存过期时间:[&quot; + timeout + &quot;].&quot;);
+        final Caffeine&lt;Object, Object&gt; caffeineBuilder = Caffeine.newBuilder()
+                .expireAfterWrite(timeout, TimeUnit.SECONDS)
+                .maximumSize(10).ticker(ticker);
+        return new CaffeineCache(name, caffeineBuilder.build());
+    }
+}
+
+</code></pre>
+<p>即可正常使用，并且缓存配置可以方便的在配置文件增减，无需改动代码即可实现多缓存的添加。<br>
+当然对于时间方式的配置，可以配置成map的方式 expireAfterWrite、expireAfterAccess，一个时间刷新策略一个config的map，同一种刷新策略也能方便增减。<br>
+完整的demo： <a href="/files/caffeine_config_web.rar">caffeine_config_web.rar</a></p>
+<p>参考：</p>
+<ol>
+<li>
+<p><a href="https://cloud.tencent.com/developer/article/1844194">SpringBoot缓存注解@Cacheable之自定义key策略及缓存失效时间指定</a></p>
+</li>
+<li>
+<p><a href="https://cloud.tencent.com/developer/article/1446606">Spring Boot缓存配置不同到期时间</a></p>
+</li>
+<li>
+<p><a href="http://dolszewski.com/spring/multiple-ttl-caches-in-spring-boot/">Multiple TTL caches in Spring Boot</a></p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[常用软件记录]]></title>
+        <id>https://zdylzdyl.github.io/post/common_programs/</id>
+        <link href="https://zdylzdyl.github.io/post/common_programs/">
+        </link>
+        <updated>2022-06-11T07:11:31.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>一些常用软件记录，免得迷路</p>
+</blockquote>
+<ol>
+<li>本博客的编辑软件，使用非常方便<br>
+https://gridea.dev/#started</li>
+<li>JDK:https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+<ul>
+<li>windows平台x86版本jdk-xxx-windows-i586</li>
+<li>windows平台x64版本</li>
+<li>linux平台x64版本<br>
+PS:影子系统下下载安装后，仅仅使用安装完成后拷贝的文件，不注册任何注册表</li>
+</ul>
+</li>
+<li>Tomcat:https://tomcat.apache.org/download-80.cgi</li>
+<li>Chrome:https://sourceforge.net/projects/portableapps/files/Google%20Chrome%20Portable/</li>
+<li>Everything:https://www.voidtools.com/zh-cn/downloads/</li>
+<li>NotePad++:https://notepad-plus-plus.org/downloads/</li>
+<li>Typora(最新版本收费):https://typora.io/#download</li>
+<li>IDEA:https://www.jetbrains.com/idea/download/</li>
+<li>IDEA试用插件(2021.1.3及2021.2.3后已失效，以前版本可用):<s>https://zhile.io/2020/11/18/jetbrains-eval-reset-da33a93d.html</s><br>
+<s>https://plugins.zhile.io/files/ide-eval-resetter-2.1.13-da33a93d.zip</s><br>
+或者<s>IDEA搜索插件IDE Eval Reset</s></li>
+<li>PotPlayer:https://potplayer.org/</li>
+<li>Git:https://git-scm.com/downloads</li>
+<li>GitExtensionshttps://github.com/gitextensions/gitextensions/releases</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hutool工具箱升级排错]]></title>
+        <id>https://zdylzdyl.github.io/post/hutool_error/</id>
+        <link href="https://zdylzdyl.github.io/post/hutool_error/">
+        </link>
+        <updated>2022-06-11T06:55:14.000Z</updated>
+        <content type="html"><![CDATA[<p>原本项目使用的是5.5.7版本的hutool工具箱，直接引用的all版本的组件，升级5.8.2版本后却发现中文转发请求的访问出现问题，代码检查发现是URI转码未使用UTF-8编码，检查代码发现原本5.5.7是默认使用UTF-8编码，而5.7以后的版本，添加了一个判断，默认值是false，只有true的时候才会对中文使用UTF-8转码。<br>
+记录一下修改的配置：</p>
+<pre><code class="language-java">@Configuration
+public class HutoolConfig implements InitializingBean {
+
+    /**
+     * 初始化时配置 其实具体配置去HttpGlobalConfig查看即可
+     */
+    @Override
+    public void afterPropertiesSet() {
+        HttpGlobalConfig.setTimeout(60_000);
+        //原本默认值是false，修改成true，向旧版本兼容，毕竟改存量代码也没必要
+        HttpGlobalConfig.setDecodeUrl(true);
+    }
+}
+</code></pre>
+<p>组件maven依赖：</p>
+<pre><code class="language-xml">        &lt;dependency&gt;
+            &lt;groupId&gt;cn.hutool&lt;/groupId&gt;
+            &lt;artifactId&gt;hutool-all&lt;/artifactId&gt;
+            &lt;version&gt;5.8.2&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[游戏杂谈]]></title>
+        <id>https://zdylzdyl.github.io/post/games/</id>
+        <link href="https://zdylzdyl.github.io/post/games/">
+        </link>
+        <updated>2022-01-17T13:05:11.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="游戏杂谈">游戏杂谈</h1>
+<blockquote>
+<p>玩了很多很多游戏，有的浅尝辄止，有的不可自拔，一直想写游戏，但是又不知道怎么写，反正就聊一聊吧。</p>
+<p>预计每天写一点</p>
+</blockquote>
+<p>[TOC]<br>
+<ul class="markdownIt-TOC">
+<li><a href="#%E6%B8%B8%E6%88%8F%E6%9D%82%E8%B0%88">游戏杂谈</a>
+<ul>
+<li><a href="#%E7%94%B5%E8%84%91%E6%B8%B8%E6%88%8F">电脑游戏</a>
+<ul>
+<li><a href="#1%E5%8D%95%E6%9C%BA%E6%B8%B8%E6%88%8F">1.单机游戏</a>
+<ul>
+<li><a href="#1%E7%BC%BA%E6%B0%A7oxygen-not-included">1.缺氧(Oxygen Not Included)</a></li>
+<li><a href="#2%E5%B0%A4%E9%87%8C%E7%9A%84%E5%A4%8D%E4%BB%87">2.尤里的复仇</a>
+<ul>
+<li><a href="#21-%E5%8E%9F%E7%89%88">2.1 原版</a></li>
+<li><a href="#22-aymod">2.2 AYMOD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F">2.网络游戏</a>
+<ul>
+<li><a href="#1%E5%9D%A6%E5%85%8B%E4%B8%96%E7%95%8C">1.坦克世界</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%89%8B%E6%9C%BA%E6%B8%B8%E6%88%8F">手机游戏</a>
+<ul>
+<li><a href="#1%E5%8D%95%E6%9C%BA%E6%B8%B8%E6%88%8F-2">1.单机游戏</a></li>
+<li><a href="#2%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F-2">2.网络游戏</a>
+<ul>
+<li><a href="#1%E7%81%B5%E5%BC%82%E9%98%B4%E9%98%B3%E5%BD%95">1.灵异阴阳录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="电脑游戏">电脑游戏</h2>
+<p>只是随意聊聊，顺序以后再说</p>
+<h3 id="1单机游戏">1.单机游戏</h3>
+<h4 id="1缺氧oxygen-not-included">1.缺氧(Oxygen Not Included)</h4>
+<figure data-type="image" tabindex="1"><img src="https://s3.bmp.ovh/imgs/2022/01/f64f6568e4b09180.png" alt="缺氧" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://s3.bmp.ovh/imgs/2022/01/45697b4ad501a2b1.png" alt="缺氧室内" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://s3.bmp.ovh/imgs/2022/01/1b4922f05789a3e8.png" alt="概览" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://s3.bmp.ovh/imgs/2022/01/2739b75041d5e895.png" alt="其他" loading="lazy"></figure>
+<p>​	说实话，生存类游戏我接触了很多，这种<em>Rouglelike</em>游戏也的确很让人停不下来，不过我现在的缺氧还是不完善。Klei一贯喜欢由玩家自己认知寻找答案，而很少出教程，在饥荒的时候就是这样，在饥荒里面也的确是很有意思，但是缺氧这个游戏的背景来说，这个太多元素太复杂了，等待小人建造也很长，有时候完全不知道要干什么，就默默升级科技树，探寻还算有意思，游戏元素也很多，甚至自动化建造，复杂度可以比肩像素工厂(<em>Mindustry</em>)，但是仍然让我感觉是打造世界(<em>Craft The World</em>)高配版的感觉，甚至说是缺少指引版。</p>
+<blockquote>
+<p>3DM 指路：https://bbs.3dmgame.com/forum-1879-1.html</p>
+</blockquote>
+<p>PS：游戏下载下来很小，安装完毕也只有2GB左右，但是比较吃内存，大概会吃5~6GB内存，不吃配置，2D画面总来来说还是不错的。</p>
+<h4 id="2尤里的复仇">2.尤里的复仇</h4>
+<h5 id="21-原版">2.1 原版</h5>
+<h5 id="22-aymod">2.2 AYMOD</h5>
+<p>2.2 心灵终结</p>
+<h3 id="2网络游戏">2.网络游戏</h3>
+<h4 id="1坦克世界">1.坦克世界</h4>
+<h2 id="手机游戏">手机游戏</h2>
+<h3 id="1单机游戏-2">1.单机游戏</h3>
+<h3 id="2网络游戏-2">2.网络游戏</h3>
+<h4 id="1灵异阴阳录">1.灵异阴阳录</h4>
+<ol start="2">
+<li></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[微信YYDS！]]></title>
+        <id>https://zdylzdyl.github.io/post/repair_wechat/</id>
+        <link href="https://zdylzdyl.github.io/post/repair_wechat/">
+        </link>
+        <updated>2021-12-08T15:16:33.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>微信作为一个耗电超过手机屏幕，单APP耗电占据超过60%的APP，是永远的神！</p>
+</blockquote>
+<p>微信一直有国际版和国内版的区别，但是差别非常大，国际版内存占用相对不多，也没有肆意的广告，一直想迁移到谷歌版本，因为续航和广告。为了手机续航耗电和广告的问题，我想“优化”微信。<br>
+解决微信的耗电、续航，有两个选择：①谷歌版本微信 ②国内低版本微信<br>
+缺点：<br>
+①谷歌版本微信：没有文档插件，不能直接预览文档，如果手机版本查看PDF、world等文件，将会非常不方便。高版本谷歌版并不能避免繁多的广告。<br>
+②国内低版本微信：随着版本降低，会有不能小程序不能正常使用。7.0.9版本以下开始无广告。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[远离小米，远离MIUI]]></title>
+        <id>https://zdylzdyl.github.io/post/Stay_away_from_Xiaomi/</id>
+        <link href="https://zdylzdyl.github.io/post/Stay_away_from_Xiaomi/">
+        </link>
+        <updated>2021-12-08T14:48:14.000Z</updated>
+        <content type="html"><![CDATA[<p>Stay away from Xiaomi,Stay away from MIUI<br>
+之前双卡手机在小区信号不好，觉得是手机问题，于是多方考虑9月入手了一台红米9.<br>
+主要是考虑双卡（仅需单卡4G），副卡吃流量，主卡收短信接电话。<br>
+用了2个月，收获是知道了20多个小米广告的开关位置，这还是配合李跳跳自动跳过广告，总之预装了一大堆不认识也不知道是干嘛的软件，害怕卸载后卡米，就酌情冻结了。<br>
+考虑到小米的尿性，还有网传国际版干净，解锁等了7天，终于可以解锁手机，<br>
+解锁教程：https://www.bilibili.com/read/cv3305336/ 但是这个教程地址ROM失效了，ROM可以看ROM地址：https://roms.miuier.com/devices/lancelot，下载ROM。<br>
+ROM地址2:https://miuiver.com/<br>
+刷机工具：http://www.miui.com/shuaji-393.html<br>
+更新前系统版本（出厂版本）<br>
+<img src="https://zdylzdyl.github.io/post-images/1638975879148.PNG" alt="" loading="lazy"><br>
+开始刷机：<br>
+<img src="https://zdylzdyl.github.io/post-images/1638975923816.PNG" alt="" loading="lazy"><br>
+刷机完成：<br>
+<img src="https://zdylzdyl.github.io/post-images/1638975931332.PNG" alt="" loading="lazy"><br>
+国际版一日游：<br>
+国际版的确是好些，没有多余的广告（或许是网络加载不出来）。但是有个及其恶劣的情况：收不到短信，短信无法发送，但是通话正常，我的打卡APP无法识别手机卡，直接GG。于是转刷国内版本MIUI 11。</p>
+<p>懒得折腾了，国际版本特地“优化”屏蔽国内短信还行，做得很棒，下次不会再买了。</p>
+]]></content>
+    </entry>
+</feed>

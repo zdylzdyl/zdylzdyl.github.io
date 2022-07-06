@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Linux系统的一些图标记录 | zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+        <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 ">
+                                <article class="mdui-p-a-2 post animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="post-title  mdui-m-b-1">Linux系统的一些图标记录</div>
+                                    <div class="mdui-typo-body-2 mdui-m-b-2" datetime="2020-04-27 14:46:42">2020-04-27 / 2 min read</div>
+                                    <div class="mdui-m-b-2 mdui-typo post-neirong"><p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications<br>
+对于一些自带的软件就不需要自己编辑了。<br>
+备份一些软件的快捷方式：</p>
+<pre><code class="language-shell">
+[Desktop Entry]
+Encoding=UTF-8
+Name=LXTerminal
+Name[zh_CN]=LX 终端
+GenericName=Terminal
+GenericName[zh_CN]=终端
+Comment=Use the command line
+Comment[zh_CN]=使用命令行
+Comment[zh_TW]=使用命令列
+TryExec=lxterminal
+Exec=lxterminal
+Icon=lxterminal
+Type=Application
+Categories=GTK;System;TerminalEmulator;
+Keywords=console;command line;execute;
+
+[Desktop Entry]
+Keywords=editor
+Name=Leafpad
+Comment=Simple text editor
+Comment[zh_CN]=简易文字编辑器
+Exec=leafpad %f
+Icon=leafpad
+Terminal=false
+Type=Application
+MimeType=text/plain
+Categories=GTK;Utility;TextEditor;
+
+[Desktop Entry]
+Name=gridea
+GenericName=gridea
+Exec=gridea
+Terminal=false
+Type=Application
+Icon=/opt/Gridea/resources/app/img/logo.118b2eb7.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+Name[zh_CN]=gridea
+Path=/home/buxi/GrideaSpace
+
+[Desktop Entry]
+Name=Idea
+GenericName=Idea
+Exec=/opt/idea/bin/idea.sh
+Terminal=false
+Type=Application
+Icon=/opt/idea/bin/idea.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+
+[Desktop Entry]
+Name=Typora
+GenericName=Typora
+Exec=/opt/typora/Typora
+Terminal=false
+Type=Application
+Icon=/opt/typora/resources/app/asserts/icon/icon_256x256@2x.png
+Categories=Office;WordProcessor;GNOME;GTK;X-Red-Hat-Base;
+Encoding=UTF-8
+
+[Desktop Entry]
+Name=Google Chrome
+GenericName=Chrome
+Exec=/opt/google/chrome/chrome
+Terminal=false
+Type=Application
+Icon=/opt/google/chrome/product_logo_256.png
+Categories=GNOME;GTK;Network;WebBrowser;
+Encoding=UTF-8
+Name[zh_CN]=Chrome
+
+
+
+
+
+
+</code></pre>
+</div>
+                                    <div class="mdui-divider mdui-m-b-2"></div>
+                                    <div class="mdui-row-xs-2 post-fenye">
+                                       
+                                        <div class="mdui-col"> <div class="mdui-text-left"><a href="https://zdylzdyl.github.io/post/ocO-U-Lk9/">Ubuntu16的快捷方式记录</a></div></div>
+                                        
+
+                                        
+                                        <div class="mdui-col"><div class="mdui-text-right "><a href="https://zdylzdyl.github.io/post/git-key-push/">Git推送使用SSH秘钥还有的安全问题</a></div> </div>
+                                       
+                                      </div>
+                                   
+                                    <div class="mdui-divider mdui-m-t-2 mdui-m-b-2"></div>
+                                    
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '780053fcc0925a39dbdd',
+    clientSecret: '717a0916ce974d3494963ed560de485b07b0cfb9',
+    repo: 'zdylzdyl.github.io',
+    owner: 'zdylzdyl',
+    admin: ['zdylzdyl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+          
+        
+                                     <script src="https://zdylzdyl.github.io/media/scripts/Valine.min.js"></script>
+ <div class="comment"></div>
+
+<script>
+      new Valine({
+            el: '.comment',
+
+
+
+            path: window.location.pathname,
+            pageSize: 30,
+            avatar:'mm', 
+       })
+    </script> 
+<script>
+    if(window.location.hash){
+        var checkExist = setInterval(function() {
+           if ($(window.location.hash).length) {
+              $('html, body').animate({scrollTop: $(window.location.hash).offset().top-90}, 1000);
+              clearInterval(checkExist);
+           }
+        }, 100);
+    }
+</script>
+                                </article>
+
+                                    
+                        </div>
+                      </div>
+    
+                
+
+              </div>
+        <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="1150" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+<!-- 加上鼠标点击特效咯-->
+<script type="text/javascript">
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("总想把世界上最好的都给你，却发现世界最好的就是你。", "以你之名，冠我之姓，一生一世，不离不弃。", "山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。", "睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。", "我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。", "遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。", "最温柔的月光，也敌不过，你转瞬的回眸。" ,"不是除了你，我就没人要了。只是除了你，我谁都不想要。", "每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。", "梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。", "你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。", "我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。","任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。","认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！","我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。","我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。","最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。");
+            var $i = $("<span />").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                "z-index": 9999999999999 ,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651",
+                "-webkit-user-select":"none",
+                "-moz-user-select":"none",
+                "-ms-user-select":"none",
+                "user-select":"none",
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,  //点击后文字上升高度
+                    "opacity": 0    //透明度
+                },
+                2000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+</script>
+</footer>
+    </body>
+</html>

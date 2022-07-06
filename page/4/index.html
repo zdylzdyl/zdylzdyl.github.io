@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta name="viewport"
+          content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>zdylzdyl</title>
+    <link rel="stylesheet" href="https://zdylzdyl.github.io/styles/main.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1306644_jwtuc2zzbrd.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+    <!-- 引用看板娘交互所需的样式表 -->
+	<link rel="stylesheet" type='text/css' href="/media/live2d/live2d.css" />
+
+    <!-- 指定鼠标样式 -->
+    <style>
+        * {
+            cursor: url(/media/cur/arrow.cur), auto !important;
+        }
+    </style>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+</head>
+    <body>
+    <header class="header mdui-m-b-5">
+    <div class="container  ">
+        <div class="index-title animated fadeInDown mdui-text-center mdui-text-color-white mdui-m-b-2"
+             style="animation-delay: 0.2s"><a href="https://zdylzdyl.github.io">zdylzdyl</a></div>
+        <div class="mdui-text-color-white animated fadeInDown mdui-text-center  mdui-m-b-3"
+             style="animation-delay: 0.4s">温故而知新</div>
+
+        <nav id="nav" class="mdui-text-center animated fadeInDown" style="animation-delay: 0.6s">
+            
+                <li><a href="/">首页</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/archives">归档</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/tags">标签</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+                <li><a href="/post/about">关于</a>
+                    <span class="nav-style top"></span>
+                    <span class="nav-style bottom"></span>
+                    <span class="nav-style left"></span>
+                    <span class="nav-style right"></span>
+                </li>
+            
+        </nav>
+    </div>
+</header>
+        <div class="mdui-container ">
+                <div class="mdui-row">
+                        <div class="mdui-col-md-8 mdui-col-offset-md-2 mdui-m-t-1">
+                                                         
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-27 14:46:42">2020-04-27</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Linux系统的一些图标记录</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>ubuntu16.04系统默认很多的图标快捷方式都是在目录/usr/share/applications
+对于一些自带的软件就不需要自己编辑了。
+备份一些软件的快捷方式：
+
+[Desktop Entry]
+Encoding=UTF-8
+Na...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/ubuntu-Desktop/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-27 11:15:06">2020-04-27</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/git-key-push/">Git推送使用SSH秘钥还有的安全问题</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>git推送的问题
+如下所示：
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FI...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/git-key-push/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-26 16:26:49">2020-04-26</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/S21q2yrAO/">原来JDK线程池令人困惑是因为这个！</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>使用JAVA的JDK有一个令我困惑不解的地方，比如新建一个线程池：
+new ThreadPoolExecutor(16,80,60,TimeUnit.SECONDS,new LinkedBlockingQueue&lt;&gt;(1000)...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/S21q2yrAO/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-25 10:53:43">2020-04-25</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/raiden-mei/">图床？使用本地发布地址</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>一直使用typora，使用外链图传，都忘了，github自己什么都有。
+都忘了其实是自带图床的，用github自己的就好了，用不着外链了。
+发点牙医的图。图片名就是Pivix的图片编号。总觉得我去Danbooru找图片总是哪里有问题。
+
+
+...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/raiden-mei/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-24 17:01:49">2020-04-24</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/blog-live2d/">给Gridea博客增加Live2D老婆</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>参考地址：https://docs.paul.ren/pio/
+模型资源：https://mx.paul.ren/page/3/
+由于是独立使用
+
+
+引用 CSS 资源
+在你网站的 head 标签内引用本项目的 CSS 样式表文件：
+&lt...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/blog-live2d/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-24 11:50:22">2020-04-24</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/java-shell/">Java操作windows的shell</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>使用Jgit操作git进行提交仓库，每次都会重写文件，造成大量资源浪费。本次修改了git提交的工具为脚本提交。
+使用java操作windows的bat脚本
+String bat = &quot;E:\\github-cloud\\BatAn...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/java-shell/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-23 10:42:11">2020-04-23</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/SpringBoot2Jgit/">SpringBoot+Jgit实现目录对拷github备份</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+事发原因：git仓库很臃肿了，以前提交了不少大文件，导致历史记录文件很大，也有不少敏感信息，干脆直接新建一个新仓库了。
+
+​    新仓库直接上传文件的时候崩溃了。我使用git上传都1.xGB了，然后崩溃了说每次提交只能有100MB，我不...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/SpringBoot2Jgit/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-17 10:54:04">2020-04-17</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/spring_boot_with_vue/">Spring Boot+Vue全栈开发实战 学习笔记</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>1.mvn命令创建项目
+mvn  archetype: generate  -Dgroupid=org.sang  - Dartifactid=chapterOl 
+  - DarchetypeArtifactid  =maven- arc...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/spring_boot_with_vue/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-04-17 10:08:56">2020-04-17</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/Mysql50test/">MySQL 练习</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>-- 注意 本文内容皆为SQL脚本 可以直接导入MySQL使用
+-- 本文使用`practice`库，会删除并重新自建库，注意数据备份！！！！
+-- 原文链接: https://zhuanlan.zhihu.com/p/38354000 作...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/Mysql50test/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 18:05:27">2020-02-25</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/sms/">免费短信接码网站</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>来源：https://hao.su/2495/
+免费短信接码网站
+现如今不管注册、咨询、查询、等等... 都需要使用手机短信验证码认证，
+以下是收集的一些免费接码平台。配合临时邮箱使用更佳。
+需要注意的是这些都是所有人可以使用的，不要进行敏...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/sms/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 14:19:29">2020-02-25</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/JavaInterview/">Java相关面试题总结+答案</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>
+
+
+Java相关面试题总结
+Java相关面试题总结+答案（一）
+
+【Java基础】
+
+
+Java相关面试题总结+答案（二）
+
+【容器】
+
+
+Java相关面试题总结+答案（三）
+
+【多线程】
+
+
+Java相关面试题总结+答案（四）
+
+【反射...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/JavaInterview/">Read More</a></div>
+                                </article>
+                                
+                               <article class="mdui-p-a-5 index-list mdui-m-b-3 animated fadeIn" style="animation-delay: 0.8s;animation-duration: 2s">
+                                    <div class="mdui-typo-body-2 mdui-m-b-1" datetime="2020-02-25 09:57:33">2020-02-25</div>
+                                    <div class="mdui-typo-headline mdui-m-b-3 index-list-title index-guo"><a href="https://zdylzdyl.github.io/post/tasker/">手把手教tasker</a></div>
+                                    <div class="mdui-typo-subheading mdui-m-b-2 index-neirong"><p>Intent 获取
+创建桌面快捷方式
+从数据库中获取桌面快捷方式 Intent
+No Root 的获取方法
+1 将启动器的数据库（DB）文件导出
+如何导出 Nova 启动器的 DB 文件
+长按桌面空白处，点击设置进入 Nova 启动器的设置...</p></div>
+                                    <div class="index-list-rm index-guo"><a href="https://zdylzdyl.github.io/post/tasker/">Read More</a></div>
+                                </article>
+                                
+
+                                                            <nav class="mdui-m-t-5">
+                                
+                                <div class="index-yema mdui-float-left"><a href="https://zdylzdyl.github.io/page/3/">上一页</a></div>
+                                 
+                                
+                                <div class="index-yema mdui-float-right"><a href="https://zdylzdyl.github.io/page/5/">下一页</a></div>
+                                 
+                                </nav>     
+                        </div>
+                      </div>
+              </div>
+    <footer class="footer mdui-m-t-5 mdui-text-center">
+    <nav class="social-links">
+        <ul>
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </ul>
+    </nav>
+    <div class="copyright">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br/> Theme <a href="https://github.com/shanbufun/gridea-theme-song"
+                                                        target="_blank" title="宋">Song</a> by <a
+                    href="https://shanbu.fun/" target="_blank" title="山卜方">shanbufun</a></p>
+    </div>
+    <!-- 看板娘-->
+    <div class="waifu">
+    <!--<div class="waifu-tips"></div>-->
+    <canvas id="live2d" width="300" height="1150" class="live2d"></canvas>
+</div>
+
+<script async src="/media/live2d/waifu-tips.js"></script>
+<script src="/media/live2d/live2d.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "/media/live2d/model.json");
+</script>
+<!-- 加上鼠标点击特效咯-->
+<script type="text/javascript">
+
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("总想把世界上最好的都给你，却发现世界最好的就是你。", "以你之名，冠我之姓，一生一世，不离不弃。", "山川、草原、湖泊，不及你眼中深潭动人，世间万般美好，不及你对我轻轻一笑。", "睡也是你，醒也是你，无孔不入也是你，吃饭想你，走路想你，望穿秋水还是你。", "我喜欢你的人，我更喜欢你的心，我钟爱你的每一个角落，我会永远把你珍惜，不让你受半点委屈。", "遇到你，是我一生的缘分；牵着你，是我一生的快乐；爱上你，是我一生的幸运。今生有你相伴，是我一生的幸福。", "最温柔的月光，也敌不过，你转瞬的回眸。" ,"不是除了你，我就没人要了。只是除了你，我谁都不想要。", "每晚睡前听你说晚安，是属于我的，最简单而持久的幸福。", "梦里有你，香甜无比；心里有你，充实无比；身边有你，幸福无比。", "你看，这么多人，这么大的世界，我遇到了你，你也遇到了我，真好。", "我愿化作一条黎明的小河，为你装点出那迷人的春色；我愿化做你脚下的一丛小草，献上无限的温情。","任何时候、任何情况，只要你需要我，我立即赶来，尽我全力为你做事。","认识你的第一天，我就被你的眼神所征服，那时候我已知道，我已经是你一生的俘虏！","我愿意一生守在你的身边，冬天做你的棉被，夏天做你的电风扇。","我想将对你的感情，化作暖暖的阳光，期待那洒落的光明能温暖你的心房。","最难忘的是你的微笑，当它绽开在你的脸上时，我仿佛感到拂过一阵春风，暖融融的，把我的心都融化了。");
+            var $i = $("<span />").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({　　　　　　//文字样式--------------------------
+                "z-index": 9999999999999 ,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651",
+                "-webkit-user-select":"none",
+                "-moz-user-select":"none",
+                "-ms-user-select":"none",
+                "user-select":"none",
+            });
+            $("body").append($i);
+            $i.animate({
+                    "top": y - 180,  //点击后文字上升高度
+                    "opacity": 0    //透明度
+                },
+                2000,
+                function() {
+                    $i.remove();//文字消失时间
+                });
+        });
+    });
+</script>
+</footer>
+    </body>
+</html>
