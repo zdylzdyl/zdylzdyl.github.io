@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zdylzdyl.github.io</id>
+    <title>zdylzdyl</title>
+    <updated>2024-10-29T12:11:34.445Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zdylzdyl.github.io"/>
+    <link rel="self" href="https://zdylzdyl.github.io/atom.xml"/>
+    <subtitle>Zzz...</subtitle>
+    <logo>https://zdylzdyl.github.io/images/avatar.png</logo>
+    <icon>https://zdylzdyl.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, zdylzdyl</rights>
+    <entry>
+        <title type="html"><![CDATA[写Bug]]></title>
+        <id>https://zdylzdyl.github.io/post/nake_bugs/</id>
+        <link href="https://zdylzdyl.github.io/post/nake_bugs/">
+        </link>
+        <updated>2022-07-06T09:08:14.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#1-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E9%93%BE%E6%8E%A5%E6%A3%80%E6%9F%A5">1、下载文件链接检查</a></li>
+</ul>
+</p>
+<h1 id="1-下载文件链接检查">1、下载文件链接检查</h1>
+<p>遇到一个问题，返回的下载链接可能无法下载文件（GET请求链接），而我返回给前端的链接是不走我服务的链接，如果文件存在则可以下载，如果文件不存在对方服务器上，也能下载，但是下载的文件是0KB。</p>
+<p>这就比较烦恼了，我想后端做个检查，OK的话就返回给前端，但是有个问题，如果文件大小过大，使用服务器去下载文件，把文件下载到内存，就浪费内存甚至还有OOM的风险，那么有什么办法不下载文件知道文件的大小呢？去对方服务上加个检查文件的接口也行(笑😀)。</p>
+<p>这时候只好用Head请求了，先准备环境，在测试服务器上创建个1GB的文件和正常3MB的文件：</p>
+<p>比如创建一个1GB的文件 <code>failocate -l 1GB test.tar</code></p>
+<p>测试请求代码如下：</p>
+<pre><code>private static boolean checkFile(String url) throws IOException {
+        //本次测试链接不需要重定向
+        HttpURLConnection.setFollowRedirects(false);
+        //打开链接
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        //设置发送HEAD请求 实际不会返回请求体
+        connection.setRequestMethod(&quot;HEAD&quot;);
+        //设置超时事件
+        connection.setReadTimeout(30_0000);
+        connection.setConnectTimeout(30_0000);
+        //输出请求体大小
+        System.out.println(connection.getContentLength());
+        return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
+    }
+</code></pre>
+<p>这样就可以愉快的请求文件，获取文件大小，但是不接受请求体啦，也就没有请求文件大小过大，OOM的风险啦。<br>
+PS: 组内网关不支持HEAD请求，最后导致生产事故啦<br>
+参考链接： https://stackoverflow.com/questions/19755016/</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[函数式编程笔记]]></title>
+        <id>https://zdylzdyl.github.io/post/java_function/</id>
+        <link href="https://zdylzdyl.github.io/post/java_function/">
+        </link>
+        <updated>2021-01-13T08:42:10.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="函数式编程笔记">函数式编程笔记</h1>
+<p>[TOC]<br>
+<ul class="markdownIt-TOC">
+<li><a href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0">函数式编程笔记</a>
+<ul>
+<li><a href="#%E4%B8%80-%E8%AE%A4%E8%AF%86">一、认识</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="一-认识">一、认识</h2>
+<p>开始提问：</p>
+<blockquote>
+<p>什么是函数？</p>
+</blockquote>
+<p>是被称为函数定义域（function domain）的源集（source set ）和被称为函数陪域（也nction codomain ）的目标集（target set ）之间的关系。</p>
+<p>函数:一个数集映射成另一个值数集的方法</p>
+<blockquote>
+<p>什么是函数式编程？</p>
+</blockquote>
+<p>需要接收参数返回确定值，不修改参数。</p>
+<ul>
+<li>它是独立的。它并不依赖于任何外部的设备来工作。 你可以在任何上下文中使用它一一你需要做的一切就是提供一个有效的参数。</li>
+<li>它是确定的，意味着相同的参数总是返回相同的结果。在引用透明的代码中，不会有意外发生。它可能返回一个错误的结果，可至少结果对于相同的参数而言是绝对不会变化的。</li>
+<li>它绝对不会抛出任何种类的 Exceptio口。它可能抛出错误，例如OOME( out-of-memory error，即内存耗尽）或是 SOE(stack-overflow error， 即堆栈溢出），但是这些错误表示代码有 bug，并不是作为程序员的你或是你 API的用户应该处理的（除了让应用程序崩溃井最终修复 bug ）。任何时候它都不会导致其他代码意外失败。例如，它不会改变参数或是外界的数据， 从而导致调用者发现自己的数据过期或者并发访问异常。</li>
+<li>它不会由于外部设备（数据库、文件系统或网络）不可用、太慢或坏掉而崩溃。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Idea帮助指南]]></title>
+        <id>https://zdylzdyl.github.io/post/idea_config/</id>
+        <link href="https://zdylzdyl.github.io/post/idea_config/">
+        </link>
+        <updated>2020-02-24T11:28:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="java-tool">Java Tool</h1>
+<p>Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial</p>
+<p>[Toc]</p>
+<h2 id="1-intellij-idea">1. <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a></h2>
+<figure data-type="image" tabindex="1"><img src="/images/idea_logo.png" alt="img 图片来源 /lib/product.jar/idea_logo.png" loading="lazy"></figure>
+<h3 id="1启动优化">1.启动优化</h3>
+<p>64位机器修改idea64.exe.vmoptions，32位机器修改类似vmoptions文件即可，内存4GB机器无须修改，如下为16GB机器内存方案</p>
+<pre><code class="language-vmoptions"># 程序启动时占用内存大小。jvm初始化大小为1G
+-Xms1g
+# 程序运行期间最大可占用的内存大小。jvm最大大小为2G
+-Xmx2054m
+# 用于设置Code Cache大小，JIT编译的代码都放在Code Cache中，若Code Cache空间不足则JIT无法继续编译，并且会去优化，比如编译执行改为解释执行，由此，性能会降
+-XX:ReservedCodeCacheSize=512m
+# 添加作者信息
+-Duser.name=Donald Trump
+</code></pre>
+<h3 id="2新项目默认设置">2.新项目默认设置</h3>
+<p>idea的Setting是关于当前项目的设置，新项目（所有项目的设置）及新项目结构设置是不受Setting设置影响的，为了避免每次新建项目重新进行相同的项目设置，需要调整好idea的默认设置。</p>
+<h4 id="21-structure-for-new-projects">2.1 Structure For New Projects</h4>
+<p>操作：File-&gt;Other Settings-&gt;Structure For New Projects</p>
+<p>新建项目的默认结构设置，选择好默认JDK为JDK1.8，选择项目语言级别为8.其他无须设置。</p>
+<h4 id="22-settings-for-new-projects">2.2 Settings For New Projects</h4>
+<p>操作：File-&gt;Other Settings-&gt;Settings For New Projects</p>
+<p>新建项目的默认设置</p>
+<h5 id="221-常用编码设置">2.2.1 常用编码设置</h5>
+<p>Editor-&gt;File Encodings-&gt;全部选择UTF-8即可</p>
+<figure data-type="image" tabindex="2"><img src="https://ae01.alicdn.com/kf/H7c69286536c54c80926022cabebf0555O.png" alt="img" loading="lazy"></figure>
+<p>PS:对于 Properties 文件，勾选重要属性 Transparent native-to-ascii conversion 主要用于转换 ascii，一般都要勾选，不然 Properties 文件中的注释显示的都不会是中文。</p>
+<p>默认情况下 IntelliJ IDEA 使用的编译器是 <code>javac</code>，而此编译只能编译 <code>无BOM</code> 的文件</p>
+<h5 id="222-编码模板">2.2.2 编码模板</h5>
+<p>Editor-&gt;File and Code Templates</p>
+<p>选择Files标签下，分别修改Class/Interface/Enum/AnnotationType.添加默认作者和文件时间</p>
+<p>class:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public class ${NAME} {
+}
+</code></pre>
+<p>Interface:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public interface ${NAME} {
+}
+</code></pre>
+<p>Enum:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public enum ${NAME} {
+}
+</code></pre>
+<p>AnnotationType:</p>
+<pre><code class="language-java">#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+* @author : ${USER}
+* @date : ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}
+**/
+public @interface ${NAME} {
+}
+</code></pre>
+<h5 id="223-postfix-completion-的使用">2.2.3 Postfix Completion 的使用</h5>
+<p>File-&gt;Setting-&gt;Editor-&gt;General-&gt;Postfix Completion-&gt;enable post completion(默认开启的)</p>
+<p>具体的使用方法见模板,输入相应代码按Tab键</p>
+<h5 id="224-设置maven仓库">2.2.4 设置Maven仓库</h5>
+<p>Build,Execution,Deployment-&gt;Build Tools-&gt;Maven</p>
+<ul>
+<li>Maven home directory:本地Maven程序目录</li>
+<li>User setting file:本地Maven程序目录使用的配置文件地址</li>
+<li>Local repository:本地Maven仓库</li>
+</ul>
+<p>设置好Maven仓库，否则有关maven的项目，总会在用户目录创建多余的.m2文件夹并且开始直接自己同步。</p>
+<h5 id="225-自动导包与自动移除依赖">2.2.5 自动导包与自动移除依赖</h5>
+<p>Other Settings-&gt;Auto Import-&gt; Add unambiguous imports on the fly ✔勾选</p>
+<p>Other Settings-&gt;Auto Import-&gt; Optimize imports on the fly(for current project) ✔勾选</p>
+<h3 id="3项目设置">3.项目设置</h3>
+<h4 id="31-方法横线分割">3.1 方法横线分割</h4>
+<p>File-&gt;Settings-&gt;Editor-&gt;General-&gt;Appearance-&gt;Show method separators ✔勾选</p>
+<h4 id="32-字体与大小">3.2 字体与大小</h4>
+<p>File-&gt;Settings-&gt;Editor-&gt;Font-&gt;16，可以同时设置字体</p>
+<p>编程字体推荐: JetBrainsMono .ttf</p>
+<p>下载地址:http://pan.baidu.com/s/1kVoF32R</p>
+<ul>
+<li>Microsoft YaHei Consolas</li>
+<li>Microsoft YaHei Mono</li>
+</ul>
+<h4 id="33-项目默认打开地址">3.3 项目默认打开地址</h4>
+<p>File-&gt;Settings-&gt;Appearance&amp;Behavior-&gt;System Settings-&gt;Project Opening-&gt;Default directory</p>
+<h4 id="34-护眼背景色">3.4 护眼背景色</h4>
+<p>使用过HBuilder之后，被护眼色蛊惑[<a href="https://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/35112">说明链接</a>]，修改Idea的背景色为FAF6E6。</p>
+<p>File-&gt;Settings-&gt;Editor-&gt;Color Scheme-&gt;General-&gt;Text-&gt;Default text-&gt;Background-&gt;🖊FAF6E6</p>
+<figure data-type="image" tabindex="3"><img src="http://upload.ouliu.net/i/20200110152041ve7hg.png" alt="img" loading="lazy"></figure>
+<h4 id="34-关于主题色">3.4 关于主题色</h4>
+<table>
+<thead>
+<tr>
+<th>推荐的主题网站</th>
+<th>推荐的主题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://color-themes.com/?view=index</td>
+<td>hbuilder</td>
+</tr>
+<tr>
+<td>http://www.easycolor.cc/intelliJidea/list.html</td>
+<td>Modulor Light</td>
+</tr>
+<tr>
+<td>http://www.themesmap.com/</td>
+<td>moon</td>
+</tr>
+<tr>
+<td>http://www.riaway.com/</td>
+<td>Solfin</td>
+</tr>
+<tr>
+<td></td>
+<td>green_theme</td>
+</tr>
+<tr>
+<td></td>
+<td>Solarized Light (Alternate)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="35-修改注释空行">3.5 修改注释空行</h4>
+<p>依次选择Setting-&gt;Editor-&gt;Code Style-&gt;Java,选择Code Generation，取消Line comment at first column和Block comment at first column的选中即可。</p>
+<h4 id="36-路径变量设置">3.6 路径变量设置</h4>
+<p>KOTLIN_BUNDLED</p>
+<p>MAVEN_REPOSITORY</p>
+<h3 id="4-idea程序缓存及设置文件路径修改">4. IDEA程序缓存及设置文件路径修改</h3>
+<p>修改Idea的一般文件设置路径，防止重装系统需要重新配置，新配置路径为程序同级目录的上层目录<code>.IntelliJIdea</code>中。</p>
+<pre><code class="language-properties"># Use ${idea.home.path} macro to specify location relative to IDE installation home.
+# Use ${xxx} where xxx is any Java property (including defined in previous lines of this file) to refer to its value.
+# Note for Windows users: please make sure you're using forward slashes (e.g. c:/idea/system).
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE config folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.config.path=${user.home}/.IntelliJIdea/config
+idea.config.path=${idea.home.path}/../.IntelliJIdea/config
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE system folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.system.path=${user.home}/.IntelliJIdea/system
+idea.system.path=${idea.home.path}/../.IntelliJIdea/system
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to user installed plugins folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.plugins.path=${idea.config.path}/plugins
+idea.plugins.path=${idea.config.path}/plugins
+
+#---------------------------------------------------------------------
+# Uncomment this option if you want to customize path to IDE logs folder. Make sure you're using forward slashes.
+#---------------------------------------------------------------------
+# idea.log.path=${idea.system.path}/log
+idea.log.path=${idea.system.path}/log
+</code></pre>
+<h3 id="5快捷键">5.快捷键</h3>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+回车</td>
+<td>导入包,自动修正</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td>查找类</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+N</td>
+<td>查找文件</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+O</td>
+<td>优化导入的类和包</td>
+</tr>
+<tr>
+<td>Alt+Insert</td>
+<td>生成代码(如get,set方法,构造函数等)</td>
+</tr>
+<tr>
+<td>Ctrl+E或者Alt+Shift+C</td>
+<td>最近更改的代码</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td>替换文本</td>
+</tr>
+<tr>
+<td>Ctrl+F</td>
+<td>查找文本</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Space</td>
+<td>自动补全代码</td>
+</tr>
+<tr>
+<td>Ctrl+空格</td>
+<td>代码提示</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Space</td>
+<td>类名或接口名提示</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>方法参数提示</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Alt+N</td>
+<td>查找类中的方法或变量</td>
+</tr>
+<tr>
+<td>Alt+Shift+C</td>
+<td>对比最近修改的代码</td>
+</tr>
+<tr>
+<td>Shift+F6</td>
+<td>重构-重命名</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>删除行</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>复制行</td>
+</tr>
+<tr>
+<td>Ctrl+/ 或 Ctrl+Shift+/</td>
+<td>注释（// 或者/<em>...</em>/ ）</td>
+</tr>
+<tr>
+<td>Ctrl+J</td>
+<td>自动代码</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>最近打开的文件</td>
+</tr>
+<tr>
+<td>Ctrl+H</td>
+<td>显示类结构图</td>
+</tr>
+<tr>
+<td>Ctrl+Q</td>
+<td>显示注释文档</td>
+</tr>
+<tr>
+<td>Alt+F1</td>
+<td>查找代码所在位置</td>
+</tr>
+<tr>
+<td>Alt+1</td>
+<td>快速打开或隐藏工程面板</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+ left/right</td>
+<td>返回至上次浏览的位置</td>
+</tr>
+<tr>
+<td>Alt+ left/right</td>
+<td>切换代码视图</td>
+</tr>
+<tr>
+<td>Alt+ Up/Down</td>
+<td>在方法间快速移动定位</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Up/Down</td>
+<td>代码向上/下移动</td>
+</tr>
+<tr>
+<td>F2 或Shift+F2</td>
+<td>高亮错误或警告快速定位</td>
+</tr>
+</tbody>
+</table>
+<p>常用快捷键</p>
+<p>1 执行(run) alt+r</p>
+<p>2 提示补全 (Class Name Completion) alt+/</p>
+<p>3 单行注释 ctrl + /</p>
+<p>4 多行注释 ctrl + shift + /</p>
+<p>5 向下复制一行 (Duplicate Lines) ctrl+alt+down</p>
+<p>6 删除一行或选中行 (delete line) ctrl+d</p>
+<p>7 向下移动行(move statement down) alt+down</p>
+<p>8 向上移动行(move statement up) alt+up</p>
+<p>9 向下开始新的一行(start new line) shift+enter</p>
+<p>10 向上开始新的一行 (Start New Line before current) ctrl+shift+enter</p>
+<p>11 如何查看源码 (class) ctrl + 选中指定的结构 或 ctrl + shift + t</p>
+<p>12 万能解错/生成返回值变量 alt + enter</p>
+<p>13 退回到前一个编辑的页面 (back) alt + left</p>
+<p>14 进入到下一个编辑的页面(针对于上条) (forward) alt + right</p>
+<p>15 查看继承关系(type hierarchy) F4</p>
+<p>16 格式化代码(reformat code) ctrl+shift+F</p>
+<p>17 提示方法参数类型(Parameter Info) ctrl+alt+/</p>
+<p>18 复制代码 ctrl + c</p>
+<p>19 撤销 ctrl + z</p>
+<p>20 反撤销 ctrl + y</p>
+<p>21 剪切 ctrl + x</p>
+<p>22 粘贴 ctrl + v</p>
+<p>23 保存 ctrl + s</p>
+<p>24 全选 ctrl + a</p>
+<p>25 选中数行，整体往后移动 tab</p>
+<p>26 选中数行，整体往前移动 shift + tab</p>
+<p>27 查看类的结构：类似于 eclipse 的 outline ctrl+o</p>
+<p>28 重构：修改变量名与方法名(rename) alt+shift+r</p>
+<p>29 大写转小写/小写转大写(toggle case) ctrl+shift+y</p>
+<p>30 生成构造器/get/set/toString alt +shift + s  alt+insert</p>
+<p>31 查看文档说明(quick documentation) F2</p>
+<p>32 收起所有的方法(collapse all) alt + shift + c</p>
+<p>33 打开所有方法(expand all) alt+shift+x</p>
+<p>34 打开代码所在硬盘文件夹(show in explorer) ctrl+shift+x</p>
+<p>35 生成 try-catch 等(surround with) alt+shift+z</p>
+<p>36 局部变量抽取为成员变量(introduce field) alt+shift+f</p>
+<p>37 查找/替换(当前) ctrl+f</p>
+<p>38 查找(全局) ctrl+h</p>
+<p>39 查找文件 double Shift</p>
+<p>40 查看类的继承结构图(Show UML Diagram) ctrl + shift + u</p>
+<p>41 查看方法的多层重写结构(method hierarchy) ctrl+alt+h</p>
+<p>42 添加到收藏(add to favorites) ctrl+alt+f</p>
+<p>43 抽取方法(Extract Method) alt+shift+m</p>
+<p>44 打开最近修改的文件(Recently Files) ctrl+E</p>
+<p>45 关闭当前打开的代码栏(close) ctrl + w</p>
+<p>46 关闭打开的所有代码栏(close all) ctrl + shift + w</p>
+<p>47 快速搜索类中的错误(next highlighted error) ctrl + shift + q</p>
+<p>48 选择要粘贴的内容(Show in Explorer) ctrl+shift+v</p>
+<p>49 查找方法在哪里被调用(Call Hierarchy) ctrl+shift+h</p>
+<h3 id="6常用插件">6.常用插件</h3>
+<table>
+<thead>
+<tr>
+<th>插件名称</th>
+<th>插件介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key promoter</td>
+<td>快捷键提示</td>
+</tr>
+<tr>
+<td>CamelCase</td>
+<td>驼峰式命名和下划线命名交替变化</td>
+</tr>
+<tr>
+<td>CheckStyle-IDEA</td>
+<td>代码样式检查</td>
+</tr>
+<tr>
+<td>FindBugs-IDEA</td>
+<td>代码 Bug 检查</td>
+</tr>
+<tr>
+<td>Statistic</td>
+<td>代码统计</td>
+</tr>
+<tr>
+<td>JRebel Plugin</td>
+<td>热部署</td>
+</tr>
+<tr>
+<td>CodeGlance</td>
+<td>在编辑代码最右侧，显示一块代码小地图</td>
+</tr>
+<tr>
+<td>GsonFormat</td>
+<td>把 JSON 字符串直接实例化成类</td>
+</tr>
+<tr>
+<td>Alibaba Java Coding Guidelines</td>
+<td>阿里巴巴java代码规约</td>
+</tr>
+<tr>
+<td>Free Mybatis plugin</td>
+<td>Mybatis插件</td>
+</tr>
+<tr>
+<td>Maven Helper</td>
+<td>Maven插件</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>参考链接：https://www.jianshu.com/p/320d82d405ad</p>
+<h3 id="7开启多行标签">7.开启多行标签</h3>
+<p>Setting—&gt;Editor—&gt;General—&gt;Editor Tabs，或者打开设置直接搜索tab，下面还有最大标签设置，截图是默认只显示一行，取消即可多行显示</p>
+<figure data-type="image" tabindex="4"><img src="https://s3.bmp.ovh/imgs/2021/12/d2665e86cf5cf2fc.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
+</feed>
