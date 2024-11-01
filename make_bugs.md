@@ -18,7 +18,7 @@ isTop: false
 
 比如创建一个1GB的文件 `failocate -l 1GB test.tar`
 
-
+<details>
 测试请求代码如下：
 ```    
 private static boolean checkFile(String url) throws IOException {
@@ -36,7 +36,7 @@ private static boolean checkFile(String url) throws IOException {
         return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
     }
 ```
-
+</details>
 这样就可以愉快的请求文件，获取文件大小，但是不接受请求体啦，也就没有请求文件大小过大，OOM的风险啦。
 PS: 组内网关不支持HEAD请求，最后导致生产事故啦
 参考链接： https://stackoverflow.com/questions/19755016/
