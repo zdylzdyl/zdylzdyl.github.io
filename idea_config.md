@@ -7,15 +7,15 @@ hideInList: false
 feature: http://www.debug8.com/statics/uploads/2019/12/31/1577782816222512.png
 isTop: false
 ---
-# Java Tool
-
-Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial
+# IntelliJ IDEA Config
 
 [Toc]
 
 ## 1. [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-![img 图片来源 /lib/product.jar/idea_logo.png](/images/idea_logo.png)
+![img 图片来源 /lib/product.jar/idea_logo.png](images/idea_config/idea_logo@2x.png)
+
+> Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial
 
 ### 1.启动优化
 
@@ -24,12 +24,12 @@ Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial
 ```vmoptions
 # 程序启动时占用内存大小。jvm初始化大小为1G
 -Xms1g
-# 程序运行期间最大可占用的内存大小。jvm最大大小为2G
+# 程序运行期间最大可占用的内存大小。jvm最大大小为2G   -Xmx2g
 -Xmx2054m
-# 用于设置Code Cache大小，JIT编译的代码都放在Code Cache中，若Code Cache空间不足则JIT无法继续编译，并且会去优化，比如编译执行改为解释执行，由此，性能会降
+# 用于设置Code Cache大小，JIT编译的代码都放在Code Cache中，若Code Cache空间不足则JIT无法继续编译，并且会去优化，比如编译执行改为解释执行，由此，性能会降 可用默认不需要修改
 -XX:ReservedCodeCacheSize=512m
 # 添加作者信息
--Duser.name=Donald Trump
+-Duser.name=zdylzdyl
 ```
 
 ### 2.新项目默认设置
@@ -46,11 +46,13 @@ idea的Setting是关于当前项目的设置，新项目（所有项目的设置
 
 操作：File->Other Settings->Settings For New Projects
 
+中文版：文件->新建项目设置->新项目的设置
+
 新建项目的默认设置
 
 ##### 2.2.1 常用编码设置
 
-Editor->File Encodings->全部选择UTF-8即可
+Editor->File Encodings->全部选择UTF-8即可（酌情设置，老项目可能都是GBK，具体看项目情况）
 
 ![img](https://ae01.alicdn.com/kf/H7c69286536c54c80926022cabebf0555O.png)
 
@@ -169,6 +171,8 @@ File->Settings->Editor->Color Scheme->General->Text->Default text->Background->�
 ![img](http://upload.ouliu.net/i/20200110152041ve7hg.png)
 
 #### 3.4 关于主题色
+
+实际我并不使用主题
 
 | 推荐的主题网站                                 | 推荐的主题                  |
 | ---------------------------------------------- | --------------------------- |
