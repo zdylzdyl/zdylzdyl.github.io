@@ -3,8 +3,15 @@ Windows 配置记录
 > 我在考虑是否收录较小的工具至`GitHub`代码库中，亦或是直接收录下载地址。
 >
 > 目前使用了sandbox做沙盒，一开始考虑给每个软件做沙盒，但是发现，实际使用较多的就是那么几个，其他的并不多用，基本都可用放置到一起来。
+>
+> todo 清理掉 存量的开源库
+>   [zdylzdyl/public-depository](https://github.com/zdylzdyl/public-depository)
+>   [zdylzdyl/public-resources](https://github.com/zdylzdyl/public-resources)
+>   [zdylzdyl/github-cloud](https://github.com/zdylzdyl/github-cloud)
 
 1、基本工具
+
+
 
 
 
