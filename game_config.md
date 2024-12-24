@@ -14,5 +14,28 @@
 
 
 
+### [2、魔女黏糊笔记](https://store.steampowered.com/app/3265880/)
+
+![魔女黏糊笔记](https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3265880/38a7cdb195b1fc3ae7d62cc8308e3d092ce35d6e/capsule_616x353.jpg)
+
+特色：
+
+- 画风可爱
+- 闪避，色子点数小于对方完全闪避攻击
+- 卡牌限定九张
+
+![主角](https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3265880/extras/%E9%97%AD%E7%9C%BC%E5%BC%80%E5%BF%83.png)
 
 
+
+
+
+
+
+
+
+### 备注
+
+游戏下载站：
+
+- [Switch520](https://www.gamer520.com/)
