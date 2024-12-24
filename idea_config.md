@@ -13,7 +13,7 @@ isTop: false
 
 ## 1. [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-![img 图片来源 /lib/product.jar/idea_logo.png](images/idea_config/idea_logo@2x.png)
+![idea](https://www.jetbrains.com/idea/img/overview-heading-screenshot.png)
 
 > Github 入门通识：https://github.com/judasn/IntelliJ-IDEA-Tutorial
 
