@@ -36,7 +36,7 @@
 
 ![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/378030/ss_d52ce5cddc8f6a8a4461847cd19c5f0bc3bc995e.600x338.jpg?t=1452029876)
 
-[4、心灵终结](https://mentalomega.com/ch/)
+### [4、心灵终结](https://mentalomega.com/ch/)
 
 ![](https://mentalomega.com/images/mo3logo.png)
 
@@ -47,7 +47,9 @@
 
 ![盟军](https://mentalomega.com/images/buttonallies.png)![苏联](https://mentalomega.com/images/buttonsoviets.png)![尤里](https://mentalomega.com/images/buttonepsilon.png)![焚风](https://mentalomega.com/images/buttonfoehn.png)
 
+**todo 自定义游戏修改待补充**
 
+**todo 优秀地图包待收录**
 
 
 
