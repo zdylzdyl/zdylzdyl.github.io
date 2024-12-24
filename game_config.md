@@ -26,9 +26,26 @@
 
 ![主角](https://shared.cdn.queniuqe.com/store_item_assets/steam/apps/3265880/extras/%E9%97%AD%E7%9C%BC%E5%BC%80%E5%BF%83.png)
 
+### [3、主教之旅 Cardinal Quest 2](http://cardinalquest2.com/)
 
+![](http://cardinalquest2.com/cardinal-quest-2.png)
 
+像素风小游戏，比肩破碎的像素地牢
 
+游戏界面
+
+![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/378030/ss_d52ce5cddc8f6a8a4461847cd19c5f0bc3bc995e.600x338.jpg?t=1452029876)
+
+[4、心灵终结](https://mentalomega.com/ch/)
+
+![](https://mentalomega.com/images/mo3logo.png)
+
+**心灵终结**是命令与征服：红色警戒2 尤里的复仇的一个免费非官方扩展模组。
+它最早是由**Speeder**和**Mevitar**在2005年发布的一个基于原版的平衡性模组。几年后，它演变成了一款包含了盟军、苏联和尤里的新战役的非官方扩展包。**3.3版本**是心灵终结的最后一次大型更新，也标志着这个系列的终结。
+
+尤里的复仇MOD·心灵终结，最值得一玩的系列MOD
+
+![盟军](https://mentalomega.com/images/buttonallies.png)![苏联](https://mentalomega.com/images/buttonsoviets.png)![尤里](https://mentalomega.com/images/buttonepsilon.png)![焚风](https://mentalomega.com/images/buttonfoehn.png)
 
 
 
