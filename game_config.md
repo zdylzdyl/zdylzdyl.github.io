@@ -53,6 +53,24 @@
 
 
 
+[5、火湖](https://store.steampowered.com/app/2124120/)
+
+![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2124120/header_alt_assets_2_schinese.jpg)
+
+SULFUR《火湖》是一款新颖的老式动作冒险游戏：智取敌人、寻找宝藏、改进武器、驾驭力量。继续深入，找到答案，了结这一切。
+
+![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2124120/extras/CHINESE-IntroParagraph.png)
+
+游戏画面：
+
+![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2124120/ss_264c35daa8e599f8c1b91d987e6b097ce16c964a.1920x1080.jpg)
+
+
+
+
+
+
+
 ### 备注
 
 游戏下载站：
