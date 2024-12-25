@@ -18,9 +18,11 @@
 >
 > 6、清理微云备份
 >
-> [zdylzdyl/public-depository](https://github.com/zdylzdyl/public-depository)
-> [zdylzdyl/public-resources](https://github.com/zdylzdyl/public-resources)
-> [zdylzdyl/github-cloud](https://github.com/zdylzdyl/github-cloud)
+> [zdylzdyl/public-depository](https://github.com/zdylzdyl/public-depository) 已删库
+> [zdylzdyl/public-resources](https://github.com/zdylzdyl/public-resources) 已克隆至本地 
+>
+> git clone https://gitclone.com/github.com/zdylzdyl/public-resources.git
+> [zdylzdyl/github-cloud](https://github.com/zdylzdyl/github-cloud) 待克隆
 >
 > 清理内容放在移动硬盘内，清空电脑内容，并保持备份，尝试重装
 
