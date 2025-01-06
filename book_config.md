@@ -35,3 +35,18 @@
 3.《Van Tharp's Definitive Guide To Position Sizing》，目前没有中文译本，重点介绍头寸的管理，撒普认为头寸管理占交易的30%。（超级推荐，本书第一版在网上可以很容易找到电子版，第二版我找了很久也没有找到，需要第一版或者有第二版的朋友可以留言）
 
 4.萨普的五卷本《Peak Performance Home Study Course for Traders & Investors》，目前没有中文译本，重点介绍自我修炼。（我有五卷本的电子版，需要的可以留言）
+
+
+
+
+
+```json
+{
+  "目标": "写书",
+  "是什么": "写一本书，保存到epub格式",
+  "为什么": "总结，记录经验与感受",
+  "怎么做": "先写再说，当作素材，每天写点",
+  "from": "https://jsoncrack.com/editor"
+}
+```
+

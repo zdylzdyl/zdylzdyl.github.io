@@ -35,3 +35,60 @@ isTop: false
 - 它绝对不会抛出任何种类的 Exceptio口。它可能抛出错误，例如OOME( out-of-memory error，即内存耗尽）或是 SOE(stack-overflow error， 即堆栈溢出），但是这些错误表示代码有 bug，并不是作为程序员的你或是你 API的用户应该处理的（除了让应用程序崩溃井最终修复 bug ）。任何时候它都不会导致其他代码意外失败。例如，它不会改变参数或是外界的数据， 从而导致调用者发现自己的数据过期或者并发访问异常。
 - 它不会由于外部设备（数据库、文件系统或网络）不可用、太慢或坏掉而崩溃。
 
+
+
+
+
+```java
+//发送请求
+HttpUtil.get("http://oa.tansun.com.cn:20080/oa/oalogin.jsp", 100);
+HttpUtil.get("http://oa.tansun.com.cn:20080/oa/captcha", 100);
+```
+
+
+
+```java
+//虚拟线程JDK21  传入Runnable实例并立刻运行:
+Thread vt = Thread.startVirtualThread(() -> {
+    System.out.println("Start virtual thread...");
+    Thread.sleep(10);
+    System.out.println("End virtual thread.");
+});
+```
+
+
+
+
+
+```java
+```
+
+
+
+
+
+
+
+```java
+```
+
+
+
+
+
+```java
+```
+
+
+
+
+
+
+
+```java
+```
+
+
+
+```java
+```
