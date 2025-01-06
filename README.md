@@ -9,6 +9,8 @@
 
 <script src="https://unpkg.com/mermaid@8.14.0/dist/mermaid.min.js"></script>
 <script> mermaid.initialize({logLevel: "error",securityLevel: "loose",theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark" :"default"})</script>
+
+<!-- htmlmin:ignore -->
 <pre class="mermaid">
 <code>
 graph TD;
@@ -17,3 +19,4 @@ graph TD;
     B--&gt;D;
     C--&gt;D;
     </code></pre>
+<!-- htmlmin:ignore -->
