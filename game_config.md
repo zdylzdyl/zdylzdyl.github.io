@@ -65,7 +65,13 @@ SULFUR《火湖》是一款新颖的老式动作冒险游戏：智取敌人、�
 
 ![](https://shared.st.dl.eccdnx.com/store_item_assets/steam/apps/2124120/ss_264c35daa8e599f8c1b91d987e6b097ce16c964a.1920x1080.jpg)
 
+5、米塔
 
+
+
+
+
+6、ZERO Sievert 像素塔可夫
 
 
 
