@@ -9,21 +9,13 @@
 
 
 <script src="https://unpkg.com/mermaid@8.14.0/dist/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
+<script> mermaid.initialize({
   logLevel: "error",
   securityLevel: "loose", 
-  theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ?
-    "dark" :
-    "default" 
-})
+  theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "default" })
 </script>
-
-
-
-
-<html><pre class="mermaid"><code>graph TD;
+<pre class="mermaid"><code>graph TD;
     A--&gt;B;
     A--&gt;C;
     B--&gt;D;
-    C--&gt;D;</code></pre></html>
+    C--&gt;D;</code></pre>
