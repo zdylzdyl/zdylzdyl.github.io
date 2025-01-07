@@ -92,3 +92,8 @@ Thread vt = Thread.startVirtualThread(() -> {
 
 ```java
 ```
+
+
+
+netsata -a 查看所有链接的 ip
+tcpdump 查看所有请求
