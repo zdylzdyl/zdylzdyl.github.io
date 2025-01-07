@@ -1,9 +1,6 @@
+
+<!-- 加载mermaid，以便GitHub page 展示mermaid -->
 <script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
-<script> mermaid.initialize({
-    logLevel: "error",
-    securityLevel: "loose",
-    theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "default"
-})</script>
 
 想在GitHub画图展示，找到了神器mermaid，但是蛇皮的事情来了
 
