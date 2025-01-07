@@ -9,7 +9,7 @@
 <script> mermaid.initialize({logLevel: "error",securityLevel: "loose",theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark" :"default"})</script>
 
 ```mermaid
-  graph TD;
+graph TD;
       A-->B;
       A-->C;
       B-->D;
