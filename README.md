@@ -4,14 +4,3 @@
 4. [Java Configuration and use - Java配置与使用](java_config.md)
 5. [IDEA Configuration and use - IDEA配置与使用](idea_config.md)
 6. [Bug Configuration and use - 开发配置与使用](bug_config.md)
-
-<script src="https://unpkg.com/mermaid@8.14.0/dist/mermaid.min.js"></script>
-<script> mermaid.initialize({logLevel: "error",securityLevel: "loose",theme: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark" :"default"})</script>
-
-```mermaid
-graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
-```
