@@ -29,3 +29,20 @@
 音乐 欧若拉 很好听的老歌
 
 没睡好 整天都疲惫不堪
+
+
+
+
+
+```mermaid
+journey
+    title 日常的一天
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me
+
+```
