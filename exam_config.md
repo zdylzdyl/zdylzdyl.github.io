@@ -160,6 +160,6 @@ CPU --> 内部总线
 <!-- 兼容GitHub -->
 
 <script>
-mermaid.initialize({ startOnLoad: true });
-await mermaid.run({querySelector: '.language-mermaid',});
+mermaid.initialize({startOnLoad:true});
+window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
 </script>
