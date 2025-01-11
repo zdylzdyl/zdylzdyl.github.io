@@ -2,6 +2,11 @@
 
 <!-- 加载mermaid，以便GitHub page 展示mermaid -->
 <script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<!-- 兼容GitHub -->
+<script>
+mermaid.initialize({ startOnLoad: false });
+await mermaid.run({querySelector: '.language-mermaid',});
+</script>
 
 ## 1、安排与计划
 
@@ -13,7 +18,7 @@
 
 计划前俩月先看书，700页左右（687页），大约一个月350页左右，每周90页的书，需要看完并总结。
 
-<div class="mermaid">
+```mermaid
 timeline
 title 软件设计师备考计划
 1月 : 阅读并总结书籍前350页
@@ -21,8 +26,7 @@ title 软件设计师备考计划
 3月 : 做历年真题 : 报名考试
 4月 : 做机考模拟试卷
 5月 : 准备考试
-</div>
-
+```
 
 先做计划了，也不一定能特别顺利，早做准备。
 
@@ -33,21 +37,6 @@ title 软件设计师备考计划
 ### 第一章、计算机基础知识
 
 1.1.1 计算机硬件基本组成
-
-<div class="mermaid">
-graph TD;
-计算机基本硬件 --> 中央处理器CPU
-中央处理器CPU --> 运算器
-中央处理器CPU --> 控制
-计算机基本硬件 --> 存储器
-存储器 --> 内部存储器-内存
-存储器 --> 外部存储器-磁盘
-计算机基本硬件 --> 外部设备-外设
-外部设备-外设 --> 输入设备
-外部设备-外设 --> 输出设备
-</div>
-
-
 
 ```mermaid
 graph TD;
@@ -81,8 +70,9 @@ CPU --> 内部总线
 控制器 --> 地址存寄存器-AR
 控制器 --> 指令译码器-ID
 
-寄存器 --> 专用寄存器 --> 运算器和控制器中的寄存器
+寄存器 --> 专用寄存器
 寄存器 --> 通用寄存器
+专用寄存器 --> 运算器和控制器中的寄存器
 ```
 
 1.1.3 数据表示
