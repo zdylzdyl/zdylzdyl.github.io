@@ -158,7 +158,8 @@ CPU --> 内部总线
 <!-- 加载mermaid，以便GitHub page 展示mermaid -->
 <script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
 <!-- 兼容GitHub -->
+
 <script>
-mermaid.initialize({ startOnLoad: false });
+mermaid.initialize({ startOnLoad: true });
 await mermaid.run({querySelector: '.language-mermaid',});
 </script>
