@@ -1,6 +1,8 @@
-# chocolatey 安装软件
+# [Chocolatey - Software Management for Windows](https://community.chocolatey.org/)
 
-```bat
+> 以下脚本记事本另存为.ps1文件后，右键选择使用power shell运行
+
+```powershell
 # init 初始化安装
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
@@ -91,5 +93,15 @@ choco install spacesniffer -y
 
 # choco install ollama 一个方便的大模型前端
 choco install ollama -y
+```
+
+好吧，初始版本写的过于详细的了，我更新一下简单的
+
+```powershell
+# init 
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# install 
+choco install jetbrainstoolbox dismplusplus microsoft-edge everything sandboxie-plus.install-y
 ```
 
