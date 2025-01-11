@@ -1,13 +1,5 @@
 # 软件设计师备考
 
-<!-- 加载mermaid，以便GitHub page 展示mermaid -->
-<script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
-<!-- 兼容GitHub -->
-<script>
-mermaid.initialize({ startOnLoad: false });
-await mermaid.run({querySelector: '.language-mermaid',});
-</script>
-
 ## 1、安排与计划
 
 大约3月左右报名，5月左右考试。离目前大约4个月，准备好。
@@ -163,3 +155,10 @@ CPU --> 内部总线
 
 
 
+<!-- 加载mermaid，以便GitHub page 展示mermaid -->
+<script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<!-- 兼容GitHub -->
+<script>
+mermaid.initialize({ startOnLoad: false });
+await mermaid.run({querySelector: '.language-mermaid',});
+</script>
