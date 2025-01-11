@@ -35,6 +35,7 @@ title 软件设计师备考计划
 1.1.1 计算机硬件基本组成
 
 <div class="mermaid">
+graph TD;
 计算机基本硬件 --> 中央处理器CPU
 中央处理器CPU --> 运算器
 中央处理器CPU --> 控制
