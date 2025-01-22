@@ -29,7 +29,7 @@ https://www.github-zh.com/getting-started/github-pages
 
 
 
-当前时间：{{ data }}
+当前时间：{{ date }}
 
 
 
