@@ -1,6 +1,29 @@
-<!-- 加载mermaid，以便GitHub page 展示mermaid -->
+Github Markdown Simple Blog
 
-<script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
+1、打开[GitHub](https://github.com/) 注册
+
+2、安装Git环境
+
+MAC 安装：
+
+mac打开终端可以输入`git --version` 查看版本，未安装mac会提示安装。
+
+Windows安装：
+
+```powershell
+# windows 管理员权限打开powershell 输入以下命令
+# 我是注释 以下是安装choco安装工具
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# 我是注释 以下是安装 git 开发版本库管理工具
+choco install git -y
+```
+
+
+
+
+
+
 
 想在GitHub画图展示，找到了神器mermaid，但是蛇皮的事情来了
 
@@ -42,3 +65,20 @@ graph LR;
 
 有了图，我大概可以换一种组织文档内容的方式，用图描述整个博客，然后给它们加上点击的链接，这样简单易懂
 
+
+
+
+
+
+
+
+
+<!-- 加载mermaid，以便GitHub page 展示mermaid -->
+
+<script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
+<!-- 兼容GitHub -->
+
+<script>
+mermaid.initialize({startOnLoad:true});
+window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+</script>
