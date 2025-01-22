@@ -19,9 +19,17 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install git -y
 ```
 
+3、开启GitHub Pages
+
+https://www.github-zh.com/getting-started/github-pages
+
+4、GitHub的排版
+
+[前言 |Jekyll • 简单、博客感知的静态网站](https://jekyllrb.com/docs/front-matter/)
 
 
 
+当前时间：{{ data }}
 
 
 
