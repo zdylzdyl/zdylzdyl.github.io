@@ -84,9 +84,12 @@ graph LR;
 <!-- 加载mermaid，以便GitHub page 展示mermaid -->
 
 <script src="https://unpkg.com/mermaid@11.4.1/dist/mermaid.min.js"></script>
-<!-- 兼容GitHub -->
 
+<!-- 兼容GitHub -->
 <script>
 mermaid.initialize({startOnLoad:true});
 window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
 </script>
+
+<!-- 访问量统计 -->
+<span id="busuanzi_container_page_pv"> | 访问量：<span id="busuanzi_value_page_pv"></span> 次</span>
