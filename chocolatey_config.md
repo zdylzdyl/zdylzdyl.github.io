@@ -93,6 +93,9 @@ choco install spacesniffer -y
 
 # choco install ollama 一个方便的大模型前端
 choco install ollama -y
+
+# 安装 potplayer
+choco install potplayer -y
 ```
 
 好吧，初始版本写的过于详细的了，我更新一下简单的
