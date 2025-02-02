@@ -108,6 +108,14 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install jetbrainstoolbox dismplusplus microsoft-edge everything sandboxie-plus.install-y
 ```
 
+choco不能安装的软件
+
+```powershell
+- JiJiDown:http://client.jijidown.com/ 
+```
+
+
+
 
 
 <!-- 访问量统计 -->
