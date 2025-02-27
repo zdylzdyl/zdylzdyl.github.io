@@ -19,7 +19,15 @@ iOS使用
 - [“哔哩哔哩-弹幕番剧直播高清视频”](https://apps.apple.com/cn/app/哔哩哔哩-弹幕番剧直播高清视频/id736536022)
 - [“训练记录”](https://apps.apple.com/cn/app/训练记录/id1556189168) 健身打卡 无需付费也不错
 
-3.app存档 不常用
+3.阅读
+
+- [“PureLibro阅读器-图书小说漫画神器”](https://apps.apple.com/cn/app/purelibro阅读器-图书小说漫画神器/id1546612448) 支持大部分格式，神器IOS版“静读天下”
+- [“起点读书-看小说听书追漫画的阅读神器”](https://apps.apple.com/cn/app/起点读书-看小说听书追漫画的阅读神器/id534174796) 只能读正版
+- [“番茄小说 - 蛇舞新春”](https://apps.apple.com/cn/app/番茄小说-蛇舞新春/id1468454200) 不少免费好小说，赞，3.5版本无广告，低版本使用更赞
+- [“微信读书”](https://apps.apple.com/cn/app/微信读书/id952059546) 作为补充也不错
+- [“有度 - TXT&PDF&EPUB电子书阅读神器”](https://apps.apple.com/cn/app/有度-txt-pdf-epub电子书阅读神器/id6448031435) 网页转书籍，还能朗读，很赞
+
+4.app存档 不常用
 
 - [“Server: Host Files Locally”](https://apps.apple.com/cn/app/server-host-files-locally/id1668447062) 可以热点分享东西，缺点是中文乱码 
 	
@@ -31,4 +39,5 @@ iOS使用
 - [“PolyGit Git Client”](https://apps.apple.com/cn/app/polygit-git-client/id1508942822) IOS上的Git客户端，缺点是免费用户每天只能推送三次提交记录
 - [“钉钉”](https://apps.apple.com/cn/app/钉钉/id930368978) 上班需要
 - shadowrocket 科学上网必备，需要外区账号下载
+- [“小睡眠-助眠,白噪音,睡眠监测,HRV,压力,心率,冥想正念”](https://apps.apple.com/cn/app/小睡眠-助眠-白噪音-睡眠监测-hrv-压力-心率-冥想正念/id1194338569) 挺不错，睡不着可以听听 微信小程序也不错
 - 
