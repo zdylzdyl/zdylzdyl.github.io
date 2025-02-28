@@ -26,18 +26,29 @@ iOS使用
 - [“番茄小说 - 蛇舞新春”](https://apps.apple.com/cn/app/番茄小说-蛇舞新春/id1468454200) 不少免费好小说，赞，3.5版本无广告，低版本使用更赞
 - [“微信读书”](https://apps.apple.com/cn/app/微信读书/id952059546) 作为补充也不错
 - [“有度 - TXT&PDF&EPUB电子书阅读神器”](https://apps.apple.com/cn/app/有度-txt-pdf-epub电子书阅读神器/id6448031435) 网页转书籍，还能朗读，很赞
+- [App Store 上的“读不舍手”](https://apps.apple.com/cn/app/读不舍手/id1662413517) 苹果版“阅读”，但是广告太烦了
+- [App Store 上的“沉浸式翻译 - 开启无语言障碍的世界”](https://apps.apple.com/cn/app/沉浸式翻译-开启无语言障碍的世界/id6476744995) 本来想试着翻译本地英文epub的，但是以后尝试吧
 
 4.app存档 不常用
 
 - [“Server: Host Files Locally”](https://apps.apple.com/cn/app/server-host-files-locally/id1668447062) 可以热点分享东西，缺点是中文乱码 
 	
 - [“ntfy”](https://apps.apple.com/cn/app/ntfy/id1625396347)， 是一种免费的开源基于 HTTP 的发布-订阅服务，缺点是IOS上只能主动拉去消息通知
+
 - [“Antiyoy”](https://apps.apple.com/cn/app/antiyoy/id1415296141) 象素类战略小游戏
+
 - [“小鱼短信”](https://apps.apple.com/cn/app/小鱼短信/id1515035333) 拦截骚扰短信用
+
 - [“Steam Mobile”](https://apps.apple.com/cn/app/steam-mobile/id495369748) steam客户端，可以扫描 缺点是没有科学上网无法扫码登陆
+
 - [“微信输入法”](https://apps.apple.com/cn/app/微信输入法/id1618175312) 卡卡的输入法
+
 - [“PolyGit Git Client”](https://apps.apple.com/cn/app/polygit-git-client/id1508942822) IOS上的Git客户端，缺点是免费用户每天只能推送三次提交记录
+
 - [“钉钉”](https://apps.apple.com/cn/app/钉钉/id930368978) 上班需要
+
 - shadowrocket 科学上网必备，需要外区账号下载
+
 - [“小睡眠-助眠,白噪音,睡眠监测,HRV,压力,心率,冥想正念”](https://apps.apple.com/cn/app/小睡眠-助眠-白噪音-睡眠监测-hrv-压力-心率-冥想正念/id1194338569) 挺不错，睡不着可以听听 微信小程序也不错
-- 
+
+  

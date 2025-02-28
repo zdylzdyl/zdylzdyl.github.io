@@ -96,6 +96,9 @@ choco install ollama -y
 
 # 安装 potplayer
 choco install potplayer -y
+
+# 安装 Spek 音频图形化软件 可以检查音乐是否是真无损还是mp3转化而来
+choco install spek -y
 ```
 
 好吧，初始版本写的过于详细的了，我更新一下简单的
@@ -106,6 +109,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 # install 
 choco install jetbrainstoolbox dismplusplus microsoft-edge everything sandboxie-plus.install-y
+
+# upgrade
+choco upgrade chocolatey
 ```
 
 choco不能安装的软件
@@ -113,6 +119,8 @@ choco不能安装的软件
 ```powershell
 - JiJiDown:http://client.jijidown.com/ 
 ```
+
+
 
 
 
